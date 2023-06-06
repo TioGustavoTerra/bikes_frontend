@@ -1,201 +1,217 @@
-import 'package:bikes_frontend/models/register_user.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
+import 'dart:ui';
 
-import '../services/registerUser_service.dart';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import '../componentes/button.dart';
+import '../componentes/square_title.dart';
+import '../componentes/textfield.dart';
 import 'login_screen.dart';
 
-class RegistrationScreen extends StatelessWidget {
+
+class Signup extends StatelessWidget {
+  Signup({super.key});
+
+  // text editing controllers
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  double _sigmaX = 5; // from 0-10
+  double _sigmaY = 5; // from 0-10
+  double _opacity = 0.2;
+  double _width = 350;
+  double _height = 300;
+  final _formKey = GlobalKey<FormState>();
+
+  get emailController => null;
+
+  get confirmPasswordController => null;
+
+  get cpfController => null;
+
+  get telController => null;
+
+  get dataController => null;
+
+
+  // sign user in method
+  void signUserIn() {
+    if (_formKey.currentState!.validate()) {
+      print('valid');
+    } else {
+      print('not valid');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Cadastro'),
-      ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
-        child: RegistrationForm(),
+        child: Container(
+          alignment: Alignment.center,
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Image.network(
+                '',
+                width: MediaQuery.of(context).size.width * 40,
+                height: MediaQuery.of(context).size.height * 40,
+                fit: BoxFit.cover,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  //Cadastro
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+                  const Text("Cadastre grátis em nossa plataforma",
+                      style: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold)),
+                  //Cadastro
+
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+                  ClipRect(
+                    child: BackdropFilter(
+                      filter:
+                      ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
+                      child: Container(
+                        padding: const EdgeInsets.only(right: 60, left: 60, top: 60, bottom: 60,),
+                        decoration: BoxDecoration(
+                            color: Colors.black26
+                                .withOpacity(_opacity),
+                            borderRadius:
+                            const BorderRadius.all(Radius.circular(20))),
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        height: MediaQuery.of(context).size.height * 0.52,
+                        child: Form(
+                          key: _formKey,
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+
+                                  Text(
+                                      "Dados pessoais",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                      textAlign: TextAlign.start),
+
+                                MyTextField(
+                                  controller: usernameController,
+                                  hintText: 'Nome completo',
+                                  obscureText: false,
+                                ),
+
+                            Row(
+                                  children: [
+                                     Expanded(
+                                      child: TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: 'CPF',
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: 'Data de nascimento',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: 'Telefone',
+                                        ),
+                                      ),
+                                    ),
+
+                                    Expanded(
+                                      child: TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: 'E-mail',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+
+
+                                const SizedBox(height: 30),
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.stretch,
+                                  children: [
+
+
+                                    const Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.0),
+                                      child: Text("Cadastre sua senha na plataforma",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+
+                                    const SizedBox(height: 5),
+                                    MyPasswordTextField(
+                                      controller: passwordController,
+                                      hintText: 'Senha',
+                                      obscureText: false,
+                                    ),
+
+                                    const SizedBox(height: 5),
+                                    MyPasswordTextField(
+                                      controller: confirmPasswordController,
+                                      hintText: 'Confirmar senha',
+                                      obscureText: false,
+                                    ),
+
+                                    const SizedBox(height: 10,),
+                                    MyButtonAgree(
+                                      text: "Cadastrar ->",
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LoginPage()));
+                                      },
+                                    ),
+
+                                  ],
+                                ),
+
+
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
       ),
     );
-  }
-}
-
-class RegistrationForm extends StatefulWidget {
-  @override
-  _RegistrationFormState createState() => _RegistrationFormState();
-}
-
-class _RegistrationFormState extends State<RegistrationForm> {
-  final _formKey = GlobalKey<FormState>();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
-  final _nomeCompleto = TextEditingController();
-  final _cpf = TextEditingController();
-  final _dataNascimento = TextEditingController();
-  final _telefone = TextEditingController();
-  final _email = TextEditingController();
-  final RegisterUserService _registerUserService = RegisterUserService();
-
-  @override
-  void dispose() {
-    _passwordController.dispose();
-    _confirmPasswordController.dispose();
-    _nomeCompleto.dispose();
-    _cpf.dispose();
-    _dataNascimento.dispose();
-    _telefone.dispose();
-    _email.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TextFormField(
-            controller: _nomeCompleto,
-            decoration: InputDecoration(
-              labelText: 'Nome Completo',
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Por favor, insira seu nome completo';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 16.0),
-          TextFormField(
-            controller: _cpf,
-            decoration: InputDecoration(
-              labelText: 'CPF',
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Por favor, insira seu CPF';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 16.0),
-          TextFormField(
-            controller: _dataNascimento,
-            decoration: InputDecoration(
-              labelText: 'Data de Nascimento',
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Por favor, insira sua data de nascimento';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 16.0),
-          TextFormField(
-            controller: _telefone,
-            decoration: InputDecoration(
-              labelText: 'Telefone',
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Por favor, insira seu telefone';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 16.0),
-          TextFormField(
-            controller: _email,
-            decoration: InputDecoration(
-              labelText: 'Email',
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Por favor, insira seu email';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 16.0),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Senha',
-            ),
-            controller: _passwordController,
-            obscureText: true,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Por favor, insira uma senha';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 16.0),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Confirmação de Senha',
-            ),
-            controller: _confirmPasswordController,
-            obscureText: true,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Por favor, confirme sua senha';
-              } else if (value != _passwordController.text) {
-                return 'As senhas não coincidem';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 24.0),
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                // Processar os dados de cadastro
-                _registrar(_nomeCompleto.text, _cpf.text, _dataNascimento.text,
-                    _telefone.text, _email.text, _passwordController.text);
-              }
-            },
-            child: Text('Cadastrar'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Future<void> _registrar(String nome, String cpf, String dataNascimento,
-      String telefone, String email, String senha) async {
-    if (await SessionManager().containsKey('user')) {
-      //ja logado ?
-    } else {
-      User user = User(
-          name: nome,
-          cpfCnpj: cpf,
-          birthDate: dataNascimento,
-          phoneNumber: telefone,
-          email: email,
-          password: senha,
-          passwordConfirmation: senha);
-
-      User? userResponse = await _registerUserService.registrar(user);
-      print(userResponse);
-      if (userResponse != null) {
-        print('setando sessão');
-        await SessionManager().set('user', userResponse);
-      } else {
-        print('CAIU AQUI sessão');
-        // _showToast(context);
-      }
-    }
-    setState(() {
-      Navigator.pushAndRemoveUntil(context,
-          MaterialPageRoute(builder: (BuildContext context) {
-        return LoginPage();
-      }), (r) {
-        return false;
-      });
-    });
   }
 }

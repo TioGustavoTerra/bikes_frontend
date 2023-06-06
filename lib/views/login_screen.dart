@@ -25,10 +25,10 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Username'),
+                  decoration: InputDecoration(labelText: 'Nome de usuário'),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter your username';
+                      return 'Por favor coloque seu nome completo';
                     }
                     return null;
                   },
@@ -38,11 +38,11 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Password'),
+                  decoration: InputDecoration(labelText: 'Senha'),
                   obscureText: true,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter your password';
+                      return 'Digite sua senha';
                     }
                     return null;
                   },
@@ -84,8 +84,8 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Error'),
-            content: Text('Invalid username or password'),
+            title: Text('Erro :('),
+            content: Text('Senha ou nome de usuário inválidos'),
             actions: <Widget>[
               TextButton(
                 child: Text('OK'),
