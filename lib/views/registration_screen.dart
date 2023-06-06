@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,13 +8,14 @@ import '../componentes/square_title.dart';
 import '../componentes/textfield.dart';
 import 'login_screen.dart';
 
-
 class Signup extends StatelessWidget {
   Signup({super.key});
 
   // text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  final cpfController = TextEditingController();
+  final dataNascimentoController = TextEditingController();
 
   double _sigmaX = 5; // from 0-10
   double _sigmaY = 5; // from 0-10
@@ -28,12 +28,11 @@ class Signup extends StatelessWidget {
 
   get confirmPasswordController => null;
 
-  get cpfController => null;
+  // get cpfController => null;
 
   get telController => null;
 
   get dataController => null;
-
 
   // sign user in method
   void signUserIn() {
@@ -77,16 +76,20 @@ class Signup extends StatelessWidget {
                   ClipRect(
                     child: BackdropFilter(
                       filter:
-                      ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
+                          ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
                       child: Container(
-                        padding: const EdgeInsets.only(right: 60, left: 60, top: 60, bottom: 60,),
+                        padding: const EdgeInsets.only(
+                          right: 60,
+                          left: 60,
+                          top: 60,
+                          bottom: 60,
+                        ),
                         decoration: BoxDecoration(
-                            color: Colors.black26
-                                .withOpacity(_opacity),
+                            color: Colors.black26.withOpacity(_opacity),
                             borderRadius:
-                            const BorderRadius.all(Radius.circular(20))),
+                                const BorderRadius.all(Radius.circular(20))),
                         width: MediaQuery.of(context).size.width * 0.4,
-                        height: MediaQuery.of(context).size.height * 0.52,
+                        // height: MediaQuery.of(context).size.height * 0.52,
                         child: Form(
                           key: _formKey,
                           child: Center(
@@ -95,95 +98,86 @@ class Signup extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-
-                                  Text(
-                                      "Dados pessoais",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                      textAlign: TextAlign.start),
-
+                                const Text("Dados pessoais",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                    textAlign: TextAlign.start),
                                 MyTextField(
                                   controller: usernameController,
                                   hintText: 'Nome completo',
                                   obscureText: false,
                                 ),
-
-                            Row(
-                                  children: [
-                                     Expanded(
-                                      child: TextFormField(
-                                        decoration: InputDecoration(
-                                          labelText: 'CPF',
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: TextFormField(
-                                        decoration: InputDecoration(
-                                          labelText: 'Data de nascimento',
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: TextFormField(
-                                        decoration: InputDecoration(
-                                          labelText: 'Telefone',
-                                        ),
+                                      child: MyTextField(
+                                          controller: cpfController,
+                                          hintText: 'CPF',
+                                          obscureText: false,
                                       ),
                                     ),
-
                                     Expanded(
-                                      child: TextFormField(
-                                        decoration: InputDecoration(
-                                          labelText: 'E-mail',
-                                        ),
+                                      child: MyTextField(
+                                          controller: dataNascimentoController,
+                                          hintText: 'Data de nascimento',
+                                          obscureText: false,
+                                        
                                       ),
                                     ),
                                   ],
                                 ),
-
-
-
+                                const Row(
+                                  children: [
+                                    // Expanded(
+                                    //   child: MyTextField(
+                                    //     decoration: InputDecoration(
+                                    //       labelText: 'Telefone',
+                                    //     ),
+                                    //   ),
+                                    // ),
+                                    // Expanded(
+                                    //   child: MyTextField(
+                                    //     decoration: InputDecoration(
+                                    //       labelText: 'E-mail',
+                                    //     ),
+                                    //   ),
+                                    // ),
+                                  ],
+                                ),
                                 const SizedBox(height: 30),
                                 Column(
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment:
-                                  CrossAxisAlignment.stretch,
+                                      CrossAxisAlignment.stretch,
                                   children: [
-
-
                                     const Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 10.0),
-                                      child: Text("Cadastre sua senha na plataforma",
+                                      child: Text(
+                                        "Cadastre sua senha na plataforma",
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,),
+                                          fontSize: 20,
+                                        ),
                                         textAlign: TextAlign.start,
                                       ),
                                     ),
-
                                     const SizedBox(height: 5),
                                     MyPasswordTextField(
                                       controller: passwordController,
                                       hintText: 'Senha',
                                       obscureText: false,
                                     ),
-
                                     const SizedBox(height: 5),
                                     MyPasswordTextField(
                                       controller: confirmPasswordController,
                                       hintText: 'Confirmar senha',
                                       obscureText: false,
                                     ),
-
-                                    const SizedBox(height: 10,),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
                                     MyButtonAgree(
                                       text: "Cadastrar ->",
                                       onTap: () {
@@ -194,11 +188,8 @@ class Signup extends StatelessWidget {
                                                     LoginPage()));
                                       },
                                     ),
-
                                   ],
                                 ),
-
-
                               ],
                             ),
                           ),
