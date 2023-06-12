@@ -10,18 +10,25 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          //color: Color.fromARGB(255, 71, 233, 133),
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 71, 233, 133),
+              Color.fromARGB(255, 52, 168, 83),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.circular(8),
         ),
-        // child: const Center(
-        //   child: Text(
-        //     "Continue",
-        //     style: TextStyle(
-        //         color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
-        //   ),
-        // ),
+        child: const Center(
+          child: Text(
+            "Continue",
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
+          ),
+        ),
       ),
     );
   }
@@ -37,16 +44,23 @@ class MyButtonAgree extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.only(top: 5, bottom: 5),
+        padding: const EdgeInsets.only(left: 0, right: 0, bottom: 5, top: 5),
         decoration: BoxDecoration(
-          color: Colors.teal,
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 30, 122, 97),
+              Color.fromARGB(255, 4, 18, 14),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.circular(100),
         ),
         child:  Center(
           child: Text(
             text,
             style: const TextStyle(
-                color: Colors.white, fontSize: 20),
+                color: Colors.white, fontSize: 24),
           ),
         ),
       ),

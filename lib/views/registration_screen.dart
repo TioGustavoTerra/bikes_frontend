@@ -2,10 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../componentes/button.dart';
 import '../componentes/square_title.dart';
 import '../componentes/textfield.dart';
+import 'bemvindo.dart';
 import 'login_screen.dart';
 
 class Signup extends StatelessWidget {
@@ -45,6 +47,7 @@ class Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -60,19 +63,20 @@ class Signup extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 40,
                 fit: BoxFit.cover,
               ),
+              Container( color: Color.fromRGBO(29, 118, 94, 100),),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //Cadastro
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   const Text("Cadastre grátis em nossa plataforma",
                       style: TextStyle(
-                          color: Colors.teal,
-                          fontSize: 20,
+                          color: Colors.white,
+                          fontSize: 25,
                           fontWeight: FontWeight.bold)),
                   //Cadastro
 
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   ClipRect(
                     child: BackdropFilter(
                       filter:
@@ -85,11 +89,11 @@ class Signup extends StatelessWidget {
                           bottom: 60,
                         ),
                         decoration: BoxDecoration(
-                            color: Colors.black26.withOpacity(_opacity),
+                            color: Colors.white,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(20))),
                         width: MediaQuery.of(context).size.width * 0.4,
-                        // height: MediaQuery.of(context).size.height * 0.52,
+                        //height: MediaQuery.of(context).size.height * 0.52,
                         child: Form(
                           key: _formKey,
                           child: Center(
@@ -100,13 +104,15 @@ class Signup extends StatelessWidget {
                               children: [
                                 const Text("Dados pessoais",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.black, fontSize: 20),
                                     textAlign: TextAlign.start),
                                 MyTextField(
                                   controller: usernameController,
                                   hintText: 'Nome completo',
                                   obscureText: false,
                                 ),
+                                SizedBox(height: 20),
+                                SizedBox(width: 20),
                                 Row(
                                   children: [
                                     Expanded(
@@ -116,35 +122,43 @@ class Signup extends StatelessWidget {
                                           obscureText: false,
                                       ),
                                     ),
+                                    SizedBox(height: 20),
+                                    SizedBox(width: 20),
                                     Expanded(
                                       child: MyTextField(
                                           controller: dataNascimentoController,
                                           hintText: 'Data de nascimento',
                                           obscureText: false,
-                                        
+
                                       ),
                                     ),
                                   ],
                                 ),
-                                const Row(
+                                SizedBox(height: 20),
+                                SizedBox(width: 20),
+                                Row(
                                   children: [
-                                    // Expanded(
-                                    //   child: MyTextField(
-                                    //     decoration: InputDecoration(
-                                    //       labelText: 'Telefone',
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                    // Expanded(
-                                    //   child: MyTextField(
-                                    //     decoration: InputDecoration(
-                                    //       labelText: 'E-mail',
-                                    //     ),
-                                    //   ),
-                                    // ),
+                                    Expanded(
+                                      child: MyTextField(
+                                        controller: telController,
+                                        hintText: 'Telefone',
+                                        obscureText: false,
+                                      ),
+                                    ),
+                                    SizedBox(height: 20),
+                                    SizedBox(width: 20),
+                                    Expanded(
+                                      child: MyTextField(
+                                        controller: emailController,
+                                        hintText: 'E-mail',
+                                        obscureText: false,
+
+                                      ),
+                                    ),
                                   ],
                                 ),
-                                const SizedBox(height: 30),
+
+                                const SizedBox(height: 20),
                                 Column(
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -157,7 +171,7 @@ class Signup extends StatelessWidget {
                                       child: Text(
                                         "Cadastre sua senha na plataforma",
                                         style: TextStyle(
-                                          color: Colors.white,
+                                          color: Colors.black,
                                           fontSize: 20,
                                         ),
                                         textAlign: TextAlign.start,
@@ -169,6 +183,7 @@ class Signup extends StatelessWidget {
                                       hintText: 'Senha',
                                       obscureText: false,
                                     ),
+                                    SizedBox(height: 20),
                                     const SizedBox(height: 5),
                                     MyPasswordTextField(
                                       controller: confirmPasswordController,
@@ -178,16 +193,24 @@ class Signup extends StatelessWidget {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    MyButtonAgree(
+                                    Padding(padding: EdgeInsets.only(left: 210,right: 210), child: MyButtonAgree(
                                       text: "Cadastrar ->",
                                       onTap: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    LoginPage()));
+                                                    WelcomePage()));
                                       },
-                                    ),
+                                    ),),
+
+                                    SizedBox(height: 20),
+                                    const Text(
+                                      'Já tem conta?',
+                                        style: TextStyle(
+                                            color: Color.fromARGB(255, 29, 118, 94),
+                                            fontWeight: FontWeight.bold, fontSize: 20),
+                                        textAlign: TextAlign.center),
                                   ],
                                 ),
                               ],
@@ -198,7 +221,21 @@ class Signup extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: Container(
+                  color: Colors.white,
+                  height: 150,
+                  child: Center(
+                    child: SvgPicture.asset(
+                      'assets/site-sistema/Menu/Logo-bikes.svg',
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -206,3 +243,4 @@ class Signup extends StatelessWidget {
     );
   }
 }
+
