@@ -57,7 +57,7 @@ class Signup extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Image.network(
+              Image.asset(
                 'assets/site-sistema/cadastro/fundo-cadastro.jpg',
                 width: MediaQuery.of(context).size.width * 40,
                 height: MediaQuery.of(context).size.height * 40,
