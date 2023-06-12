@@ -1,7 +1,10 @@
+import 'dart:html';
 import 'dart:ui';
 
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../componentes/button.dart';
@@ -11,7 +14,9 @@ import 'bemvindo.dart';
 import 'login_screen.dart';
 
 class Signup extends StatelessWidget {
-  Signup({super.key});
+  Signup
+
+  ({super.key});
 
   // text editing controllers
   final usernameController = TextEditingController();
@@ -52,24 +57,36 @@ class Signup extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
-          height: MediaQuery.of(context).size.height,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height,
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Container(
-                color: Color.fromRGBO(29, 118, 94, 100),
-              ),
-              Image.asset(
-                'site-sistema/cadastro/fundo-cadastro.jpg',
-                width: MediaQuery.of(context).size.width * 40,
-                height: MediaQuery.of(context).size.height * 40,
+              Image.network(
+                'assets/site-sistema/cadastro/fundo-cadastro.jpg',
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width * 40,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 40,
                 fit: BoxFit.cover,
+              ),
+              Container(
+                color: Color.fromRGBO(30, 122, 97, 100),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //Cadastro
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                  SizedBox(height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 0.05),
                   const Text("Cadastre grátis em nossa plataforma",
                       style: TextStyle(
                           color: Colors.white,
@@ -77,11 +94,14 @@ class Signup extends StatelessWidget {
                           fontWeight: FontWeight.bold)),
                   //Cadastro
 
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                  SizedBox(height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 0.05),
                   ClipRect(
                     child: BackdropFilter(
                       filter:
-                          ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
+                      ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
                       child: Container(
                         padding: const EdgeInsets.only(
                           right: 60,
@@ -92,8 +112,11 @@ class Signup extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(20))),
-                        width: MediaQuery.of(context).size.width * 0.4,
+                            const BorderRadius.all(Radius.circular(20))),
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width * 0.4,
                         //height: MediaQuery.of(context).size.height * 0.52,
                         child: Form(
                           key: _formKey,
@@ -108,9 +131,12 @@ class Signup extends StatelessWidget {
                                         color: Colors.black, fontSize: 20),
                                     textAlign: TextAlign.start),
                                 MyTextField(
-                                  controller: usernameController,
                                   hintText: 'Nome completo',
-                                  obscureText: false,
+                                  controller: usernameController,
+                                  obscureText: false, inputFormatter: [
+                                  FilteringTextInputFormatter.digitsOnly,
+                                  // EmailInputElement(),
+                                ],
                                 ),
                                 SizedBox(height: 20),
                                 SizedBox(width: 20),
@@ -118,18 +144,25 @@ class Signup extends StatelessWidget {
                                   children: [
                                     Expanded(
                                       child: MyTextField(
-                                        controller: cpfController,
                                         hintText: 'CPF',
-                                        obscureText: false,
+                                        controller: cpfController,
+                                        obscureText: false, inputFormatter: [
+                                        FilteringTextInputFormatter.digitsOnly,
+                                        CpfInputFormatter(),
+                                      ],
                                       ),
                                     ),
                                     SizedBox(height: 20),
                                     SizedBox(width: 20),
                                     Expanded(
                                       child: MyTextField(
-                                        controller: dataNascimentoController,
                                         hintText: 'Data de nascimento',
-                                        obscureText: false,
+                                        controller: dataController,
+                                        obscureText: false, inputFormatter: [
+                                        FilteringTextInputFormatter
+                                            .digitsOnly,
+                                        DataInputFormatter(),
+                                      ],
                                       ),
                                     ),
                                   ],
@@ -140,18 +173,24 @@ class Signup extends StatelessWidget {
                                   children: [
                                     Expanded(
                                       child: MyTextField(
-                                        controller: telController,
                                         hintText: 'Telefone',
-                                        obscureText: false,
+                                        controller: telController,
+                                        obscureText: false, inputFormatter: [
+                                        FilteringTextInputFormatter.digitsOnly,
+                                        TelefoneInputFormatter(),
+                                      ],
                                       ),
                                     ),
                                     SizedBox(height: 20),
                                     SizedBox(width: 20),
                                     Expanded(
                                       child: MyTextField(
+                                        hintText: 'Email',
                                         controller: emailController,
-                                        hintText: 'E-mail',
-                                        obscureText: false,
+                                        obscureText: false, inputFormatter: [
+                                        FilteringTextInputFormatter.digitsOnly,
+                                        // EmailInputElement(),
+                                      ],
                                       ),
                                     ),
                                   ],
@@ -161,7 +200,7 @@ class Signup extends StatelessWidget {
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
+                                  CrossAxisAlignment.stretch,
                                   children: [
                                     const Padding(
                                       padding: EdgeInsets.symmetric(
@@ -176,21 +215,16 @@ class Signup extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(height: 5),
-                                    MyPasswordTextField(
-                                      controller: passwordController,
-                                      hintText: 'Senha',
-                                      obscureText: false,
-                                    ),
+                                    MyPasswordTextField(obscureText: true, controller: passwordController, hintText: 'senha',),
+
                                     SizedBox(height: 20),
+
                                     const SizedBox(height: 5),
-                                    MyPasswordTextField(
-                                      controller: confirmPasswordController,
-                                      hintText: 'Confirmar senha',
-                                      obscureText: false,
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
+
+                                    MyPasswordTextField(obscureText: true, controller: confirmPasswordController, hintText: 'Confirmar senha',),
+
+                                    const SizedBox(height: 10,),
+
                                     Padding(
                                       padding: EdgeInsets.only(
                                           left: 210, right: 210),

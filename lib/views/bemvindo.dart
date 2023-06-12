@@ -80,11 +80,11 @@ class WelcomePage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 // username textfield
-                                MyTextField(
-                                  controller: usernameController,
-                                  hintText: 'Email',
-                                  obscureText: false,
-                                ),
+                                // MyTextField(
+                                //   controller: usernameController,
+                                //   hintText: 'Email',
+                                //   obscureText: false,
+                                // ),
 
                                 const SizedBox(height: 10),
 

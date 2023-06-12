@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../componentes/button.dart';
@@ -47,14 +48,14 @@ class _LoginPageState extends State<LoginPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  //Cadastro
+                  //Acesse
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   const Text("Acesse sua conta",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 25,
                           fontWeight: FontWeight.bold)),
-                  //Cadastro
+                  //Acesse
 
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   ClipRect(
@@ -89,9 +90,12 @@ class _LoginPageState extends State<LoginPage> {
                                   children: [
                                     Expanded(
                                       child: MyTextField(
+                                        hintText: 'Email',
                                         controller: emailController,
-                                        hintText: 'E-mail',
-                                        obscureText: false,
+                                        obscureText: false, inputFormatter: [
+                                        FilteringTextInputFormatter.digitsOnly,
+                                        // EmailInputElement(),
+                                      ],
                                       ),
                                     ),
                                   ],
@@ -116,18 +120,8 @@ class _LoginPageState extends State<LoginPage> {
                                       ),
                                     ),
                                     const SizedBox(height: 5),
-                                    MyPasswordTextField(
-                                      controller: passwordController,
-                                      hintText: 'Senha',
-                                      obscureText: false,
-                                    ),
+                                    MyPasswordTextField(obscureText: true, controller: passwordController, hintText: 'senha',),
                                     SizedBox(height: 20),
-                                    const SizedBox(height: 5),
-                                    MyPasswordTextField(
-                                      controller: confirmPasswordController,
-                                      hintText: 'Confirmar senha',
-                                      obscureText: false,
-                                    ),
                                     const SizedBox(
                                       height: 10,
                                     ),
@@ -239,6 +233,20 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ],
+              ),
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: Container(
+                  color: Colors.white,
+                  height: 150,
+                  child: Center(
+                    child: SvgPicture.asset(
+                      'site-sistema/Menu/Logo-bikes.svg',
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

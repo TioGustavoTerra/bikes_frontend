@@ -1,3 +1,4 @@
+import 'package:bikes_frontend/testes.dart';
 import 'package:bikes_frontend/views/registration_screen.dart';
 import 'package:bikes_frontend/views/login_screen.dart';
 import 'package:flutter/material.dart';

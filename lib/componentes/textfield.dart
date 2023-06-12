@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyTextField extends StatelessWidget {
   final controller;
   final String hintText;
   final bool obscureText;
+  final List<TextInputFormatter> inputFormatter;
   const MyTextField({
   super.key,
   required this.controller,
   required this.hintText,
   required this.obscureText,
+  required this.inputFormatter,
   });
 
   @override
@@ -28,6 +31,7 @@ class MyTextField extends StatelessWidget {
           filled: true,
           hintText: hintText,
           hintStyle: TextStyle(color: Colors.grey[500])),
+      inputFormatters: inputFormatter,
     );
   }
 }
