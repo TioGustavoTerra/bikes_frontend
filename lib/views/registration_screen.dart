@@ -47,7 +47,6 @@ class Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -57,13 +56,15 @@ class Signup extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
+              Container(
+                color: Color.fromRGBO(29, 118, 94, 100),
+              ),
               Image.asset(
-                'assets/site-sistema/cadastro/fundo-cadastro.jpg',
+                'site-sistema/cadastro/fundo-cadastro.jpg',
                 width: MediaQuery.of(context).size.width * 40,
                 height: MediaQuery.of(context).size.height * 40,
                 fit: BoxFit.cover,
               ),
-              Container( color: Color.fromRGBO(29, 118, 94, 100),),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -117,19 +118,18 @@ class Signup extends StatelessWidget {
                                   children: [
                                     Expanded(
                                       child: MyTextField(
-                                          controller: cpfController,
-                                          hintText: 'CPF',
-                                          obscureText: false,
+                                        controller: cpfController,
+                                        hintText: 'CPF',
+                                        obscureText: false,
                                       ),
                                     ),
                                     SizedBox(height: 20),
                                     SizedBox(width: 20),
                                     Expanded(
                                       child: MyTextField(
-                                          controller: dataNascimentoController,
-                                          hintText: 'Data de nascimento',
-                                          obscureText: false,
-
+                                        controller: dataNascimentoController,
+                                        hintText: 'Data de nascimento',
+                                        obscureText: false,
                                       ),
                                     ),
                                   ],
@@ -152,12 +152,10 @@ class Signup extends StatelessWidget {
                                         controller: emailController,
                                         hintText: 'E-mail',
                                         obscureText: false,
-
                                       ),
                                     ),
                                   ],
                                 ),
-
                                 const SizedBox(height: 20),
                                 Column(
                                   mainAxisSize: MainAxisSize.min,
@@ -193,23 +191,27 @@ class Signup extends StatelessWidget {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    Padding(padding: EdgeInsets.only(left: 210,right: 210), child: MyButtonAgree(
-                                      text: "Cadastrar ->",
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    WelcomePage()));
-                                      },
-                                    ),),
-
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 210, right: 210),
+                                      child: MyButtonAgree(
+                                        text: "Cadastrar ->",
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      WelcomePage()));
+                                        },
+                                      ),
+                                    ),
                                     SizedBox(height: 20),
-                                    const Text(
-                                      'Já tem conta?',
+                                    const Text('Já tem conta?',
                                         style: TextStyle(
-                                            color: Color.fromARGB(255, 29, 118, 94),
-                                            fontWeight: FontWeight.bold, fontSize: 20),
+                                            color: Color.fromARGB(
+                                                255, 29, 118, 94),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
                                         textAlign: TextAlign.center),
                                   ],
                                 ),
@@ -231,7 +233,7 @@ class Signup extends StatelessWidget {
                   height: 150,
                   child: Center(
                     child: SvgPicture.asset(
-                      'assets/site-sistema/Menu/Logo-bikes.svg',
+                      'site-sistema/Menu/Logo-bikes.svg',
                     ),
                   ),
                 ),
@@ -243,4 +245,3 @@ class Signup extends StatelessWidget {
     );
   }
 }
-

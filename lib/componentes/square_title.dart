@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SquareTile extends StatelessWidget {
   final String imagePath;
@@ -20,7 +21,7 @@ class SquareTile extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Image.asset(
+          SvgPicture.asset(
             imagePath,
             height: 40,
           ),

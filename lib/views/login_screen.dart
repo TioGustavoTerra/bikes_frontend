@@ -28,7 +28,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
@@ -42,7 +41,9 @@ class _LoginPageState extends State<LoginPage> {
                 height: MediaQuery.of(context).size.height * 40,
                 fit: BoxFit.cover,
               ),
-              Container( color: Color.fromRGBO(30 , 122, 97, 100),),
+              Container(
+                color: Color.fromRGBO(30, 122, 97, 100),
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -58,8 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   ClipRect(
                     child: BackdropFilter(
-                      filter:
-                      ImageFilter.blur(),
+                      filter: ImageFilter.blur(),
                       child: Container(
                         padding: const EdgeInsets.only(
                           right: 60,
@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                            const BorderRadius.all(Radius.circular(20))),
+                                const BorderRadius.all(Radius.circular(20))),
                         width: MediaQuery.of(context).size.width * 0.4,
                         //height: MediaQuery.of(context).size.height * 0.52,
                         child: Form(
@@ -85,27 +85,23 @@ class _LoginPageState extends State<LoginPage> {
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20),
                                     textAlign: TextAlign.start),
-
                                 Row(
                                   children: [
-
                                     Expanded(
                                       child: MyTextField(
                                         controller: emailController,
                                         hintText: 'E-mail',
                                         obscureText: false,
-
                                       ),
                                     ),
                                   ],
                                 ),
-
                                 const SizedBox(height: 30),
                                 Column(
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment:
-                                  CrossAxisAlignment.stretch,
+                                      CrossAxisAlignment.stretch,
                                   children: [
                                     const Padding(
                                       padding: EdgeInsets.symmetric(
@@ -135,42 +131,45 @@ class _LoginPageState extends State<LoginPage> {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    Padding(padding: EdgeInsets.only(left: 210,right: 210), child: MyButtonAgree(
-                                      text: "Entrar ->",
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    WelcomePage()));
-                                      },
-                                    ),),
-
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 210, right: 210),
+                                      child: MyButtonAgree(
+                                        text: "Entrar ->",
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      WelcomePage()));
+                                        },
+                                      ),
+                                    ),
                                     const SizedBox(height: 10),
                                     SizedBox(
-                                        height: MediaQuery.of(context)
-                                            .size
-                                            .height *
-                                            0.01),
-
-                                     const Padding(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.01),
+                                    const Padding(
                                       padding: EdgeInsets.all(8.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                             // ignore: prefer_const_literals_to_create_immutables
                                             children: [
                                               const Text('Esqueçeu a senha? ',
                                                   style: TextStyle(
                                                       color: Color.fromARGB(
                                                           255, 29, 118, 94),
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 20),
                                                   textAlign: TextAlign.center),
                                               Text(
@@ -201,35 +200,31 @@ class _LoginPageState extends State<LoginPage> {
                                         ],
                                       ),
                                     ),
-
                                     const Text(
                                       'Ou',
                                       style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20),
+                                          color: Colors.black, fontSize: 20),
                                       textAlign: TextAlign.center,
-                                      ),
-
-
-
+                                    ),
                                     const SizedBox(height: 10),
-
                                     const Padding(
                                       padding: EdgeInsets.all(8.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           // facebook button
                                           SquareTile(
                                               imagePath:
-                                              'assets/site-sistema/Menu/botao-facebook.svg',
+                                                  'site-sistema/Menu/botao-facebook.svg',
                                               title: "Continue com Facebook"),
                                           SizedBox(height: 10),
 
                                           SquareTile(
-                                            imagePath: 'assets/images/google.png',
-                                            title: "Continue com Google",
+                                            imagePath:
+                                                'site-sistema/Menu/botao-instagram.svg',
+                                            title: "Continue com Instagram",
                                           ),
                                         ],
                                       ),
@@ -252,4 +247,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
