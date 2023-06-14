@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                 fit: BoxFit.cover,
               ),
               Container(
-                color: Color.fromRGBO(30, 122, 97, 100),
+                color: const Color.fromRGBO(30, 122, 97, 100),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,10 +68,10 @@ class _LoginPageState extends State<LoginPage> {
                           top: 60,
                           bottom: 60,
                         ),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(20))),
+                                BorderRadius.all(Radius.circular(20))),
                         width: MediaQuery.of(context).size.width * 0.4,
                         //height: MediaQuery.of(context).size.height * 0.52,
                         child: Form(
@@ -92,10 +92,12 @@ class _LoginPageState extends State<LoginPage> {
                                       child: MyTextField(
                                         hintText: 'Email',
                                         controller: emailController,
-                                        obscureText: false, inputFormatter: [
-                                        FilteringTextInputFormatter.digitsOnly,
-                                        // EmailInputElement(),
-                                      ],
+                                        obscureText: false,
+                                        inputFormatter: [
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
+                                          // EmailInputElement(),
+                                        ],
                                       ),
                                     ),
                                   ],
@@ -120,13 +122,17 @@ class _LoginPageState extends State<LoginPage> {
                                       ),
                                     ),
                                     const SizedBox(height: 5),
-                                    MyPasswordTextField(obscureText: true, controller: passwordController, hintText: 'senha',),
-                                    SizedBox(height: 20),
+                                    MyPasswordTextField(
+                                      obscureText: true,
+                                      controller: passwordController,
+                                      hintText: 'senha',
+                                    ),
+                                    const SizedBox(height: 20),
                                     const SizedBox(
                                       height: 10,
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                           left: 210, right: 210),
                                       child: MyButtonAgree(
                                         text: "Entrar ->",
@@ -144,8 +150,8 @@ class _LoginPageState extends State<LoginPage> {
                                         height:
                                             MediaQuery.of(context).size.height *
                                                 0.01),
-                                    const Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -158,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 MainAxisAlignment.center,
                                             // ignore: prefer_const_literals_to_create_immutables
                                             children: [
-                                              Text('Esqueçeu sua senha? ',
+                                              const Text('Esqueçeu sua senha? ',
                                                   style: TextStyle(
                                                       color: Color.fromARGB(
                                                           255, 29, 118, 94),
@@ -166,31 +172,29 @@ class _LoginPageState extends State<LoginPage> {
                                                           FontWeight.bold,
                                                       fontSize: 20),
                                                   textAlign: TextAlign.center),
-                                              Text(
+                                              const Text(
                                                 '/ ',
                                                 style: TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 20),
                                                 textAlign: TextAlign.center,
                                               ),
-                                              Text(
+                                              const Text(
                                                 'Não tem conta?',
                                                 style: TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 20),
                                                 textAlign: TextAlign.center,
                                               ),
-                                              SizedBox(width: 4),
-                                             const TextButton(
+                                              const SizedBox(width: 4),
+                                              TextButton(
                                                 onPressed: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              WelcomePage()));
-                                                  },
-                                                child: Text('Faça o cadastro'),
-                                                  ),
+                                                  Navigator.pushNamed(
+                                                      context, '/registration');
+                                                },
+                                                child: const Text(
+                                                    'Faça o cadastro'),
+                                              ),
                                             ],
                                           ),
                                         ],
@@ -219,8 +223,7 @@ class _LoginPageState extends State<LoginPage> {
                                           SizedBox(height: 15),
 
                                           SquareTile(
-                                            imagePath:
-                                                'site-sistema/',
+                                            imagePath: 'site-sistema/',
                                             title: "Continue com Google",
                                           ),
                                         ],
