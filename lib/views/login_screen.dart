@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../componentes/button.dart';
+import '../componentes/rodape.dart';
 import '../componentes/square_title.dart';
 import '../componentes/textfield.dart';
 import 'bemvindo.dart';
@@ -135,7 +136,8 @@ class _LoginPageState extends State<LoginPage> {
                                       padding: const EdgeInsets.only(
                                           left: 210, right: 210),
                                       child: MyButtonAgree(
-                                        text: "Entrar ->",
+                                        text: "Entrar",
+                                        image: "site-sistema/Home/icone-seta.svg",
                                         onTap: () {
                                           Navigator.push(
                                               context,
@@ -247,20 +249,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Container(
-                  color: Colors.white,
-                  height: 100,
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'site-sistema/Menu/Logo-bikes.svg',
-                    ),
-                  ),
-                ),
-              ),
+                const Rodape()
             ],
           ),
         ),

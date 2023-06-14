@@ -20,6 +20,7 @@ class SquareTile extends StatelessWidget {
         color: Colors.grey[200],
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(
             imagePath,

@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../componentes/button.dart';
+import '../componentes/rodape.dart';
 import '../componentes/square_title.dart';
 import '../componentes/textfield.dart';
 import 'bemvindo.dart';
@@ -229,7 +230,8 @@ class Signup extends StatelessWidget {
                                       padding: EdgeInsets.only(
                                           left: 210, right: 210),
                                       child: MyButtonAgree(
-                                        text: "Cadastrar ->",
+                                        text: "Cadastrar",
+                                        image: "site-sistema/Home/icone-seta.svg",
                                         onTap: () {
                                           Navigator.push(
                                               context,
@@ -266,20 +268,7 @@ class Signup extends StatelessWidget {
                   ),
                 ],
               ),
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Container(
-                  color: Colors.white,
-                  height: 100,
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'site-sistema/Menu/Logo-bikes.svg',
-                    ),
-                  ),
-                ),
-              ),
+                const Rodape()
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MyButton extends StatelessWidget {
   final Function()? onTap;
@@ -12,7 +13,7 @@ class MyButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             colors: [
               Color.fromARGB(255, 71, 233, 133),
               Color.fromARGB(255, 52, 168, 83),
@@ -37,7 +38,8 @@ class MyButton extends StatelessWidget {
 class MyButtonAgree extends StatelessWidget {
   final Function()? onTap;
   final String text;
-  const MyButtonAgree({super.key, required this.onTap, required this.text});
+  final String? image;
+  const MyButtonAgree({super.key, required this.onTap, required this.text, this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class MyButtonAgree extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(left: 0, right: 0, bottom: 10, top: 10),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             colors: [
               Color.fromARGB(255, 30, 122, 97),
               Color.fromARGB(255, 4, 18, 20),
@@ -56,12 +58,19 @@ class MyButtonAgree extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(100),
         ),
-        child:  Center(
-          child: Text(
-            text,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 24),
-          ),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            Text(
+              text,
+              style: const TextStyle(color: Colors.white, fontSize: 24),
+            ),
+            const SizedBox(width: 5,),
+            SvgPicture.asset(image!)
+            ],
+          )
+        
         ),
       ),
     );
