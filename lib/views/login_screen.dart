@@ -188,6 +188,7 @@ class _LoginPageState extends State<LoginPage> {
                                               ),
                                               const SizedBox(width: 4),
                                               TextButton(
+                                                style: ButtonStyle( ..coloca aqui),
                                                 onPressed: () {
                                                   Navigator.pushNamed(
                                                       context, '/registration');
