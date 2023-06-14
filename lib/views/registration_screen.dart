@@ -223,7 +223,7 @@ class Signup extends StatelessWidget {
 
                                     MyPasswordTextField(obscureText: true, controller: confirmPasswordController, hintText: 'Confirmar senha',),
 
-                                    const SizedBox(height: 10,),
+                                    const SizedBox(height: 20,),
 
                                     Padding(
                                       padding: EdgeInsets.only(
@@ -239,7 +239,7 @@ class Signup extends StatelessWidget {
                                         },
                                       ),
                                     ),
-                                    SizedBox(height: 20),
+                                    SizedBox(height: 30),
                                     const Text('Já tem conta?',
                                         style: TextStyle(
                                             color: Color.fromARGB(
@@ -264,7 +264,7 @@ class Signup extends StatelessWidget {
                 bottom: 0,
                 child: Container(
                   color: Colors.white,
-                  height: 150,
+                  height: 100,
                   child: Center(
                     child: SvgPicture.asset(
                       'site-sistema/Menu/Logo-bikes.svg',

@@ -158,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 MainAxisAlignment.center,
                                             // ignore: prefer_const_literals_to_create_immutables
                                             children: [
-                                              const Text('Esqueçeu a senha? ',
+                                              Text('Esqueçeu sua senha? ',
                                                   style: TextStyle(
                                                       color: Color.fromARGB(
                                                           255, 29, 118, 94),
@@ -181,14 +181,16 @@ class _LoginPageState extends State<LoginPage> {
                                                 textAlign: TextAlign.center,
                                               ),
                                               SizedBox(width: 4),
-                                              Text(
-                                                'Faça o cadastro',
-                                                style: TextStyle(
-                                                    color: Color.fromARGB(
-                                                        255, 29, 118, 94),
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20),
-                                              ),
+                                             const TextButton(
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              WelcomePage()));
+                                                  },
+                                                child: Text('Faça o cadastro'),
+                                                  ),
                                             ],
                                           ),
                                         ],
@@ -213,12 +215,13 @@ class _LoginPageState extends State<LoginPage> {
                                               imagePath:
                                                   'site-sistema/Menu/botao-facebook.svg',
                                               title: "Continue com Facebook"),
-                                          SizedBox(height: 10),
+
+                                          SizedBox(height: 15),
 
                                           SquareTile(
                                             imagePath:
-                                                'site-sistema/Menu/botao-instagram.svg',
-                                            title: "Continue com Instagram",
+                                                'site-sistema/',
+                                            title: "Continue com Google",
                                           ),
                                         ],
                                       ),
@@ -240,7 +243,7 @@ class _LoginPageState extends State<LoginPage> {
                 bottom: 0,
                 child: Container(
                   color: Colors.white,
-                  height: 150,
+                  height: 100,
                   child: Center(
                     child: SvgPicture.asset(
                       'site-sistema/Menu/Logo-bikes.svg',

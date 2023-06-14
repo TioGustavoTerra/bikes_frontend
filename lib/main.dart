@@ -1,4 +1,5 @@
 import 'package:bikes_frontend/testes.dart';
+import 'package:bikes_frontend/views/bemvindo.dart';
 import 'package:bikes_frontend/views/registration_screen.dart';
 import 'package:bikes_frontend/views/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,16 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: true
       ),
+      initialRoute: '/home',
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/registration': (context) => Signup(),
+        '/home': (context) => WelcomePage(),
+      },
+
+      // home: LoginPage(),
       // home: Signup(),
-      home: LoginPage(),
+      //home: WelcomePage(),
     );
   }
 }
