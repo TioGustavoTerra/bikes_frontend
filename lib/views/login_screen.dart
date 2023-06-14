@@ -188,13 +188,19 @@ class _LoginPageState extends State<LoginPage> {
                                               ),
                                               const SizedBox(width: 4),
                                               TextButton(
-                                                style: ButtonStyle( ..coloca aqui),
+                                                style: TextButton.styleFrom( textStyle: const TextStyle(fontSize: 20) ),
                                                 onPressed: () {
                                                   Navigator.pushNamed(
                                                       context, '/registration');
                                                 },
                                                 child: const Text(
-                                                    'Faça o cadastro'),
+                                                    'Faça o cadastro',
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 29, 118, 94),
+                                                      fontWeight:
+                                                      FontWeight.bold,
+                                                      fontSize: 20),),
                                               ),
                                             ],
                                           ),

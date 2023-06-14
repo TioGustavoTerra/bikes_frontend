@@ -240,13 +240,21 @@ class Signup extends StatelessWidget {
                                       ),
                                     ),
                                     SizedBox(height: 30),
-                                    const Text('Já tem conta?',
+                                    TextButton(
+                                      style: TextButton.styleFrom( textStyle: const TextStyle(fontSize: 0) ),
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                            context, '/login');
+                                      },
+                                      child: const Text(
+                                        'Já tem conta',
                                         style: TextStyle(
                                             color: Color.fromARGB(
                                                 255, 29, 118, 94),
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20),
-                                        textAlign: TextAlign.center),
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 23),),
+                                    ),
                                   ],
                                 ),
                               ],
