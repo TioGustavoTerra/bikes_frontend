@@ -64,7 +64,7 @@ class MyButtonAgree extends StatelessWidget {
             children: [
             Text(
               text,
-              style: const TextStyle(color: Colors.white, fontSize: 24),
+              style: const TextStyle(color: Colors.white, fontSize: 20),
             ),
             const SizedBox(width: 5,),
             SvgPicture.asset(image!)
