@@ -78,7 +78,7 @@ class Signup extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               Container(
-                color: Color.fromRGBO(30, 122, 97, 100),
+                color: const Color.fromRGBO(30, 122   , 97, 100),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -110,10 +110,10 @@ class Signup extends StatelessWidget {
                           top: 60,
                           bottom: 60,
                         ),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                            const BorderRadius.all(Radius.circular(20))),
+                            BorderRadius.all(Radius.circular(20))),
                         width: MediaQuery
                             .of(context)
                             .size
@@ -131,16 +131,16 @@ class Signup extends StatelessWidget {
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20),
                                     textAlign: TextAlign.start),
-                                MyTextField(
-                                  hintText: 'Nome completo',
-                                  controller: usernameController,
-                                  obscureText: false, inputFormatter: [
-                                  FilteringTextInputFormatter.digitsOnly,
-                                  // EmailInputElement(),
-                                ],
-                                ),
-                                SizedBox(height: 20),
-                                SizedBox(width: 20),
+                                  MyTextField(
+                                    hintText: 'Nome completo',
+                                    controller: usernameController,
+                                    obscureText: false,
+                                    inputFormatter: [
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
+                                  ),
+                                const SizedBox(height: 20),
+                                const SizedBox(width: 20),
                                 Row(
                                   children: [
                                     Expanded(
@@ -153,23 +153,22 @@ class Signup extends StatelessWidget {
                                       ],
                                       ),
                                     ),
-                                    SizedBox(height: 20),
-                                    SizedBox(width: 20),
+                                    const SizedBox(height: 20),
+                                    const SizedBox(width: 20),
                                     Expanded(
                                       child: MyTextField(
                                         hintText: 'Data de nascimento',
                                         controller: dataController,
                                         obscureText: false, inputFormatter: [
-                                        FilteringTextInputFormatter
-                                            .digitsOnly,
+                                        FilteringTextInputFormatter.digitsOnly,
                                         DataInputFormatter(),
                                       ],
                                       ),
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 20),
-                                SizedBox(width: 20),
+                                const SizedBox(height: 20),
+                                const SizedBox(width: 20),
                                 Row(
                                   children: [
                                     Expanded(
@@ -182,15 +181,14 @@ class Signup extends StatelessWidget {
                                       ],
                                       ),
                                     ),
-                                    SizedBox(height: 20),
-                                    SizedBox(width: 20),
+                                    const SizedBox(height: 20),
+                                    const SizedBox(width: 20),
                                     Expanded(
                                       child: MyTextField(
                                         hintText: 'Email',
                                         controller: emailController,
                                         obscureText: false, inputFormatter: [
                                         FilteringTextInputFormatter.digitsOnly,
-                                        // EmailInputElement(),
                                       ],
                                       ),
                                     ),
@@ -218,7 +216,7 @@ class Signup extends StatelessWidget {
                                     const SizedBox(height: 5),
                                     MyPasswordTextField(obscureText: true, controller: passwordController, hintText: 'senha',),
 
-                                    SizedBox(height: 20),
+                                    const SizedBox(height: 20),
 
                                     const SizedBox(height: 5),
 
@@ -227,7 +225,7 @@ class Signup extends StatelessWidget {
                                     const SizedBox(height: 20,),
 
                                     Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                           left: 210, right: 210),
                                       child: MyButtonAgree(
                                         text: "Cadastrar",
@@ -241,7 +239,7 @@ class Signup extends StatelessWidget {
                                         },
                                       ),
                                     ),
-                                    SizedBox(height: 30),
+                                    const SizedBox(height: 30),
                                     TextButton(
                                       style: TextButton.styleFrom( textStyle: const TextStyle(fontSize: 0) ),
                                       onPressed: () {
@@ -249,13 +247,14 @@ class Signup extends StatelessWidget {
                                             context, '/login');
                                       },
                                       child: const Text(
-                                        'Já tem conta',
+                                        'Já tem conta?',
+                                        // padding: const EdgeInsets.only(left: 0, right: 0, bottom: 10, top: 10),
                                         style: TextStyle(
                                             color: Color.fromARGB(
                                                 255, 29, 118, 94),
                                             fontWeight:
                                             FontWeight.bold,
-                                            fontSize: 23),),
+                                            fontSize: 20),),
                                     ),
                                   ],
                                 ),

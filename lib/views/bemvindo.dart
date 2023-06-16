@@ -5,9 +5,11 @@ import 'dart:ui';
 import 'package:bikes_frontend/componentes/square_title.dart';
 import 'package:bikes_frontend/views/registration_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/svg.dart';
 
 import '../componentes/button.dart';
+import '../componentes/rodape.dart';
+import '../componentes/cabecalho.dart';
 import '../componentes/textfield.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -31,27 +33,26 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
+      appBar: AppBar(
+        title: Text('Meu App'),
+      ),
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
           child: Stack(
             alignment: Alignment.center,
             children: [
+              const cabecalho(),
               Image.network(
                 'assets/site-sistema/cadastro/fundo-cadastro.jpg',
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width * 40,
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 40,
+                width: MediaQuery.of(context).size.width * 40,
+                height: MediaQuery.of(context).size.height * 40,
                 fit: BoxFit.cover,
               ),
               Container(
                 color: Color.fromRGBO(30, 122, 97, 100),
               ),
+              const Rodape(),
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -95,8 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                                         controller: emailController,
                                         obscureText: false,
                                         inputFormatter: [
-                                          FilteringTextInputFormatter
-                                              .digitsOnly,
+                                          FilteringTextInputFormatter.digitsOnly,
                                           // EmailInputElement(),
                                         ],
                                       ),

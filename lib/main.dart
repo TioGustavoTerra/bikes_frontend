@@ -1,4 +1,3 @@
-import 'package:bikes_frontend/testes.dart';
 import 'package:bikes_frontend/views/bemvindo.dart';
 import 'package:bikes_frontend/views/registration_screen.dart';
 import 'package:bikes_frontend/views/login_screen.dart';
@@ -15,8 +14,8 @@ class MyApp extends StatelessWidget {
       title: 'bikes.com.br',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true
+          primarySwatch: Colors.blue,
+          useMaterial3: true
       ),
       initialRoute: '/home',
       routes: {
@@ -28,6 +27,7 @@ class MyApp extends StatelessWidget {
       // home: LoginPage(),
       // home: Signup(),
       //home: WelcomePage(),
+
     );
   }
 }
