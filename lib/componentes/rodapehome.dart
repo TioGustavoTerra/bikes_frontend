@@ -23,7 +23,7 @@ class Rodape2 extends StatelessWidget {
       bottom: 0,
       child: Container(
         color: Colors.white,
-        height: 1000,
+        height: 400,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

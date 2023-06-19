@@ -95,10 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                                         hintText: 'Email',
                                         controller: emailController,
                                         obscureText: false,
-                                        inputFormatter: [
-                                          FilteringTextInputFormatter.digitsOnly,
-                                          // EmailInputElement(),
-                                        ],
+                                        inputFormatter: [],
                                       ),
                                     ),
                                   ],

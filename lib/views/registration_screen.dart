@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'dart:ui';
 
+import 'package:bikes_frontend/componentes/rodapehome.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,19 +12,32 @@ import '../componentes/button.dart';
 import '../componentes/rodape.dart';
 import '../componentes/square_title.dart';
 import '../componentes/textfield.dart';
+import '../models/register_user.dart';
+import '../services/registerUser_service.dart';
 import 'bemvindo.dart';
 import 'login_screen.dart';
 
-class Signup extends StatelessWidget {
-  Signup
 
-  ({super.key});
+class Signup extends StatefulWidget {
+  const Signup ({Key? key}) : super(key: key);
+
+  @override
+  _SignupState createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
 
   // text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final cpfController = TextEditingController();
   final dataNascimentoController = TextEditingController();
+  final emailController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final telController = TextEditingController();
+  final dataController = TextEditingController();
+
+  final RegisterUserService _registerUserService  = RegisterUserService();
 
   double _sigmaX = 5; // from 0-10
   double _sigmaY = 5; // from 0-10
@@ -31,16 +45,6 @@ class Signup extends StatelessWidget {
   double _width = 350;
   double _height = 300;
   final _formKey = GlobalKey<FormState>();
-
-  get emailController => null;
-
-  get confirmPasswordController => null;
-
-  // get cpfController => null;
-
-  get telController => null;
-
-  get dataController => null;
 
   // sign user in method
   void signUserIn() {
@@ -131,13 +135,10 @@ class Signup extends StatelessWidget {
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20),
                                     textAlign: TextAlign.start),
-                                  MyTextField(
+                                MyTextField(
                                     hintText: 'Nome completo',
                                     controller: usernameController,
-                                    obscureText: false,
-                                    inputFormatter: [
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
+                                    obscureText: false, inputFormatter: [],
                                   ),
                                 const SizedBox(height: 20),
                                 const SizedBox(width: 20),
@@ -187,9 +188,7 @@ class Signup extends StatelessWidget {
                                       child: MyTextField(
                                         hintText: 'Email',
                                         controller: emailController,
-                                        obscureText: false, inputFormatter: [
-                                        FilteringTextInputFormatter.digitsOnly,
-                                      ],
+                                        obscureText: false, inputFormatter: [],
                                       ),
                                     ),
                                   ],
@@ -231,11 +230,12 @@ class Signup extends StatelessWidget {
                                         text: "Cadastrar",
                                         image: "site-sistema/Home/icone-seta.svg",
                                         onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      WelcomePage()));
+                                          registrar(cpfController.text, usernameController.text, emailController.text, dataNascimentoController.text, passwordController.text, confirmPasswordController.text, telController.text);
+                                          // Navigator.push(
+                                          //     context,
+                                          //     MaterialPageRoute(
+                                          //         builder: (context) =>
+                                          //             WelcomePage()));
                                         },
                                       ),
                                     ),
@@ -274,4 +274,12 @@ class Signup extends StatelessWidget {
       ),
     );
   }
+
+  Future<void> registrar(String cpf, String email, String nome, String dataNascimento, String senha, String confirmarSenha, String telefone) async {
+    print('Passou aqui');
+    var usuario = new User(cpfCnpj: cpf, email: email, name: nome, birthDate: dataNascimento, password: senha, passwordConfirmation: confirmarSenha, phoneNumber: telefone);
+    _registerUserService.registrar(usuario);
+  }
+
+
 }
