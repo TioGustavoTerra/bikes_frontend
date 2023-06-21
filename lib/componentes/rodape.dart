@@ -44,7 +44,7 @@ class Rodape extends StatelessWidget {
                     context, '/login');
               },
               child: const Text(
-                'Perguntas frequentes',
+                'Política de privacidade',
                 // padding: const EdgeInsets.only(left: 0, right: 0, bottom: 10, top: 10),
                 style: TextStyle(
                     color: Color.fromARGB(

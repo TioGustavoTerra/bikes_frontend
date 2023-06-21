@@ -18,6 +18,7 @@ class RegisterUserService {
       return user;
     } else {
       print(res.statusCode);
+      print(res);
       throw "Unable to retrieve posts.";
     }
   }

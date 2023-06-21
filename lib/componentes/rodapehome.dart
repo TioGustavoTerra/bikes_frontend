@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../views/bemvindo.dart';
+// import '../views/bemvindo.dart';
 import 'button.dart';
 
 class Rodape2 extends StatelessWidget {
@@ -23,7 +23,7 @@ class Rodape2 extends StatelessWidget {
       bottom: 0,
       child: Container(
         color: Colors.white,
-        height: 400,
+        height: 350,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -34,6 +34,7 @@ class Rodape2 extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const SizedBox(width: 200),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -90,7 +91,7 @@ class Rodape2 extends StatelessWidget {
                     TextButton(
                       style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/login');
+                        Navigator.pushNamed(context, '/registration');
                       },
                       child: const Text(
                         'Crie sua conta',
@@ -105,7 +106,7 @@ class Rodape2 extends StatelessWidget {
                     TextButton(
                       style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/login');
+                        Navigator.pushNamed(context, '/registration');
                       },
                       child: const Text(
                         'Trabalhe conosco',
@@ -133,73 +134,64 @@ class Rodape2 extends StatelessWidget {
                     ),
                   ],
                 ),
-              ],
-            ),
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(width: 20),
-            SvgPicture.asset(
-              'site-sistema/Menu/botao-whatsapp.svg',
-            ),
-            const SizedBox(width: 20),
-            SvgPicture.asset(
-              'site-sistema/Menu/botao-facebook.svg',
-            ),
-            const SizedBox(width: 20),
-            SvgPicture.asset(
-              'site-sistema/Menu/botao-instagram.svg',
-            ),
-          ],
-            ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment:
-          CrossAxisAlignment.stretch,
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 10.0),
-              child: Text(
-                "Assine nossa Newsletter",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
+                const SizedBox(width: 335),
+                SvgPicture.asset(
+                  'site-sistema/Menu/botao-whatsapp.svg',
                 ),
-                textAlign: TextAlign.start,
-              ),
+                const SizedBox(width: 20),
+                SvgPicture.asset(
+                  'site-sistema/Menu/botao-facebook.svg',
+                ),
+                const SizedBox(width: 20),
+                SvgPicture.asset(
+                  'site-sistema/Menu/botao-instagram.svg',
+                ),
+
+                const SizedBox(width: 335),
+                const Padding(
+                  padding: EdgeInsets.only(left: 8, bottom: 100),
+                 child: Text(
+                  "Assine nossa Newsletter",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+                )
+
+                ],
             ),
 
-              MyTextField(
-                hintText: 'Email',
-                controller: emailController,
-                obscureText: false, inputFormatter: [
-                FilteringTextInputFormatter.digitsOnly,
+            Column(
+              children: [
+                SizedBox(
+                  width: 200,
+                  child: MyTextField(
+                    hintText: 'Email',
+                    controller: emailController,
+                    obscureText: false,
+                    inputFormatter: const [],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.only(left: 850, right: 850, bottom: 0),
+                  child: MyButtonAgree(
+                    text: "Assinar",
+                    image: "site-sistema/Home/icone-seta.svg",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Signup()),
+                      );
+                    },
+                  ),
+                ),
               ],
-              ),
-
-            const SizedBox(height: 20),
-
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 850, right: 850),
-              child: MyButtonAgree(
-                text: "Assinar",
-                image: "site-sistema/Home/icone-seta.svg",
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                          Signup()));
-                },
-              ),
             ),
+
           ],
-        ),
-        ],
       )
       ),
     );
