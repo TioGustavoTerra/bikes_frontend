@@ -17,7 +17,7 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (val) => val!.isEmpty ? 'Veuillez remplir ce champ svp' : null,
+      validator: (val) => val!.isEmpty ? 'Por favor, insira ${hintText}' : null,
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
@@ -50,7 +50,7 @@ class MyPasswordTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (val) => val!.isEmpty ? 'Veuillez remplir ce champ svp' : null,
+      validator: (val) => val!.isEmpty ? 'Por favor, insira ${hintText}' : null,
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(

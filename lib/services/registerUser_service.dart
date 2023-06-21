@@ -6,20 +6,24 @@ class RegisterUserService {
   final String postsURL = "http://localhost:1337/api/users";
 
   Future<User?> registrar(User usuario) async {
+    try {
+      Dio dio = Dio();
+      dio.options.connectTimeout = const Duration(seconds: 30);
+      dio.options.receiveTimeout = const Duration(seconds: 30);
+      dio.options.headers["Content-Type"] = 'application/json';
+      
+      var res = await dio.post(postsURL, data: usuario.toJson());
 
-    Dio dio = Dio();
-    dio.options.connectTimeout = const Duration(seconds: 30);
-    dio.options.receiveTimeout = const Duration(seconds: 30);
-    dio.options.headers["Content-Type"] = 'application/json';
-
-    var res = await dio.post(postsURL, data: usuario.toJson());
-    if (res.statusCode == 200) {
-      User user = User.fromJson(res.data);
-      return user;
-    } else {
-      print(res.statusCode);
-      print(res);
-      throw "Unable to retrieve posts.";
+      if (res.statusCode == 200) {
+        User user = User.fromJson(res.data);
+        return user;
+      } else {
+        print(res.statusCode);
+        print(res);
+        // throw "Unable to retrieve posts.";
+      }
+    } on DioError catch (err) {
+      print('Erro ao realizar o cadastro ${err.response?.data} Código: ${err.response?.statusCode}');
     }
   }
 }

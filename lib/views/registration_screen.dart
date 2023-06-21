@@ -7,8 +7,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 import '../componentes/button.dart';
+import '../componentes/messages.dart';
 import '../componentes/rodape.dart';
 import '../componentes/square_title.dart';
 import '../componentes/textfield.dart';
@@ -17,16 +19,14 @@ import '../services/registerUser_service.dart';
 import 'bemvindo.dart';
 import 'login_screen.dart';
 
-
 class Signup extends StatefulWidget {
-  const Signup ({Key? key}) : super(key: key);
+  const Signup({Key? key}) : super(key: key);
 
   @override
   _SignupState createState() => _SignupState();
 }
 
 class _SignupState extends State<Signup> {
-
   // text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -35,9 +35,8 @@ class _SignupState extends State<Signup> {
   final emailController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   final telController = TextEditingController();
-  final dataController = TextEditingController();
 
-  final RegisterUserService _registerUserService  = RegisterUserService();
+  final RegisterUserService _registerUserService = RegisterUserService();
 
   double _sigmaX = 5; // from 0-10
   double _sigmaY = 5; // from 0-10
@@ -46,15 +45,6 @@ class _SignupState extends State<Signup> {
   double _height = 300;
   final _formKey = GlobalKey<FormState>();
 
-  // sign user in method
-  void signUserIn() {
-    if (_formKey.currentState!.validate()) {
-      print('valid');
-    } else {
-      print('not valid');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,36 +52,24 @@ class _SignupState extends State<Signup> {
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+          height: MediaQuery.of(context).size.height,
           child: Stack(
             alignment: Alignment.center,
             children: [
               Image.network(
                 'assets/site-sistema/cadastro/fundo-cadastro.jpg',
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width * 40,
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 40,
+                width: MediaQuery.of(context).size.width * 40,
+                height: MediaQuery.of(context).size.height * 40,
                 fit: BoxFit.cover,
               ),
               Container(
-                color: const Color.fromRGBO(30, 122   , 97, 100),
+                color: const Color.fromRGBO(30, 122, 97, 100),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //Cadastro
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.05),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   const Text("Cadastre grátis em nossa plataforma",
                       style: TextStyle(
                           color: Colors.white,
@@ -99,14 +77,11 @@ class _SignupState extends State<Signup> {
                           fontWeight: FontWeight.bold)),
                   //Cadastro
 
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.05),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   ClipRect(
                     child: BackdropFilter(
                       filter:
-                      ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
+                          ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
                       child: Container(
                         padding: const EdgeInsets.only(
                           right: 60,
@@ -117,11 +92,8 @@ class _SignupState extends State<Signup> {
                         decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                            BorderRadius.all(Radius.circular(20))),
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * 0.4,
+                                BorderRadius.all(Radius.circular(20))),
+                        width: MediaQuery.of(context).size.width * 0.4,
                         //height: MediaQuery.of(context).size.height * 0.52,
                         child: Form(
                           key: _formKey,
@@ -136,10 +108,11 @@ class _SignupState extends State<Signup> {
                                         color: Colors.black, fontSize: 20),
                                     textAlign: TextAlign.start),
                                 MyTextField(
-                                    hintText: 'Nome completo',
-                                    controller: usernameController,
-                                    obscureText: false, inputFormatter: [],
-                                  ),
+                                  hintText: 'Nome completo',
+                                  controller: usernameController,
+                                  obscureText: false,
+                                  inputFormatter: [],
+                                ),
                                 const SizedBox(height: 20),
                                 const SizedBox(width: 20),
                                 Row(
@@ -148,10 +121,12 @@ class _SignupState extends State<Signup> {
                                       child: MyTextField(
                                         hintText: 'CPF',
                                         controller: cpfController,
-                                        obscureText: false, inputFormatter: [
-                                        FilteringTextInputFormatter.digitsOnly,
-                                        CpfInputFormatter(),
-                                      ],
+                                        obscureText: false,
+                                        inputFormatter: [
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
+                                          CpfInputFormatter(),
+                                        ],
                                       ),
                                     ),
                                     const SizedBox(height: 20),
@@ -159,11 +134,13 @@ class _SignupState extends State<Signup> {
                                     Expanded(
                                       child: MyTextField(
                                         hintText: 'Data de nascimento',
-                                        controller: dataController,
-                                        obscureText: false, inputFormatter: [
-                                        FilteringTextInputFormatter.digitsOnly,
-                                        DataInputFormatter(),
-                                      ],
+                                        controller: dataNascimentoController,
+                                        obscureText: false,
+                                        inputFormatter: [
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
+                                          DataInputFormatter(),
+                                        ],
                                       ),
                                     ),
                                   ],
@@ -176,10 +153,12 @@ class _SignupState extends State<Signup> {
                                       child: MyTextField(
                                         hintText: 'Telefone',
                                         controller: telController,
-                                        obscureText: false, inputFormatter: [
-                                        FilteringTextInputFormatter.digitsOnly,
-                                        TelefoneInputFormatter(),
-                                      ],
+                                        obscureText: false,
+                                        inputFormatter: [
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
+                                          TelefoneInputFormatter(),
+                                        ],
                                       ),
                                     ),
                                     const SizedBox(height: 20),
@@ -188,7 +167,8 @@ class _SignupState extends State<Signup> {
                                       child: MyTextField(
                                         hintText: 'Email',
                                         controller: emailController,
-                                        obscureText: false, inputFormatter: [],
+                                        obscureText: false,
+                                        inputFormatter: [],
                                       ),
                                     ),
                                   ],
@@ -198,7 +178,7 @@ class _SignupState extends State<Signup> {
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment:
-                                  CrossAxisAlignment.stretch,
+                                      CrossAxisAlignment.stretch,
                                   children: [
                                     const Padding(
                                       padding: EdgeInsets.symmetric(
@@ -213,38 +193,47 @@ class _SignupState extends State<Signup> {
                                       ),
                                     ),
                                     const SizedBox(height: 5),
-                                    MyPasswordTextField(obscureText: true, controller: passwordController, hintText: 'senha',),
-
+                                    MyPasswordTextField(
+                                      obscureText: true,
+                                      controller: passwordController,
+                                      hintText: 'senha',
+                                    ),
                                     const SizedBox(height: 20),
-
                                     const SizedBox(height: 5),
-
-                                    MyPasswordTextField(obscureText: true, controller: confirmPasswordController, hintText: 'Confirmar senha',),
-
-                                    const SizedBox(height: 20,),
-
+                                    MyPasswordTextField(
+                                      obscureText: true,
+                                      controller: confirmPasswordController,
+                                      hintText: 'Confirmar senha',
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.only(
                                           left: 210, right: 210),
                                       child: MyButtonAgree(
                                         text: "Cadastrar",
-                                        image: "site-sistema/Home/icone-seta.svg",
+                                        image:
+                                            "site-sistema/Home/icone-seta.svg",
                                         onTap: () {
-                                          registrar(cpfController.text, usernameController.text, emailController.text, dataNascimentoController.text, passwordController.text, confirmPasswordController.text, telController.text);
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             WelcomePage()));
+                                          registrar(
+                                              cpfController.text,
+                                              emailController.text,
+                                              usernameController.text,
+                                              dataNascimentoController.text,
+                                              passwordController.text,
+                                              confirmPasswordController.text,
+                                              telController.text);
                                         },
                                       ),
                                     ),
                                     const SizedBox(height: 30),
                                     TextButton(
-                                      style: TextButton.styleFrom( textStyle: const TextStyle(fontSize: 0) ),
+                                      style: TextButton.styleFrom(
+                                          textStyle:
+                                              const TextStyle(fontSize: 0)),
                                       onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, '/login');
+                                        Navigator.pushNamed(context, '/login');
                                       },
                                       child: const Text(
                                         'Já tem conta?',
@@ -252,9 +241,9 @@ class _SignupState extends State<Signup> {
                                         style: TextStyle(
                                             color: Color.fromARGB(
                                                 255, 29, 118, 94),
-                                            fontWeight:
-                                            FontWeight.bold,
-                                            fontSize: 20),),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -267,7 +256,7 @@ class _SignupState extends State<Signup> {
                   ),
                 ],
               ),
-                const Rodape()
+              const Rodape()
             ],
           ),
         ),
@@ -275,11 +264,54 @@ class _SignupState extends State<Signup> {
     );
   }
 
-  Future<void> registrar(String cpf, String email, String nome, String dataNascimento, String senha, String confirmarSenha, String telefone) async {
-    print('Passou aqui');
-    var usuario = new User(cpfCnpj: cpf, email: email, name: nome, birthDate: dataNascimento, password: senha, passwordConfirmation: confirmarSenha, phoneNumber: telefone);
-    _registerUserService.registrar(usuario);
+  // sign user in method
+  void signUserIn() {
+    if (_formKey.currentState!.validate()) {
+      print('valid');
+    } else {
+      print('not valid');
+    }
   }
 
+  Future<void> registrar(
+      String cpf,
+      String email,
+      String nome,
+      String dataNascimento,
+      String senha,
+      String confirmarSenha,
+      String telefone) async {
+    if (_formKey.currentState!.validate()) {
+      var dateNasc = dataNascimento.split('/');
 
+      var usuario = User(
+          cpfCnpj: UtilBrasilFields.removeCaracteres(cpf),
+          email: email,
+          name: nome,
+          birthDate: '${dateNasc[2]}-${dateNasc[1]}-${dateNasc[0]}',
+          password: senha,
+          passwordConfirmation: confirmarSenha,
+          phoneNumber:
+              UtilBrasilFields.obterTelefone(telefone, mascara: false));
+
+      Future<User?> user = _registerUserService.registrar(usuario);
+
+      if (user != null) {
+        _showToastInfo(context, 'Cadastro realizado com Sucesso!');
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => WelcomePage()));
+      } else {
+        _showToastErro(context, 'Ops, algo deu errado!');
+      }
+    } else {
+      _showToastErro(context, 'Favor preencher todos os campos!');
+    }
+  }
+
+  void _showToastErro(BuildContext context, msg) {
+    Messages.of(context).showError(msg);
+  }
+    void _showToastInfo(BuildContext context, msg) {
+    Messages.of(context).showInfo(msg);
+  }
 }
