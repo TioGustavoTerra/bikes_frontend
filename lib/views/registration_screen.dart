@@ -281,37 +281,41 @@ class _SignupState extends State<Signup> {
       String senha,
       String confirmarSenha,
       String telefone) async {
-    if (_formKey.currentState!.validate()) {
-      var dateNasc = dataNascimento.split('/');
+    try {
+      if (_formKey.currentState!.validate()) {
+        var dateNasc = dataNascimento.split('/');
 
-      var usuario = User(
-          cpfCnpj: UtilBrasilFields.removeCaracteres(cpf),
-          email: email,
-          name: nome,
-          birthDate: '${dateNasc[2]}-${dateNasc[1]}-${dateNasc[0]}',
-          password: senha,
-          passwordConfirmation: confirmarSenha,
-          phoneNumber:
-              UtilBrasilFields.obterTelefone(telefone, mascara: false));
+        var usuario = User(
+            cpfCnpj: UtilBrasilFields.removeCaracteres(cpf),
+            email: email,
+            name: nome,
+            birthDate: '${dateNasc[2]}-${dateNasc[1]}-${dateNasc[0]}',
+            password: senha,
+            passwordConfirmation: confirmarSenha,
+            phoneNumber:
+                UtilBrasilFields.obterTelefone(telefone, mascara: false));
 
-      Future<User?> user = _registerUserService.registrar(usuario);
+        User? user = await _registerUserService.registrar(usuario);
 
-      if (user != null) {
-        _showToastInfo(context, 'Cadastro realizado com Sucesso!');
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => WelcomePage()));
+        if (user != null) {
+          _showToastInfo(context, 'Cadastro realizado com Sucesso!');
+          Navigator.pushNamed(context, "/login");
+        } else {
+          _showToastErro(context, 'Ops, algo deu errado!');
+        }
       } else {
-        _showToastErro(context, 'Ops, algo deu errado!');
+        _showToastErro(context, 'Favor preencher todos os campos!');
       }
-    } else {
-      _showToastErro(context, 'Favor preencher todos os campos!');
+    } catch (e) {
+      _showToastErro(context, 'Ops, algo deu errado! ${e}');
     }
   }
 
   void _showToastErro(BuildContext context, msg) {
     Messages.of(context).showError(msg);
   }
-    void _showToastInfo(BuildContext context, msg) {
+
+  void _showToastInfo(BuildContext context, msg) {
     Messages.of(context).showInfo(msg);
   }
 }

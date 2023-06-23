@@ -1,8 +1,11 @@
 import 'dart:ui';
 
+import 'package:bikes_frontend/componentes/messages.dart';
+import 'package:bikes_frontend/services/loginUser_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../componentes/button.dart';
@@ -18,14 +21,15 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  LoginUserService _loginService = LoginUserService();
   late String _username;
   late String _password;
 
   get confirmPasswordController => null;
 
-  get passwordController => null;
+  final passwordController = TextEditingController();
 
-  get emailController => null;
+  final emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -134,13 +138,11 @@ class _LoginPageState extends State<LoginPage> {
                                           left: 210, right: 210),
                                       child: MyButtonAgree(
                                         text: "Entrar",
-                                        image: "site-sistema/Home/icone-seta.svg",
+                                        image:
+                                            "site-sistema/Home/icone-seta.svg",
                                         onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      WelcomePage()));
+                                          Logar(emailController.text,
+                                              passwordController.text);
                                         },
                                       ),
                                     ),
@@ -187,19 +189,22 @@ class _LoginPageState extends State<LoginPage> {
                                               ),
                                               const SizedBox(width: 4),
                                               TextButton(
-                                                style: TextButton.styleFrom( textStyle: const TextStyle(fontSize: 20) ),
+                                                style: TextButton.styleFrom(
+                                                    textStyle: const TextStyle(
+                                                        fontSize: 20)),
                                                 onPressed: () {
                                                   Navigator.pushNamed(
                                                       context, '/registration');
                                                 },
                                                 child: const Text(
-                                                    'Faça o cadastro',
+                                                  'Faça o cadastro',
                                                   style: TextStyle(
                                                       color: Color.fromARGB(
                                                           255, 29, 118, 94),
                                                       fontWeight:
-                                                      FontWeight.bold,
-                                                      fontSize: 20),),
+                                                          FontWeight.bold,
+                                                      fontSize: 20),
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -246,11 +251,38 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-                const Rodape()
+              const Rodape()
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future<void> Logar(String email, String senha) async {
+    try {
+      if (_formKey.currentState!.validate()) {
+        String? token = await _loginService.logar(email, senha);
+
+        if (token!.isEmpty) {
+          _showToastErro(context, 'Ops, algo deu errado!');
+        } else {
+          _showToastInfo(context, 'Login realizado com Sucesso!');
+          Navigator.pushNamed(context, "/home");
+        }
+      } else {
+        _showToastErro(context, 'Favor preencher todos os campos!');
+      }
+    } catch (e) {
+      _showToastErro(context, e);
+    }
+  }
+
+  void _showToastErro(BuildContext context, msg) {
+    Messages.of(context).showError(msg);
+  }
+
+  void _showToastInfo(BuildContext context, msg) {
+    Messages.of(context).showInfo(msg);
   }
 }

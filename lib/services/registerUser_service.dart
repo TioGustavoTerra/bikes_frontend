@@ -23,7 +23,7 @@ class RegisterUserService {
         // throw "Unable to retrieve posts.";
       }
     } on DioError catch (err) {
-      print('Erro ao realizar o cadastro ${err.response?.data} Código: ${err.response?.statusCode}');
+      throw 'Erro ao realizar o cadastro ${err.response?.data} Código: ${err.response?.statusCode}';
     }
   }
 }
