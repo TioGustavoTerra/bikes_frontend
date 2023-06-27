@@ -1,4 +1,5 @@
 import 'package:bikes_frontend/views/bemvindo.dart';
+import 'package:bikes_frontend/views/quem-somos.dart';
 import 'package:bikes_frontend/views/registration_screen.dart';
 import 'package:bikes_frontend/views/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +20,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
+        '/about': (context) => Quemsomos(),
         '/login': (context) => LoginPage(),
-        '/registration': (context) => Signup(),
+        '/register': (context) => Signup(),
         '/home': (context) => WelcomePage(),
       },
 

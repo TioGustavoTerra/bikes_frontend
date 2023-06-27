@@ -1,4 +1,5 @@
 
+import 'package:bikes_frontend/componentes/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -10,24 +11,35 @@ class Cabecalho extends StatefulWidget {
 }
 
 class _CabecalhoState extends State<Cabecalho> {
+  final searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return Padding( padding: EdgeInsets.only(top: 20), child: Row(
+    return Padding( padding: const EdgeInsets.only(top: 20), child: Row(
       children: [
-        SizedBox(width: 300),
-        SvgPicture.asset(
-          'site-sistema/Menu/Logo-bikes.svg',
-          width: 55,
-          height: 55,
+        Container(
+          color: Colors.white,
         ),
-        SizedBox(width: 100),
+       const SizedBox(width: 250),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-            Navigator.pushNamed(context, '/login');
+            Navigator.pushNamed(context, '/home');
+          },
+        child: SvgPicture.asset(
+          'site-sistema/Menu/Logo-bikes.svg',
+          width: 60,
+          height: 60,
+        ),
+    ),
+        const SizedBox(width: 100),
+        TextButton(
+          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
+          onPressed: () {
+            Navigator.pushNamed(context, '/about');
           },
           child: const Text(
-            'Quem somos',
+            'Sobre',
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -77,22 +89,47 @@ class _CabecalhoState extends State<Cabecalho> {
             ),
           ),
         ),
-        const SizedBox(width: 40),
-        SvgPicture.asset(
-          'site-sistema/Menu/botao-carrinho.svg',
-        ),
+
         const SizedBox(width: 10),
-        SvgPicture.asset(
-          'site-sistema/Menu/botao-lista-de-desejos.svg',
-        ),
-        const SizedBox(width: 10),
-        SvgPicture.asset(
-          'site-sistema/Menu/botao-entrar.svg',
-        ),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-            Navigator.pushNamed(context, '/registration');
+            Navigator.pushNamed(context, '/home');
+          },
+          child: SvgPicture.asset(
+            'site-sistema/Menu/botao-carrinho.svg',
+          ),
+        ),
+
+        const SizedBox(width: 10),
+        TextButton(
+          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
+          onPressed: () {
+            Navigator.pushNamed(context, '/home');
+          },
+          child: SvgPicture.asset(
+            'site-sistema/Menu/botao-lista-de-desejos.svg',
+          ),
+        ),
+
+        const SizedBox(width: 10),
+        TextButton(
+          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
+          onPressed: () {
+            Navigator.pushNamed(context, '/home');
+          },
+          child: SvgPicture.asset(
+            'site-sistema/Menu/botao-entrar.svg',
+          ),
+        ),
+
+
+        const SizedBox(width: 10),
+
+        TextButton(
+          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
+          onPressed: () {
+            Navigator.pushNamed(context, '/login');
           },
           child: const Text(
             '| Entrar',
@@ -107,29 +144,58 @@ class _CabecalhoState extends State<Cabecalho> {
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-            Navigator.pushNamed(context, '/registration');
+            Navigator.pushNamed(context, '/home');
           },
-          child: const Text(
-            'CRIE SUA CONTA',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-            ),
+          child: SvgPicture.asset(
+            'site-sistema/Menu/botao-whatsapp.svg',
           ),
         ),
-        const SizedBox(width: 20),
-        SvgPicture.asset(
-          'site-sistema/Menu/botao-whatsapp.svg',
+
+        TextButton(
+          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
+          onPressed: () {
+            Navigator.pushNamed(context, '/home');
+          },
+          child: SvgPicture.asset(
+            'site-sistema/Menu/botao-facebook.svg',
+          ),
         ),
-        const SizedBox(width: 20),
-        SvgPicture.asset(
-          'site-sistema/Menu/botao-facebook.svg',
+
+        TextButton(
+          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
+          onPressed: () {
+            Navigator.pushNamed(context, '/home');
+          },
+          child: SvgPicture.asset(
+            'site-sistema/Menu/botao-instagram.svg',
+          ),
         ),
+
         const SizedBox(width: 20),
-        SvgPicture.asset(
-          'site-sistema/Menu/botao-instagram.svg',
-        ),
+
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(right: 250),
+            child: Row(
+              children: [
+                Expanded(
+                  child: MyTextField(
+                    hintText: 'Pesquisar',
+                    controller: searchController,
+                    obscureText: false,
+                    inputFormatter: const [],
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.search),
+                  onPressed: () {
+                    // Lógica para realizar a pesquisa
+                  },
+                ),
+              ],
+            ),
+          ),
+        )
       ],
     ),);
   }

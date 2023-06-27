@@ -53,6 +53,21 @@ class Rodape extends StatelessWidget {
                     FontWeight.bold,
                     fontSize: 20),),
             ),
+            TextButton(
+              style: TextButton.styleFrom(
+                  textStyle: const TextStyle(fontSize: 0)),
+              onPressed: () {
+                Navigator.pushNamed(context, '/home');
+              },
+              child: const Text(
+                'Voltar home',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+            ),
 
           ],
         ),

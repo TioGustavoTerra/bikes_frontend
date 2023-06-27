@@ -194,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                                                         fontSize: 20)),
                                                 onPressed: () {
                                                   Navigator.pushNamed(
-                                                      context, '/registration');
+                                                      context, '/register');
                                                 },
                                                 child: const Text(
                                                   'Faça o cadastro',

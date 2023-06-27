@@ -46,7 +46,7 @@ class MyButtonAgree extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.only(left: 0, right: 0, bottom: 10, top: 10),
+        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             colors: [
