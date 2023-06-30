@@ -1,49 +1,22 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:ui';
-
-import 'package:bikes_frontend/componentes/square_title.dart';
-import 'package:bikes_frontend/views/registration_screen.dart';
+import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-import '../componentes/button.dart';
-import '../componentes/rodape.dart';
-import '../componentes/cabecalho.dart';
 import '../componentes/rodapehome.dart';
-import '../componentes/textfield.dart';
 
 class WelcomePage extends StatelessWidget {
-  WelcomePage({super.key});
-
-  // text editing controllers
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  double _sigmaX = 5; // from 0-10
-  double _sigmaY = 5; // from 0-10
-  double _opacity = 0.2;
-  double _width = 350;
-  double _height = 300;
-  final _formKey = GlobalKey<FormState>();
-
-  // sign user in method
-  // void signUserIn() {}
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[300],
-      appBar: AppBar(
-        toolbarHeight: 75,
-        title: Cabecalho(),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Scaffold(
+          appBar: constraints.maxWidth < 800
+              ? PreferredSize(
+            child: CabecalhoApp(),
+            preferredSize: const Size(double.infinity, 56),
+          )
+              : AppBar(),
+          drawer: Drawer(),
 
-        automaticallyImplyLeading: false,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(50),
-          child: SizedBox(height: 50),
-        ),
-      ),
 
       body: SingleChildScrollView(
         child: Container(
@@ -65,6 +38,8 @@ class WelcomePage extends StatelessWidget {
           ),
         ),
       ),
+        );
+      },
     );
   }
 }

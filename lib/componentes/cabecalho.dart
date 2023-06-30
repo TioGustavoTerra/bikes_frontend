@@ -18,7 +18,17 @@ class _CabecalhoState extends State<Cabecalho> {
     return Padding( padding: const EdgeInsets.only(top: 20), child: Row(
       children: [
         Container(
-          color: Colors.white,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [
+                Color.fromRGBO(240,248,255,100),
+                Color.fromRGBO(240,248,255,100),
+              ],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
+            borderRadius: BorderRadius.circular(0),
+          ),
         ),
        const SizedBox(width: 250),
         TextButton(
