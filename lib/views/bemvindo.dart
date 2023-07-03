@@ -1,9 +1,24 @@
+import 'package:bikes_frontend/componentes/cabecalho.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import '../componentes/rodapehome.dart';
 
-class WelcomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   SessionManager.get("")
+  // }
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -14,32 +29,14 @@ class WelcomePage extends StatelessWidget {
             child: CabecalhoApp(),
             preferredSize: const Size(double.infinity, 56),
           )
-              : AppBar(),
-          drawer: Drawer(),
-
-
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Image.network(
-                'assets/site-sistema/cadastro/fundo-cadastro.jpg',
-                width: MediaQuery.of(context).size.width * 40,
-                height: MediaQuery.of(context).size.height * 40,
-                fit: BoxFit.cover,
-              ),
-              Container(
-                color: Color.fromRGBO(30, 122, 97, 100),
-              ),
-              const Rodape2(),
-            ],
+              : const PreferredSize(
+              child: Cabecalho(), preferredSize: Size(double.infinity, 72)),
+          drawer: const Drawer(
+            child: Text('Tirar dps'),
           ),
-        ),
-      ),
         );
       },
     );
   }
 }
+

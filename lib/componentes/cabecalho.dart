@@ -1,48 +1,69 @@
-
-import 'package:bikes_frontend/componentes/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'CabecalhoResponsiveContent.dart';
 
-class Cabecalho extends StatefulWidget {
+class Cabecalho extends StatelessWidget {
   const Cabecalho({Key? key}) : super(key: key);
 
-  @override
-  _CabecalhoState createState() => _CabecalhoState();
-}
-
-class _CabecalhoState extends State<Cabecalho> {
-  final searchController = TextEditingController();
+  get searchController => null;
 
   @override
   Widget build(BuildContext context) {
-    return Padding( padding: const EdgeInsets.only(top: 20), child: Row(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              colors: [
-                Color.fromRGBO(240,248,255,100),
-                Color.fromRGBO(240,248,255,100),
-              ],
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-            ),
-            borderRadius: BorderRadius.circular(0),
-          ),
-        ),
-       const SizedBox(width: 250),
+    return AppBar(
+      toolbarHeight: 72,
+      title: Row(children: [
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
             Navigator.pushNamed(context, '/home');
           },
-        child: SvgPicture.asset(
-          'site-sistema/Menu/Logo-bikes.svg',
-          width: 60,
-          height: 60,
+          child: SvgPicture.asset(
+            'site-sistema/Menu/Logo-bikes.svg',
+            width: 60,
+            height: 60,
+          ),
         ),
-    ),
-        const SizedBox(width: 100),
+        const SizedBox(width: 32),
+        // CabecalhoResponsiveContent(),
+        //daqui
+          Expanded(
+            child:
+                  Row(
+                    children: [
+                      Expanded(child:
+                      Container(
+                        height: 45,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[100],
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: Row(
+                          children: [
+                            IconButton(icon: Icon(Icons.search), onPressed: () {}),
+                            const Expanded(
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'Pesquisar'),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                  IconButton(
+                    icon: const Icon(Icons.shopping_cart),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.favorite),
+                    onPressed: () {},
+                  )
+                    ],
+                ),
+                      ),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
@@ -100,40 +121,7 @@ class _CabecalhoState extends State<Cabecalho> {
           ),
         ),
 
-        const SizedBox(width: 10),
-        TextButton(
-          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-          onPressed: () {
-            Navigator.pushNamed(context, '/home');
-          },
-          child: SvgPicture.asset(
-            'site-sistema/Menu/botao-carrinho.svg',
-          ),
-        ),
-
-        const SizedBox(width: 10),
-        TextButton(
-          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-          onPressed: () {
-            Navigator.pushNamed(context, '/home');
-          },
-          child: SvgPicture.asset(
-            'site-sistema/Menu/botao-lista-de-desejos.svg',
-          ),
-        ),
-
-        const SizedBox(width: 10),
-        TextButton(
-          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-          onPressed: () {
-            Navigator.pushNamed(context, '/home');
-          },
-          child: SvgPicture.asset(
-            'site-sistema/Menu/botao-entrar.svg',
-          ),
-        ),
-
-
+        //Até aqui
         const SizedBox(width: 10),
 
         TextButton(
@@ -150,63 +138,7 @@ class _CabecalhoState extends State<Cabecalho> {
             ),
           ),
         ),
-        const SizedBox(width: 20),
-        TextButton(
-          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-          onPressed: () {
-            Navigator.pushNamed(context, '/home');
-          },
-          child: SvgPicture.asset(
-            'site-sistema/Menu/botao-whatsapp.svg',
-          ),
-        ),
-
-        TextButton(
-          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-          onPressed: () {
-            Navigator.pushNamed(context, '/home');
-          },
-          child: SvgPicture.asset(
-            'site-sistema/Menu/botao-facebook.svg',
-          ),
-        ),
-
-        TextButton(
-          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-          onPressed: () {
-            Navigator.pushNamed(context, '/home');
-          },
-          child: SvgPicture.asset(
-            'site-sistema/Menu/botao-instagram.svg',
-          ),
-        ),
-
-        const SizedBox(width: 20),
-
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(right: 250),
-            child: Row(
-              children: [
-                Expanded(
-                  child: MyTextField(
-                    hintText: 'Pesquisar',
-                    controller: searchController,
-                    obscureText: false,
-                    inputFormatter: const [],
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.search),
-                  onPressed: () {
-                    // Lógica para realizar a pesquisa
-                  },
-                ),
-              ],
-            ),
-          ),
-        )
-      ],
-    ),);
+      ]),
+    );
   }
 }
