@@ -12,6 +12,7 @@ class Cabecalho extends StatelessWidget {
     return AppBar(
       toolbarHeight: 72,
       title: Row(children: [
+        CabecalhoResponsiveContent(),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
@@ -24,46 +25,6 @@ class Cabecalho extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 32),
-        // CabecalhoResponsiveContent(),
-        //daqui
-          Expanded(
-            child:
-                  Row(
-                    children: [
-                      Expanded(child:
-                      Container(
-                        height: 45,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[100],
-                          border: Border.all(color: Colors.grey),
-                        ),
-                        child: Row(
-                          children: [
-                            IconButton(icon: Icon(Icons.search), onPressed: () {}),
-                            const Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Pesquisar'),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                  IconButton(
-                    icon: const Icon(Icons.shopping_cart),
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.favorite),
-                    onPressed: () {},
-                  )
-                    ],
-                ),
-                      ),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
@@ -120,10 +81,7 @@ class Cabecalho extends StatelessWidget {
             ),
           ),
         ),
-
-        //Até aqui
         const SizedBox(width: 10),
-
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
@@ -138,6 +96,47 @@ class Cabecalho extends StatelessWidget {
             ),
           ),
         ),
+          Expanded(
+            child:
+                  Row(
+                    children: [
+                      Expanded(child:
+                      Container(
+                        height: 45,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[100],
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 4),
+                            IconButton(icon: Icon(Icons.search), onPressed: () {}),
+                            const Expanded(
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'Pesquisar',
+                                isCollapsed: true,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  IconButton(
+                    icon: const Icon(Icons.shopping_cart),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.favorite),
+                    onPressed: () {},
+                  )
+                    ],
+                ),
+                      ),
+        CabecalhoResponsiveContent(),
       ]),
     );
   }

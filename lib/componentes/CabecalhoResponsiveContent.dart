@@ -12,7 +12,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
 
             return Container(
               height: 400,
-              width: 200,
+              width: 100,
             );
           },
         ),

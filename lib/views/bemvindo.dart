@@ -31,9 +31,7 @@ class _HomePageState extends State<HomePage> {
           )
               : const PreferredSize(
               child: Cabecalho(), preferredSize: Size(double.infinity, 72)),
-          drawer: const Drawer(
-            child: Text('Tirar dps'),
-          ),
+          drawer: constraints.maxWidth < 800 ? const Drawer() : null,
         );
       },
     );
