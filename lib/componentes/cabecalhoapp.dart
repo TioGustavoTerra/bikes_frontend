@@ -13,15 +13,11 @@ class CabecalhoApp extends StatelessWidget {
         },
         child: SvgPicture.asset(
           'site-sistema/Menu/Logo-bikes.svg',
-          width: 60,
-          height: 60,
+          width: 45,
+          height: 45,
         ),
       ),
       centerTitle:  true,
-    actions: [
-      IconButton(icon: Icon(Icons.search), onPressed: () {},),
-      IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {},),
-    ],
     );
   }
 }

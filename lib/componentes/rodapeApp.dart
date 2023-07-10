@@ -1,16 +1,12 @@
 import 'package:bikes_frontend/componentes/textfield.dart';
-import 'package:bikes_frontend/views/registration_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
-// import '../views/bemvindo.dart';
+import '../views/registration_screen.dart';
 import 'button.dart';
 
-class Rodape2 extends StatelessWidget {
-  const Rodape2({Key? key}) : super(key: key);
-
-  get confirmPasswordController => null;
+class RodapeWeb extends StatelessWidget {
+  const RodapeWeb({Key? key}) : super(key: key);
 
   get emailController => null;
 
@@ -20,10 +16,9 @@ class Rodape2 extends StatelessWidget {
       left: 0,
       right: 0,
       bottom: 0,
-      child:
-
-      Container(
+      child: Container(
           color: Colors.white,
+          // height: 600,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -86,18 +81,18 @@ class Rodape2 extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
+                  ), //<- Final column 1
 
                   const SizedBox(width: 20),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextButton(
                         style: TextButton.styleFrom(
                             textStyle: const TextStyle(fontSize: 0)),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/register');
+                          Navigator.pushNamed(context, '/registration');
                         },
                         child: const Text(
                           'Crie sua conta',
@@ -141,40 +136,22 @@ class Rodape2 extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ), // <- Final column 2
+
+                  // const SizedBox(width: 335),
+                  SvgPicture.asset(
+                    'site-sistema/Menu/botao-whatsapp.svg',
+                  ),
+                  const SizedBox(width: 20),
+                  SvgPicture.asset(
+                    'site-sistema/Menu/botao-facebook.svg',
+                  ),
+                  const SizedBox(width: 20),
+                  SvgPicture.asset(
+                    'site-sistema/Menu/botao-instagram.svg',
                   ),
 
-                  const SizedBox(width: 290),
-                  TextButton(
-                    style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/home');
-                    },
-                    child: SvgPicture.asset(
-                      'site-sistema/Menu/botao-whatsapp.svg',
-                    ),
-                  ),
-
-                  TextButton(
-                    style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/home');
-                    },
-                    child: SvgPicture.asset(
-                      'site-sistema/Menu/botao-facebook.svg',
-                    ),
-                  ),
-
-                  TextButton(
-                    style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/home');
-                    },
-                    child: SvgPicture.asset(
-                      'site-sistema/Menu/botao-instagram.svg',
-                    ),
-                  ),
-
-                  const SizedBox(width: 400),
+                  // const SizedBox(width: 100),
 
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -206,7 +183,7 @@ class Rodape2 extends StatelessWidget {
                       const SizedBox(height: 10),
                       Padding(
                         padding: const EdgeInsets.only(
-                            left: 50, right: 50, bottom: 20),
+                            left: 100, right: 270, bottom: 20),
                         child: MyButtonAgree(
                           text: "Assinar",
                           image: "site-sistema/Home/icone-seta.svg",

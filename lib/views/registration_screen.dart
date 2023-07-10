@@ -1,7 +1,7 @@
 import 'dart:html';
 import 'dart:ui';
 
-import 'package:bikes_frontend/componentes/rodapehome.dart';
+import 'package:bikes_frontend/componentes/rodapeApp.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -256,7 +256,7 @@ class _SignupState extends State<Signup> {
                   ),
                 ],
               ),
-              const Rodape()
+              // const Rodape()
             ],
           ),
         ),

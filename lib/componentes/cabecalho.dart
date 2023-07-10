@@ -10,9 +10,21 @@ class Cabecalho extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 72,
+      toolbarHeight: 100,
       title: Row(children: [
-        CabecalhoResponsiveContent(),
+        Expanded(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              print(
+                  'biggest ${constraints.biggest} smallest${constraints.smallest}');
+
+              return Container(
+                height: 400,
+                width: 100,
+              );
+            },
+          ),
+        ),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
@@ -20,13 +32,13 @@ class Cabecalho extends StatelessWidget {
           },
           child: SvgPicture.asset(
             'site-sistema/Menu/Logo-bikes.svg',
-            width: 60,
-            height: 60,
+            width: 55,
+            height: 55,
           ),
         ),
         const SizedBox(width: 32),
         TextButton(
-          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
+          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 20)),
           onPressed: () {
             Navigator.pushNamed(context, '/about');
           },
@@ -81,6 +93,7 @@ class Cabecalho extends StatelessWidget {
             ),
           ),
         ),
+        CabecalhoResponsiveContent(),
         const SizedBox(width: 10),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
@@ -96,47 +109,19 @@ class Cabecalho extends StatelessWidget {
             ),
           ),
         ),
-          Expanded(
-            child:
-                  Row(
-                    children: [
-                      Expanded(child:
-                      Container(
-                        height: 45,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[100],
-                          border: Border.all(color: Colors.grey),
-                        ),
-                        child: Row(
-                          children: [
-                            const SizedBox(width: 4),
-                            IconButton(icon: Icon(Icons.search), onPressed: () {}),
-                            const Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Pesquisar',
-                                isCollapsed: true,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  IconButton(
-                    icon: const Icon(Icons.shopping_cart),
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.favorite),
-                    onPressed: () {},
-                  )
-                    ],
-                ),
-                      ),
-        CabecalhoResponsiveContent(),
+        Expanded(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              print(
+                  'biggest ${constraints.biggest} smallest${constraints.smallest}');
+
+              return Container(
+                height: 400,
+                width: 100,
+              );
+            },
+          ),
+        ),
       ]),
     );
   }
