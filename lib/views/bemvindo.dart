@@ -48,13 +48,13 @@ class _HomePageState extends State<HomePage> {
               )
             ],
           ),) : null,
+
           body: Align(
             alignment: Alignment.bottomCenter,
          child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 1400),
-            child: Container(
-              height: 1000,
-              color: Colors.red,
+            child: ListView(
+
             ),
           ),
           )

@@ -5,7 +5,7 @@ import 'CabecalhoResponsiveContent.dart';
 class Cabecalho extends StatelessWidget {
   const Cabecalho({Key? key}) : super(key: key);
 
-  get searchController => null;
+ final searchController = null;
 
   @override
   Widget build(BuildContext context) {
