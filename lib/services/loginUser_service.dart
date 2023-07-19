@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
-
 // import '../models/Login_user.dart';
 
-class LoginUserService  {
+class LoginUserService {
   final String postsURL = "http://localhost:1337/api/sessions";
 
   Future<String?> logar(String email, String password) async {
@@ -33,11 +32,11 @@ class LoginUserService  {
 
         return data['accessToken'];
       } else {
-         return '';
+        return '';
         // throw "Unable to retrieve posts.";
       }
     } on DioError catch (err) {
-      throw  'Erro ao realizar o login ${err.response?.data} Código: ${err.response?.statusCode}';
+      throw 'Erro ao realizar o login ${err.response?.data} Código: ${err.response?.statusCode}';
     }
   }
 }

@@ -13,7 +13,7 @@ import '../componentes/button.dart';
 import '../componentes/rodape.dart';
 import '../componentes/square_title.dart';
 import '../componentes/textfield.dart';
-import 'bemvindo.dart';
+import 'home_screen.dart';
 
 class LoginPage extends StatefulWidget {
   @override

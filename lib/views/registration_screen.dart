@@ -1,24 +1,16 @@
-import 'dart:html';
 import 'dart:ui';
 
-import 'package:bikes_frontend/componentes/rodapeApp.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
 
 import '../componentes/button.dart';
 import '../componentes/messages.dart';
-import '../componentes/rodape.dart';
-import '../componentes/square_title.dart';
 import '../componentes/textfield.dart';
 import '../models/register_user.dart';
 import '../services/registerUser_service.dart';
-import 'bemvindo.dart';
-import 'login_screen.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
