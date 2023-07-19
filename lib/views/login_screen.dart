@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                             ? MediaQuery.of(context).size.height * 0.80
                             : null,
                         child: Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Form(
                             key: _formKey,
                             child: Center(
@@ -123,13 +123,6 @@ class _LoginPageState extends State<LoginPage> {
                                     hintText: 'Senha',
                                   ),
                                   const SizedBox(height: 10),
-                                  // const SizedBox(
-                                  //   height: 10,
-                                  // ),
-                                  // Padding(
-                                  //   padding: const EdgeInsets.only(
-                                  //       left: 210, right: 210),
-                                  //   child:
                                   MyButtonAgree(
                                     text: "Entrar",
                                     image: "site-sistema/Home/icone-seta.svg",
@@ -153,33 +146,40 @@ class _LoginPageState extends State<LoginPage> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
+                                        const Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            // ignore: prefer_const_literals_to_create_immutables
+                                            children: [
+                                              Text('Esqueçeu sua senha? ',
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 29, 118, 94),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 14),
+                                                  textAlign: TextAlign.center),
+                                              Text(
+                                                '/ ',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 14),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              Text(
+                                                'Não tem conta?',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 14),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              SizedBox(width: 4),
+                                            ]),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           // ignore: prefer_const_literals_to_create_immutables
                                           children: [
-                                            const Text('Esqueçeu sua senha? ',
-                                                style: TextStyle(
-                                                    color: Color.fromARGB(
-                                                        255, 29, 118, 94),
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 14),
-                                                textAlign: TextAlign.center),
-                                            const Text(
-                                              '/ ',
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            const Text(
-                                              'Não tem conta?',
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            const SizedBox(width: 4),
                                             TextButton(
                                               style: TextButton.styleFrom(
                                                   textStyle: const TextStyle(
