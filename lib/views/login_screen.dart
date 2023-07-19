@@ -69,6 +69,12 @@ class _LoginPageState extends State<LoginPage> {
                     child: BackdropFilter(
                       filter: ImageFilter.blur(),
                       child: Container(
+                        padding: const EdgeInsets.only(
+                          right: 10,
+                          left: 10,
+                          top: 10,
+                          bottom: 10,
+                        ),
                         decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius:

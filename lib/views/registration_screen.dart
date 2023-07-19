@@ -2,6 +2,7 @@ import 'dart:html';
 import 'dart:ui';
 
 import 'package:bikes_frontend/componentes/rodapeApp.dart';
+import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -65,36 +66,38 @@ class _SignupState extends State<Signup> {
               Container(
                 color: const Color.fromRGBO(30, 122, 97, 100),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  //Cadastro
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                  const Text("Cadastre grátis em nossa plataforma",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold)),
-                  //Cadastro
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                //Cadastro
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                const Text("Cadastre grátis em nossa plataforma",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold)),
+                //Cadastro
 
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                  ClipRect(
-                    child: BackdropFilter(
-                      filter:
-                          ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
-                      child: Container(
-                        padding: const EdgeInsets.only(
-                          right: 60,
-                          left: 60,
-                          top: 60,
-                          bottom: 60,
-                        ),
-                        decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        //height: MediaQuery.of(context).size.height * 0.52,
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                ClipRect(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(),
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                        right: 10,
+                        left: 10,
+                        top: 10,
+                        bottom: 10,
+                      ),
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      width: Responsive.isDesktop(context)
+                          ? MediaQuery.of(context).size.width * 0.4
+                          : null,
+                      height: Responsive.isTablet(context)
+                          ? MediaQuery.of(context).size.height * 0.80
+                          : null,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
                         child: Form(
                           key: _formKey,
                           child: Center(
@@ -113,8 +116,7 @@ class _SignupState extends State<Signup> {
                                   obscureText: false,
                                   inputFormatter: [],
                                 ),
-                                const SizedBox(height: 20),
-                                const SizedBox(width: 20),
+                                const SizedBox(height: 10),
                                 Row(
                                   children: [
                                     Expanded(
@@ -129,8 +131,10 @@ class _SignupState extends State<Signup> {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(height: 20),
-                                    const SizedBox(width: 20),
+                                    const SizedBox(height: 10),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
                                     Expanded(
                                       child: MyTextField(
                                         hintText: 'Data de nascimento',
@@ -145,8 +149,7 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: 20),
-                                const SizedBox(width: 20),
+                                const SizedBox(height: 10),
                                 Row(
                                   children: [
                                     Expanded(
@@ -161,8 +164,8 @@ class _SignupState extends State<Signup> {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(height: 20),
-                                    const SizedBox(width: 20),
+                                    const SizedBox(height: 10),
+                                    const SizedBox(width: 10),
                                     Expanded(
                                       child: MyTextField(
                                         hintText: 'Email',
@@ -173,7 +176,7 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: 20),
+                                const SizedBox(height: 10),
                                 Column(
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -198,7 +201,7 @@ class _SignupState extends State<Signup> {
                                       controller: passwordController,
                                       hintText: 'senha',
                                     ),
-                                    const SizedBox(height: 20),
+                                    const SizedBox(height: 10),
                                     const SizedBox(height: 5),
                                     MyPasswordTextField(
                                       obscureText: true,
@@ -206,28 +209,23 @@ class _SignupState extends State<Signup> {
                                       hintText: 'Confirmar senha',
                                     ),
                                     const SizedBox(
-                                      height: 20,
+                                      height: 10,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 210, right: 210),
-                                      child: MyButtonAgree(
-                                        text: "Cadastrar",
-                                        image:
-                                            "site-sistema/Home/icone-seta.svg",
-                                        onTap: () {
-                                          registrar(
-                                              cpfController.text,
-                                              emailController.text,
-                                              usernameController.text,
-                                              dataNascimentoController.text,
-                                              passwordController.text,
-                                              confirmPasswordController.text,
-                                              telController.text);
-                                        },
-                                      ),
+                                    MyButtonAgree(
+                                      text: "Cadastrar",
+                                      image: "site-sistema/Home/icone-seta.svg",
+                                      onTap: () {
+                                        registrar(
+                                            cpfController.text,
+                                            emailController.text,
+                                            usernameController.text,
+                                            dataNascimentoController.text,
+                                            passwordController.text,
+                                            confirmPasswordController.text,
+                                            telController.text);
+                                      },
                                     ),
-                                    const SizedBox(height: 30),
+                                    const SizedBox(height: 10),
                                     TextButton(
                                       style: TextButton.styleFrom(
                                           textStyle:
@@ -254,8 +252,8 @@ class _SignupState extends State<Signup> {
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ]),
               // const Rodape()
             ],
           ),
