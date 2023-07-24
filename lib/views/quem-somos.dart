@@ -1,5 +1,7 @@
+import 'package:bikes_frontend/componentes/DrawerApp.dart';
 import 'package:bikes_frontend/componentes/about_responsive_app.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
+import 'package:bikes_frontend/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../componentes/about_responsive_web.dart';
 import '../componentes/breakpoints.dart';
@@ -21,18 +23,9 @@ class QuemSomos extends StatelessWidget {
                     child: Cabecalho(),
                     preferredSize: Size(double.infinity, 72)),
 
-          drawer: constraints.maxWidth <= 900
+          drawer: constraints.maxWidth <= 800
               ? const Drawer(
-              child: Column(
-              children: [
-                ListTile(
-                  title: Text("teste"),
-                ),
-                ListTile(
-                  title: Text("teste"),
-                ),
-              ],
-            ),
+              child: DrawerApp()
           ) : null,
 
         );
