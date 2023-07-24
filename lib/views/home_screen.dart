@@ -15,10 +15,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   _requestUser();
-  // }
+  void initState() {
+    // TODO: implement initState
+    _requestUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,15 +63,15 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
-  //
-  // Future<void> _requestUser() async {
-  //   final user = await SessionManager().get('accessToken');
-  //   if (user == null) {
-  //     setState(() {
-  //       Navigator.pushNamedAndRemoveUntil(
-  //           context, "/login", ModalRoute.withName('/'));
-  //     });
-  //   }
-  //   //nomeUsuario = user['nome_usuario'];
-  // }
+
+  Future<void> _requestUser() async {
+    final user = await SessionManager().get('accessToken');
+    if (user == null) {
+      setState(() {
+        Navigator.pushNamedAndRemoveUntil(
+            context, "/login", ModalRoute.withName('/'));
+      });
+    }
+    //nomeUsuario = user['nome_usuario'];
+  }
 }

@@ -26,7 +26,7 @@ class QuemSomos extends StatelessWidget {
           drawer: constraints.maxWidth <= 800
               ? const Drawer(
               child: DrawerApp()
-          ) : null,
+          ) : null
 
         );
       },
