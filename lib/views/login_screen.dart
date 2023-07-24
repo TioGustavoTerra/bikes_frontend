@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:bikes_frontend/componentes/messages.dart';
 import 'package:bikes_frontend/services/loginUser_service.dart';
+import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +13,7 @@ import '../componentes/button.dart';
 import '../componentes/rodape.dart';
 import '../componentes/square_title.dart';
 import '../componentes/textfield.dart';
-import 'bemvindo.dart';
+import 'home_screen.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -59,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                   const Text("Acesse sua conta",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 25,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold)),
                   //Acesse
 
@@ -69,180 +70,177 @@ class _LoginPageState extends State<LoginPage> {
                       filter: ImageFilter.blur(),
                       child: Container(
                         padding: const EdgeInsets.only(
-                          right: 60,
-                          left: 60,
-                          top: 60,
-                          bottom: 60,
+                          right: 10,
+                          left: 10,
+                          top: 10,
+                          bottom: 10,
                         ),
                         decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20))),
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        //height: MediaQuery.of(context).size.height * 0.52,
-                        child: Form(
-                          key: _formKey,
-                          child: Center(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                const Text("Login",
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 20),
-                                    textAlign: TextAlign.start),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: MyTextField(
-                                        hintText: 'Email',
-                                        controller: emailController,
-                                        obscureText: false,
-                                        inputFormatter: [],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 30),
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 10.0),
-                                      child: Text(
-                                        "Senha",
+                        width: Responsive.isDesktop(context)
+                            ? MediaQuery.of(context).size.width * 0.4
+                            : null,
+                        height: Responsive.isTablet(context)
+                            ? MediaQuery.of(context).size.height * 0.80
+                            : null,
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Form(
+                            key: _formKey,
+                            child: Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 10.0),
+                                    child: Text("Login",
                                         style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20,
-                                        ),
-                                        textAlign: TextAlign.start,
+                                            color: Colors.black, fontSize: 16),
+                                        textAlign: TextAlign.start),
+                                  ),
+                                  MyTextField(
+                                    hintText: 'Email',
+                                    controller: emailController,
+                                    obscureText: false,
+                                    inputFormatter: [],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 10.0),
+                                    child: Text(
+                                      "Senha",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
                                       ),
+                                      textAlign: TextAlign.start,
                                     ),
-                                    const SizedBox(height: 5),
-                                    MyPasswordTextField(
-                                      obscureText: true,
-                                      controller: passwordController,
-                                      hintText: 'senha',
-                                    ),
-                                    const SizedBox(height: 20),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 210, right: 210),
-                                      child: MyButtonAgree(
-                                        text: "Entrar",
-                                        image:
-                                            "site-sistema/Home/icone-seta.svg",
-                                        onTap: () {
-                                          Logar(emailController.text,
-                                              passwordController.text);
-                                        },
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    SizedBox(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.01),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Row(
+                                  ),
+                                  const SizedBox(height: 5),
+                                  MyPasswordTextField(
+                                    obscureText: true,
+                                    controller: passwordController,
+                                    hintText: 'Senha',
+                                  ),
+                                  const SizedBox(height: 10),
+                                  MyButtonAgree(
+                                    text: "Entrar",
+                                    image: "site-sistema/Home/icone-seta.svg",
+                                    onTap: () {
+                                      Logar(emailController.text,
+                                          passwordController.text);
+                                    },
+                                  ),
+                                  // ),
+                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.01),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        const Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             // ignore: prefer_const_literals_to_create_immutables
                                             children: [
-                                              const Text('Esqueçeu sua senha? ',
+                                              Text('Esqueçeu sua senha? ',
                                                   style: TextStyle(
                                                       color: Color.fromARGB(
                                                           255, 29, 118, 94),
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      fontSize: 20),
+                                                      fontSize: 14),
                                                   textAlign: TextAlign.center),
-                                              const Text(
+                                              Text(
                                                 '/ ',
                                                 style: TextStyle(
                                                     color: Colors.black,
-                                                    fontSize: 20),
+                                                    fontSize: 14),
                                                 textAlign: TextAlign.center,
                                               ),
-                                              const Text(
+                                              Text(
                                                 'Não tem conta?',
                                                 style: TextStyle(
                                                     color: Colors.black,
-                                                    fontSize: 20),
+                                                    fontSize: 14),
                                                 textAlign: TextAlign.center,
                                               ),
-                                              const SizedBox(width: 4),
-                                              TextButton(
-                                                style: TextButton.styleFrom(
-                                                    textStyle: const TextStyle(
-                                                        fontSize: 20)),
-                                                onPressed: () {
-                                                  Navigator.pushNamed(
-                                                      context, '/register');
-                                                },
-                                                child: const Text(
-                                                  'Faça o cadastro',
-                                                  style: TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 29, 118, 94),
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20),
-                                                ),
+                                              SizedBox(width: 4),
+                                            ]),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          // ignore: prefer_const_literals_to_create_immutables
+                                          children: [
+                                            TextButton(
+                                              style: TextButton.styleFrom(
+                                                  textStyle: const TextStyle(
+                                                      fontSize: 14)),
+                                              onPressed: () {
+                                                Navigator.pushNamed(
+                                                    context, '/register');
+                                              },
+                                              child: const Text(
+                                                'Faça o cadastro',
+                                                style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 29, 118, 94),
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14),
                                               ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                    const Text(
-                                      'Ou',
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 20),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    const SizedBox(height: 10),
-                                    const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          // facebook button
-                                          SquareTile(
-                                              imagePath:
-                                                  'site-sistema/Menu/botao-facebook.svg',
-                                              title: "Continue com Facebook"),
+                                  ),
+                                  const Text(
+                                    'Ou',
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 14),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  const SizedBox(height: 10),
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        // facebook button
+                                        SquareTile(
+                                            imagePath:
+                                                'site-sistema/Menu/botao-facebook.svg',
+                                            title: "Continue com Facebook"),
 
-                                          SizedBox(height: 15),
+                                        SizedBox(height: 10),
 
-                                          SquareTile(
-                                            imagePath: 'site-sistema/',
-                                            title: "Continue com Google",
-                                          ),
-                                        ],
-                                      ),
+                                        SquareTile(
+                                          imagePath: 'site-sistema/',
+                                          title: "Continue com Google",
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              ],
+                                  ),
+                                ],
+                              ),
+                              // ],
+                              // ),
                             ),
                           ),
                         ),
