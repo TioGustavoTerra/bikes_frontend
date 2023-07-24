@@ -1,3 +1,4 @@
+import 'package:bikes_frontend/componentes/breakpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -24,12 +25,12 @@ class TopSection extends StatelessWidget {
                   child: SizedBox(
                     height: 270,
                     child: Container(
-                      color: const Color.fromRGBO(9, 149, 85, 100),
+                      color: const Color.fromARGB(150, 9, 188, 138),
                       child: const Center(
                         child: Text(
                           'Quem Somos',
                           style: TextStyle(
-                            fontSize: 40,
+                            fontSize: 48,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -42,7 +43,69 @@ class TopSection extends StatelessWidget {
             ),
           );
         }
-        return Container();
+        if(maxWidth >= mobileBreakPoint) {
+            return AspectRatio(
+              aspectRatio: 3.2,
+              child: Stack(
+                children: [
+                  Image.network(
+                    'assets/site-sistema/Quem-somos/topo-quem-somos.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: SizedBox(
+                      height: 230,
+                      child: Container(
+                        color: const Color.fromARGB(150, 9, 188, 138),
+                        child: const Center(
+                          child: Text(
+                            'Quem Somos',
+                            style: TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+        }
+
+      return AspectRatio(
+          aspectRatio: 3.2,
+          child: Stack(
+            children: [
+              Image.network(
+                'assets/site-sistema/Quem-somos/topo-quem-somos.jpg',
+                fit: BoxFit.cover,
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: SizedBox(
+                  height: 144,
+                  child: Container(
+                    color: const Color.fromARGB(150, 9, 188, 138),
+                    child: const Center(
+                      child: Text(
+                        'Quem Somos',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
       },
     );
   }
