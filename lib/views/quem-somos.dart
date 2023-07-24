@@ -21,16 +21,10 @@ class QuemSomos extends StatelessWidget {
                     child: Cabecalho(),
                     preferredSize: Size(double.infinity, 72)),
 
-          drawer: constraints.maxWidth <= 1300
+          drawer: constraints.maxWidth <= 900
               ? const Drawer(
               child: Column(
               children: [
-                // ListTile(
-                //   title: Text("teste"),
-                //   onTap: ()=>{
-                //     Na
-                //   },
-                // ),
                 ListTile(
                   title: Text("teste"),
                 ),
