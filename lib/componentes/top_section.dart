@@ -1,4 +1,4 @@
-import 'package:bikes_frontend/componentes/breakpoints.dart';
+import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,7 +11,7 @@ class TopSection extends StatelessWidget {
       builder: (context, constraints) {
         final maxWidth = constraints.maxWidth;
 
-        if (maxWidth >= 1200) {
+        if (Responsive.isDesktop(context)) {
           return AspectRatio(
             aspectRatio: 3.2,
             child: Stack(
@@ -43,7 +43,7 @@ class TopSection extends StatelessWidget {
             ),
           );
         }
-        if(maxWidth >= mobileBreakPoint) {
+        if(Responsive.isMobile(context)) {
             return AspectRatio(
               aspectRatio: 3.2,
               child: Stack(

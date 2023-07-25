@@ -2,7 +2,7 @@ import 'package:bikes_frontend/componentes/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../views/registration_screen.dart';
+import '../features/register/registration_screen.dart';
 import 'button.dart';
 
 class RodapeWeb extends StatelessWidget {
