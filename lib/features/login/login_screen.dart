@@ -274,7 +274,7 @@ class _LoginPageState extends State<LoginPage> {
           _showToastErro(context, 'Ops, algo deu errado!');
         } else {
           _showToastInfo(context, 'Login realizado com Sucesso!');
-          Navigator.pushNamed(context, "/home");
+          Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
         }
       } else {
         _showToastErro(context, 'Favor preencher todos os campos!');
