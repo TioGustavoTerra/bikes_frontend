@@ -223,7 +223,7 @@ class _SignupState extends State<Signup> {
                                           textStyle:
                                               const TextStyle(fontSize: 0)),
                                       onPressed: () {
-                                        Navigator.pushNamed(context, '/login');
+                                        Navigator.pushNamed(context, '/home');
                                       },
                                       child: const Text(
                                         'Já tem conta?',

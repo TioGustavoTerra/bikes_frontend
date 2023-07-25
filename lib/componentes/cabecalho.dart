@@ -17,11 +17,11 @@ class Cabecalho extends StatelessWidget {
             builder: (context, constraints) {
               print(
                   'biggest ${constraints.biggest} smallest${constraints.smallest}');
-
               return Container(
                 height: 400,
                 width: 100,
               );
+
             },
           ),
         ),
@@ -93,22 +93,23 @@ class Cabecalho extends StatelessWidget {
             ),
           ),
         ),
+
         CabecalhoResponsiveContent(),
-        const SizedBox(width: 10),
-        TextButton(
-          style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-          onPressed: () {
-            Navigator.pushNamed(context, '/login');
-          },
-          child: const Text(
-            '| Entrar',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-            ),
-          ),
-        ),
+
+        // TextButton(
+        //   style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
+        //   onPressed: () {
+        //     Navigator.pushNamed(context, '/login');
+        //   },
+        //   child: const Text(
+        //     '| Entrar',
+        //     style: TextStyle(
+        //       color: Colors.black,
+        //       fontWeight: FontWeight.bold,
+        //       fontSize: 15,
+        //     ),
+        //   ),
+        // ),
         Expanded(
           child: LayoutBuilder(
             builder: (context, constraints) {

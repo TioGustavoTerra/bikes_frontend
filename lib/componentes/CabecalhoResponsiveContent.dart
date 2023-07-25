@@ -14,6 +14,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
 
           return Row(
             children: [
+              if(constraints.maxWidth >= 150)
               Expanded(
                   child: Container(
                 height: 45,
@@ -37,7 +38,10 @@ class CabecalhoResponsiveContent extends StatelessWidget {
                   ],
                 ),
               )),
-              if(constraints.maxWidth >= 400)
+
+
+              if(constraints.maxWidth >= 300)
+
                 TextButton(
                   style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
                   onPressed: () {
@@ -49,7 +53,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
                     height: 40,
                   ),
                 ),
-              if(constraints.maxWidth >= 500)
+              if(constraints.maxWidth >= 300)
               TextButton(
                 style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
                 onPressed: () {
@@ -61,7 +65,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
                   height: 40,
                 ),
               ),
-              if(constraints.maxWidth >= 600)
+              if(constraints.maxWidth >= 300)
               TextButton(
                 style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
                 onPressed: () {
