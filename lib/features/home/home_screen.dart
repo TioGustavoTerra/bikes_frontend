@@ -1,13 +1,13 @@
-import 'package:bikes_frontend/componentes/breakpoints.dart';
 import 'package:bikes_frontend/componentes/cabecalho.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
+import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
-import '../componentes/rodapeApp.dart';
+import '../../componentes/rodapeApp.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
-            appBar: constraints.maxWidth < mobileBreakPoint
+            appBar: Responsive.isMobile(context)
                 ? PreferredSize(
                     child: CabecalhoApp(),
                     preferredSize: const Size(double.infinity, 56),
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                 : const PreferredSize(
                     child: Cabecalho(),
                     preferredSize: Size(double.infinity, 72)),
-            drawer: constraints.maxWidth < mobileBreakPoint
+            drawer: Responsive.isMobile(context)
                 ? const Drawer(
                     child: Column(
                       children: [

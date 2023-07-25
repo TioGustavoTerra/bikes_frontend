@@ -9,11 +9,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../componentes/button.dart';
-import '../componentes/rodape.dart';
-import '../componentes/square_title.dart';
-import '../componentes/textfield.dart';
-import 'home_screen.dart';
+import '../../componentes/button.dart';
+import '../../componentes/rodape.dart';
+import '../../componentes/square_title.dart';
+import '../../componentes/textfield.dart';
+import '../home/home_screen.dart';
 
 class LoginPage extends StatefulWidget {
   @override

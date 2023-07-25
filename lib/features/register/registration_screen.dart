@@ -6,14 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../componentes/button.dart';
-import '../componentes/messages.dart';
-import '../componentes/textfield.dart';
-import '../models/register_user.dart';
-import '../services/registerUser_service.dart';
+import '../../componentes/button.dart';
+import '../../componentes/messages.dart';
+import '../../componentes/textfield.dart';
+import '../../models/register_user.dart';
+import '../../services/registerUser_service.dart';
 
 class Signup extends StatefulWidget {
-  const Signup({Key? key}) : super(key: key);
+   Signup({Key? key}) : super(key: key);
 
   @override
   _SignupState createState() => _SignupState();
