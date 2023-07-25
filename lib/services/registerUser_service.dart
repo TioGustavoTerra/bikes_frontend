@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:bikes_frontend/models/failure_model.dart';
 import 'package:dio/dio.dart';
 
 import '../models/register_user.dart';
@@ -11,7 +14,7 @@ class RegisterUserService {
       dio.options.connectTimeout = const Duration(seconds: 30);
       dio.options.receiveTimeout = const Duration(seconds: 30);
       dio.options.headers["Content-Type"] = 'application/json';
-      
+
       var res = await dio.post(postsURL, data: usuario.toJson());
 
       if (res.statusCode == 200) {
@@ -23,7 +26,14 @@ class RegisterUserService {
         // throw "Unable to retrieve posts.";
       }
     } on DioError catch (err) {
-      throw 'Erro ao realizar o cadastro ${err.response?.data} Código: ${err.response?.statusCode}';
+
+      String erros = '';
+      for (var element in err.response?.data) {
+        Failure fail = Failure.fromJson(element);
+        erros += '${fail.message}, ';
+      }
+
+      throw ' ${erros} Código: ${err.response?.statusCode}';
     }
   }
 }
