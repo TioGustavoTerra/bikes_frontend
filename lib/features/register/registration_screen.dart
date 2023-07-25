@@ -297,6 +297,7 @@ class _SignupState extends State<Signup> {
         _showToastErro(context, 'Favor preencher todos os campos!');
       }
     } catch (e) {
+      print (e);
       _showToastErro(context, 'Ops, algo deu errado! ${e}');
     }
   }

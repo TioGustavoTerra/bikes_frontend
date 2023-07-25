@@ -10,14 +10,19 @@ class Messages {
   }
 
   void _showMessage(String message, Color color) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: color,
-      ),
-    );
+    ScaffoldMessenger.of(context).showMaterialBanner(
+        // SnackBar(
+        //   content: Text(message),
+        //   backgroundColor: color,
+        // ),
+        MaterialBanner(
+       backgroundColor: color,
+      content: Text(message),
+      actions: [ElevatedButton(onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(), child: Text("X"))],
+    ));
   }
 
   void showError(String message) => _showMessage(message, Colors.red);
-  void showInfo(String message) => _showMessage(message, Theme.of(context).primaryColor);
+  void showInfo(String message) =>
+      _showMessage(message, Theme.of(context).primaryColor);
 }
