@@ -153,7 +153,7 @@ class _SignupState extends State<Signup> {
                                           FilteringTextInputFormatter
                                               .digitsOnly,
                                           TelefoneInputFormatter(),
-                                        ],
+                                        ], 
                                       ),
                                     ),
                                     const SizedBox(height: 10),
@@ -188,18 +188,23 @@ class _SignupState extends State<Signup> {
                                       ),
                                     ),
                                     const SizedBox(height: 5),
+
                                     MyPasswordTextField(
                                       obscureText: true,
                                       controller: passwordController,
                                       hintText: 'senha',
+                                      
                                     ),
+
                                     const SizedBox(height: 10),
                                     const SizedBox(height: 5),
+
                                     MyPasswordTextField(
                                       obscureText: true,
                                       controller: confirmPasswordController,
                                       hintText: 'Confirmar senha',
                                     ),
+                                    
                                     const SizedBox(
                                       height: 10,
                                     ),

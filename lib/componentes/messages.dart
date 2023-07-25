@@ -17,7 +17,7 @@ class Messages {
         // ),
         MaterialBanner(
        backgroundColor: color,
-      content: Text(message),
+      content: Text(message, style: TextStyle(color: Colors.white),),
       actions: [ElevatedButton(onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(), child: Text("X"))],
     ));
   }
