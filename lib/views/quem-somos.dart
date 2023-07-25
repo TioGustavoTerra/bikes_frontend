@@ -1,6 +1,6 @@
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
 import 'package:flutter/material.dart';
-import '../componentes/breakpoints.dart';
+import '../utils/breakpoints.dart';
 import '../componentes/cabecalho.dart';
 import '../componentes/top_section.dart';
 

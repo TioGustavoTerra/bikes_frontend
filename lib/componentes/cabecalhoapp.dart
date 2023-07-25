@@ -1,8 +1,9 @@
-import 'package:bikes_frontend/componentes/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CabecalhoApp extends StatelessWidget {
+  const CabecalhoApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AppBar(

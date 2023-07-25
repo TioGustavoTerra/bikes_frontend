@@ -1,4 +1,4 @@
-import 'package:bikes_frontend/componentes/breakpoints.dart';
+import 'package:bikes_frontend/utils/breakpoints.dart';
 import 'package:bikes_frontend/componentes/cabecalho.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:flutter_session_manager/flutter_session_manager.dart';
 import '../componentes/rodapeApp.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();

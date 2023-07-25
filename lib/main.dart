@@ -23,13 +23,8 @@ class MyApp extends StatelessWidget {
         '/about': (context) => QuemSomos(),
         '/login': (context) => LoginPage(),
         '/register': (context) => Signup(),
-        '/home': (context) => HomePage(),
+        '/home': (context) =>  HomePage(),
       },
-
-      // home: LoginPage(),
-      // home: Signup(),
-      //home: WelcomePage(),
-
     );
   }
 }

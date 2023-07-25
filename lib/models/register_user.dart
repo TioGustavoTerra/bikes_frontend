@@ -31,7 +31,7 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> user = Map<String, dynamic>();
+    final Map<String, dynamic> user = <String, dynamic>{};
     user["name"] = name;
     user["cpfCnpj"] = cpfCnpj;
     user["birthDate"] = birthDate;
