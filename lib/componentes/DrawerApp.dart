@@ -7,9 +7,7 @@ class DrawerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      drawer: NavigationDrawer(),
-    );
+    return NavigationDrawer();
   }
 }
 
@@ -17,14 +15,14 @@ class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const Drawer(
+  Widget build(BuildContext context) => Drawer(
     child: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget> [
+        children:[
 
-          // buildHeader(context),
-          // buildMenuItems(context),
+          buildHeader(context),
+          buildMenuItems(context),
 
         ],
       ),
@@ -67,7 +65,7 @@ class NavigationDrawer extends StatelessWidget {
       runSpacing: 16,
       children: [
         ListTile(
-            leading: const Icon(Icons.home_mini_outlined),
+            leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () =>
                 Navigator.of(context).pushReplacement(MaterialPageRoute(

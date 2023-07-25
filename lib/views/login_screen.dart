@@ -215,27 +215,35 @@ class _LoginPageState extends State<LoginPage> {
                                     textAlign: TextAlign.center,
                                   ),
                                   const SizedBox(height: 10),
-                                  const Padding(
+                                   Padding(
                                     padding: EdgeInsets.all(8.0),
+
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        // facebook button
-                                        SquareTile(
-                                            imagePath:
-                                                'site-sistema/Menu/botao-facebook.svg',
-                                            title: "Continue com Facebook"),
+
+                                        InkWell(
+                                          onTap: () { print("Olá "); },
+                                          child: SquareTile(
+                                              imagePath:
+                                                  'site-sistema/Menu/botao-facebook.svg',
+                                              title: "Continue com Facebook"),
+                                        ),
 
                                         SizedBox(height: 10),
 
-                                        SquareTile(
-                                          imagePath: 'site-sistema/',
-                                          title: "Continue com Google",
+                                        InkWell(
+                                          onTap: () { print("Olá2"); },
+                                          child: SquareTile(
+                                            imagePath: 'site-sistema/',
+                                            title: "Continue com Google",
+                                          ),
                                         ),
                                       ],
                                     ),
+
                                   ),
                                 ],
                               ),
