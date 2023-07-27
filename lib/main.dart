@@ -3,6 +3,7 @@ import 'package:bikes_frontend/features/about/quem-somos.dart';
 import 'package:bikes_frontend/features/register/registration_screen.dart';
 import 'package:bikes_frontend/features/login/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'features/perfil/perfil_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
+        '/perfil': (context) => PerfilScreen(),
         '/about': (context) => QuemSomos(),
         '/login': (context) => LoginPage(),
         '/register': (context) => Signup(),

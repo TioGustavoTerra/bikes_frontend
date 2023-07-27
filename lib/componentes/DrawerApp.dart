@@ -1,3 +1,4 @@
+import 'package:bikes_frontend/features/perfil/perfil_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../features/home/home_screen.dart';
@@ -24,11 +25,7 @@ class NavigationDrawer extends StatelessWidget {
                 color: Colors.green.shade700,
                 child: InkWell(
                   onTap: () {
-                    Navigator.pop(context);
-
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => HomePage(),
-                    ));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => PerfilScreen()));
                   },
                   child: Container(
                     padding: EdgeInsets.only(

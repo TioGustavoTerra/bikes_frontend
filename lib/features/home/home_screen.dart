@@ -4,6 +4,7 @@ import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
+import '../../componentes/DrawerApp.dart';
 import '../../componentes/rodapeApp.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,25 +35,9 @@ class _HomePageState extends State<HomePage> {
                     child: Cabecalho(),
                     preferredSize: Size(double.infinity, 72)),
             drawer: Responsive.isMobile(context)
-                ? const Drawer(
-                    child: Column(
-                      children: [
-                        // ListTile(
-                        //   title: Text("teste"),
-                        //   onTap: ()=>{
-                        //     Na
-                        //   },
-                        // ),
-                        ListTile(
-                          title: Text("teste"),
-                        ),
-                        ListTile(
-                          title: Text("teste"),
-                        )
-                      ],
-                    ),
-                  )
+                ? const Drawer(child: DrawerApp())
                 : null,
+                
             body: Align(
               alignment: Alignment.bottomCenter,
               child: ConstrainedBox(

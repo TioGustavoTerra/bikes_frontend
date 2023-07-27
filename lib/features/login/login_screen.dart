@@ -269,6 +269,11 @@ class _LoginPageState extends State<LoginPage> {
     try {
       if (_formKey.currentState!.validate()) {
         String? token = await _loginService.logar(email, senha);
+      // Map<String, dynamic> data = await _loginService.logar(email, senha);
+
+      //   final SharedPreferences prefs = await SharedPreferences.getInstance();
+      //   await prefs.setString('nome', data['nome']);
+      //   await prefs.getString('nome');
 
         if (token!.isEmpty) {
           _showToastErro(context, 'Ops, algo deu errado!');
