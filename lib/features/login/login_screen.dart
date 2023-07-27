@@ -218,7 +218,7 @@ class _LoginPageState extends State<LoginPage> {
                                    Padding(
                                     padding: EdgeInsets.all(8.0),
 
-                                    child: Column(
+                                    child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -226,19 +226,19 @@ class _LoginPageState extends State<LoginPage> {
 
                                         InkWell(
                                           onTap: () { print("Olá "); },
-                                          child: SquareTile(
+                                          child: const SquareTile(
                                               imagePath:
-                                                  'site-sistema/Menu/botao-facebook.svg',
-                                              title: "Continue com Facebook"),
+                                                  'assets/site-sistema/Cadastro/faceimg.png',
+                                              title: ""),
                                         ),
 
-                                        SizedBox(height: 10),
+                                       const SizedBox(height: 10),
 
                                         InkWell(
                                           onTap: () { print("Olá2"); },
-                                          child: SquareTile(
-                                            imagePath: 'site-sistema/',
-                                            title: "Continue com Google",
+                                          child: const SquareTile(
+                                            imagePath: 'assets/site-sistema/Cadastro/googleimg.png',
+                                            title: "",
                                           ),
                                         ),
                                       ],
