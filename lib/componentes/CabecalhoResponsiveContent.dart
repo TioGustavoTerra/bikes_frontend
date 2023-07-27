@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:bikes_frontend/features/perfil/perfil_screen.dart';
 
 class CabecalhoResponsiveContent extends StatelessWidget {
   const CabecalhoResponsiveContent({Key? key}) : super(key: key);
@@ -69,7 +70,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
               TextButton(
                 style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/home');
+                  Navigator.pushNamed(context, '/perfil');
                 },
                 child: SvgPicture.asset(
                   'site-sistema/Menu/botao-entrar.svg',

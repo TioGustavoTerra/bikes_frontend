@@ -79,6 +79,11 @@ class NavigationDrawer extends StatelessWidget {
                       title: const Text('Favoritos'),
                       onTap: () {},
                     ),
+                    ListTile(
+                      leading: const Icon(Icons.logout),
+                      title: const Text('Sair'),
+                      onTap: () {},
+                    )
                   ],
                 ),
               )

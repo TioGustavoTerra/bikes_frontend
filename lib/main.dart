@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
-        '/perfil': (context) => PerfilScreen(),
+        '/perfil': (context) => const PerfilScreen(),
         '/about': (context) => QuemSomos(),
         '/login': (context) => LoginPage(),
         '/register': (context) => Signup(),

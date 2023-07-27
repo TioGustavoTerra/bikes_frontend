@@ -10,6 +10,7 @@ class Cabecalho extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       toolbarHeight: 100,
       title: Row(children: [
         Expanded(
