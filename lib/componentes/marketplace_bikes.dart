@@ -1,3 +1,4 @@
+import 'package:bikes_frontend/componentes/top_section.dart';
 import 'package:flutter/material.dart';
 
 class MarketplaceBikes extends StatelessWidget {
@@ -5,6 +6,16 @@ class MarketplaceBikes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Align(
+        alignment: Alignment.topCenter,
+        child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1300),
+            child: ListView(
+              children: const [
+                TopSection(),
+              ],
+            ),
+           )
+         );
   }
 }

@@ -16,21 +16,19 @@ class TopSection extends StatelessWidget {
             aspectRatio: 3.2,
             child: Stack(
               children: [
-                Image.network(
-                  'assets/site-sistema/Quem-somos/topo-quem-somos.jpg',
+                Image.asset(
+                  'site-sistema/Home/foto-hero-topo.jpg',
                   fit: BoxFit.cover,
                 ),
-                Align(
+               const Align(
                   alignment: Alignment.topCenter,
                   child: SizedBox(
                     height: 270,
-                    child: Container(
-                      color: const Color.fromARGB(150, 9, 188, 138),
-                      child: const Center(
+                      child:  Center(
                         child: Text(
-                          'Quem Somos',
+                          'Seu principal marketplace de bikes',
                           style: TextStyle(
-                            fontSize: 48,
+                            fontSize: 40,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -38,29 +36,27 @@ class TopSection extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          );
-        }
-        if(Responsive.isMobile(context)) {
+                ],
+              ),
+            );
+          }
+
+        if(Responsive.isTablet(context)) {
             return AspectRatio(
               aspectRatio: 3.2,
               child: Stack(
                 children: [
-                  Image.network(
-                    'assets/site-sistema/Quem-somos/topo-quem-somos.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                  Align(
+                   Image.asset(
+                  'site-sistema/Home/foto-hero-topo.jpg',
+                  fit: BoxFit.cover,
+                ),
+                 const Align(
                     alignment: Alignment.topCenter,
                     child: SizedBox(
                       height: 230,
-                      child: Container(
-                        color: const Color.fromARGB(150, 9, 188, 138),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            'Quem Somos',
+                            'Seu principal marketplace de bikes',
                             style: TextStyle(
                               fontSize: 32,
                               fontWeight: FontWeight.bold,
@@ -70,29 +66,26 @@ class TopSection extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            );
-        }
+                  ],
+                ),
+              );
+            }
 
       return AspectRatio(
           aspectRatio: 3.2,
           child: Stack(
             children: [
-              Image.network(
-                'assets/site-sistema/Quem-somos/topo-quem-somos.jpg',
-                fit: BoxFit.cover,
-              ),
-              Align(
+               Image.asset(
+                  'site-sistema/Home/foto-hero-topo.jpg',
+                  fit: BoxFit.cover,
+                ),
+             const Align(
                 alignment: Alignment.topCenter,
                 child: SizedBox(
                   height: 144,
-                  child: Container(
-                    color: const Color.fromARGB(150, 9, 188, 138),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        'Quem Somos',
+                        'Seu principal marketplace de bikes',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -102,11 +95,10 @@ class TopSection extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
+              ],
+            ),
+          );
+        },
+      );
+    }
   }
-}
