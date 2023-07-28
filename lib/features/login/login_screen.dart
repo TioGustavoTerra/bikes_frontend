@@ -228,7 +228,7 @@ class _LoginPageState extends State<LoginPage> {
                                           onTap: () { print("Olá "); },
                                           child: const SquareTile(
                                               imagePath:
-                                                  'assets/site-sistema/Cadastro/faceimg.png',
+                                                  'site-sistema/cadastro/botao-facebook.svg',
                                               title: ""),
                                         ),
 
@@ -237,7 +237,7 @@ class _LoginPageState extends State<LoginPage> {
                                         InkWell(
                                           onTap: () { print("Olá2"); },
                                           child: const SquareTile(
-                                            imagePath: 'assets/site-sistema/Cadastro/googleimg.png',
+                                            imagePath: 'site-sistema/cadastro/botao-facebook.svg',
                                             title: "",
                                           ),
                                         ),
