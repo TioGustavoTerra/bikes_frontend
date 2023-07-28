@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // TODO: implement initState
-    _requestUser();
+    //_requestUser();
   }
 
   @override
@@ -26,9 +26,9 @@ class _HomePageState extends State<HomePage> {
       builder: (context, constraints) {
         return Scaffold(
             appBar: Responsive.isMobile(context)
-                ? PreferredSize(
+                ? const PreferredSize(
                     child: CabecalhoApp(),
-                    preferredSize: const Size(double.infinity, 56),
+                    preferredSize: Size(double.infinity, 56),
                   )
                 : const PreferredSize(
                     child: Cabecalho(),
@@ -36,12 +36,34 @@ class _HomePageState extends State<HomePage> {
             drawer: Responsive.isMobile(context)
                 ? const Drawer(child: DrawerApp())
                 : null,
-                
             body: Align(
-              alignment: Alignment.bottomCenter,
+              alignment: Alignment.center,
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 1400),
-                child: ListView(),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                          width: 600,
+                          height: 400,
+                          child:
+                              Column(children: [ColorOptions(), TextField()])),
+                      SizedBox(
+                          width: 80,
+                          height: 80,
+                          child: IconButton.filled(
+                              style: ButtonStyle(
+                                  minimumSize: MaterialStateProperty.all(
+                                      const Size(80, 80)),
+                                  shape: MaterialStateProperty.all(
+                                    const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.zero,
+                                    ),
+                                  )),
+                              onPressed: () {},
+                              icon: const Icon(Icons.search)))
+                    ]),
               ),
             ));
       },
@@ -57,5 +79,49 @@ class _HomePageState extends State<HomePage> {
       });
     }
     //nomeUsuario = user['nome_usuario'];
+  }
+}
+
+enum Color { red, green }
+
+class ColorOptions extends StatefulWidget {
+  const ColorOptions({super.key});
+
+  @override
+  State<ColorOptions> createState() => _ColorOptionsState();
+}
+
+class _ColorOptionsState extends State<ColorOptions> {
+  Color _selectedColor = Color.red;
+
+  @override
+  Widget build(BuildContext context) {
+    return SegmentedButton<Color>(
+      style: ButtonStyle(
+          minimumSize: MaterialStateProperty.all(const Size(600, 400)),
+          shape: MaterialStateProperty.all(
+            const RoundedRectangleBorder(
+              borderRadius: BorderRadius.zero,
+            ),
+          )),
+      selected: <Color>{_selectedColor},
+      showSelectedIcon: false,
+      onSelectionChanged: (Set<Color> newSelection) {
+        setState(() {
+          _selectedColor = newSelection.first;
+        });
+      },
+      segments: const <ButtonSegment<Color>>[
+        ButtonSegment<Color>(
+          value: Color.red,
+          label: Text('Bikes'),
+        ),
+        ButtonSegment<Color>(
+          value: Color.green,
+          label: Text('Peças e Acessórios'),
+        ),
+      ],
+      // style: buttonStyle,
+    );
   }
 }
