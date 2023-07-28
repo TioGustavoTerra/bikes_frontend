@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import '../../componentes/DrawerApp.dart';
-import '../../componentes/rodapeApp.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
