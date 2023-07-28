@@ -1,5 +1,6 @@
 import 'package:bikes_frontend/componentes/cabecalho.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
+import 'package:bikes_frontend/componentes/marketplace_bikes.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
@@ -27,12 +28,13 @@ class _HomePageState extends State<HomePage> {
         return Scaffold(
             appBar: Responsive.isMobile(context)
                 ? const PreferredSize(
-                    child: CabecalhoApp(),
                     preferredSize: Size(double.infinity, 56),
+                    child: CabecalhoApp(),
                   )
                 : const PreferredSize(
+                    preferredSize: Size(double.infinity, 72),
                     child: Cabecalho(),
-                    preferredSize: Size(double.infinity, 72)),
+                    ),
             drawer: Responsive.isMobile(context)
                 ? const Drawer(child: DrawerApp())
                 : null,
