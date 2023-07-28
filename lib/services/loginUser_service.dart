@@ -1,8 +1,6 @@
-import 'package:bikes_frontend/models/failure_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
-// import '../models/Login_user.dart';
 
 class LoginUserService {
   final String postsURL = "http://localhost:1337/api/sessions";
@@ -37,15 +35,7 @@ class LoginUserService {
         // throw "Unable to retrieve posts.";
       }
     } on DioError catch (err) {
-      
-      String erros = '';
-      for (var element in err.response?.data) {
-        Failure fail = Failure.fromJson(element);
-        erros += '${fail.message}, ';
-      }
-
-
-      throw 'Erro ao realizar o login ${erros} Código: ${err.response?.statusCode}';
+      throw 'Erro ao realizar o login ${err.response?.data} Código: ${err.response?.statusCode}';
     }
   }
 }

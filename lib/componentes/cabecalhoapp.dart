@@ -7,7 +7,6 @@ class CabecalhoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-     automaticallyImplyLeading: false,
       title: TextButton(
         style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
         onPressed: () {

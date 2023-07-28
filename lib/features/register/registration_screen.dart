@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:bikes_frontend/componentes/cpfTextField.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/cupertino.dart';
@@ -112,7 +113,7 @@ class _SignupState extends State<Signup> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: MyTextField(
+                                      child: CpfTextField(
                                         hintText: 'CPF',
                                         controller: cpfController,
                                         obscureText: false,
