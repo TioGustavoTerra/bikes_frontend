@@ -20,30 +20,31 @@ class _MarketplaceBikesState extends State<MarketplaceBikes> {
             children: [
               TopSection(),
               Positioned(
-                height: -500,
+                  height: -500,
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
-                        height: 400,
-                        child: Column(children: [ColorOptions(), TextField()])),
-                    SizedBox(
-                        width: 80,
-                        height: 80,
-                        child: IconButton.filled(
-                            style: ButtonStyle(
-                                minimumSize: MaterialStateProperty.all(
-                                    const Size(80, 80)),
-                                shape: MaterialStateProperty.all(
-                                  const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.zero,
-                                  ),
-                                )),
-                            onPressed: () {},
-                            icon: const Icon(Icons.search)))
-                  ]))
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 2,
+                            height: 400,
+                            child: Column(
+                                children: [ColorOptions(), TextField()])),
+                        SizedBox(
+                            width: 80,
+                            height: 80,
+                            child: IconButton.filled(
+                                style: ButtonStyle(
+                                    minimumSize: MaterialStateProperty.all(
+                                        const Size(80, 80)),
+                                    shape: MaterialStateProperty.all(
+                                      const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.zero,
+                                      ),
+                                    )),
+                                onPressed: () {},
+                                icon: const Icon(Icons.search)))
+                      ]))
             ],
           ),
         ));

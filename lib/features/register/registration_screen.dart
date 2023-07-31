@@ -117,6 +117,7 @@ class _SignupState extends State<Signup> {
                                         hintText: 'CPF',
                                         controller: cpfController,
                                         obscureText: false,
+                                        readOnly: false,
                                         inputFormatter: [
                                           FilteringTextInputFormatter
                                               .digitsOnly,
@@ -193,7 +194,7 @@ class _SignupState extends State<Signup> {
                                     MyPasswordTextField(
                                       obscureText: true,
                                       controller: passwordController,
-                                      hintText: 'senha',
+                                      hintText: 'Senha',
                                       
                                     ),
 
@@ -258,15 +259,6 @@ class _SignupState extends State<Signup> {
         ),
       ),
     );
-  }
-
-  // sign user in method
-  void signUserIn() {
-    if (_formKey.currentState!.validate()) {
-      print('valid');
-    } else {
-      print('not valid');
-    }
   }
 
   Future<void> registrar(

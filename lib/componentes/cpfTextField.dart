@@ -6,6 +6,7 @@ class CpfTextField extends StatelessWidget {
   final controller;
   final String hintText;
   final bool obscureText;
+  final bool readOnly;
   final List<TextInputFormatter> inputFormatter;
 
   const CpfTextField({
@@ -14,6 +15,7 @@ class CpfTextField extends StatelessWidget {
     required this.hintText,
     required this.obscureText,
     required this.inputFormatter,
+    required this.readOnly
   });
 
   @override
@@ -30,6 +32,7 @@ class CpfTextField extends StatelessWidget {
       },
       controller: controller,
       obscureText: obscureText,
+      readOnly: readOnly,
       decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
