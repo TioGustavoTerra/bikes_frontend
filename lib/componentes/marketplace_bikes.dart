@@ -1,3 +1,4 @@
+import 'package:bikes_frontend/componentes/grid_marcas.dart';
 import 'package:bikes_frontend/componentes/top_section.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class _MarketplaceBikesState extends State<MarketplaceBikes> {
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
           constraints:
-              BoxConstraints(maxWidth: MediaQuery.of(context).size.width),
+              BoxConstraints(maxHeight: MediaQuery.of(context).size.height/2 , maxWidth: MediaQuery.of(context).size.width/2),
           child: ListView(
             children: [
               TopSection(),
@@ -26,7 +27,7 @@ class _MarketplaceBikesState extends State<MarketplaceBikes> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                     SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
+                        width: MediaQuery.of(context).size.width / 4,
                         height: 400,
                         child: Column(children: [ColorOptions(), TextField()])),
                     SizedBox(
@@ -43,8 +44,10 @@ class _MarketplaceBikesState extends State<MarketplaceBikes> {
                                 )),
                             onPressed: () {},
                             icon: const Icon(Icons.search)))
-                  ]))
+                  ])),
+                  const GridMarcas()
             ],
+
           ),
         ));
   }

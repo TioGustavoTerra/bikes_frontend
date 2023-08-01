@@ -1,3 +1,4 @@
+import 'package:bikes_frontend/features/Teste/teste.dart';
 import 'package:bikes_frontend/features/home/home_screen.dart';
 import 'package:bikes_frontend/features/about/quem-somos.dart';
 import 'package:bikes_frontend/features/register/registration_screen.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
+        '/teste':(context) => const Test(),
         '/perfil': (context) => const PerfilScreen(),
         '/about': (context) => QuemSomos(),
         '/login': (context) => LoginPage(),

@@ -38,7 +38,9 @@ class _HomePageState extends State<HomePage> {
             drawer: Responsive.isMobile(context)
                 ? const Drawer(child: DrawerApp())
                 : null,
-            body: const MarketplaceBikes());
+            body: const MarketplaceBikes(),
+            
+        );
       },
     );
   }
