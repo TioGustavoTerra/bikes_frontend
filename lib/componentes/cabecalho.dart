@@ -5,7 +5,7 @@ import 'CabecalhoResponsiveContent.dart';
 class Cabecalho extends StatelessWidget {
   const Cabecalho({Key? key}) : super(key: key);
 
- final searchController = null;
+  final searchController = null;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,6 @@ class Cabecalho extends StatelessWidget {
                 height: 400,
                 width: 100,
               );
-
             },
           ),
         ),
@@ -40,7 +39,11 @@ class Cabecalho extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 20)),
           onPressed: () {
-            Navigator.pushNamed(context, '/about');
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              "/about",
+              ModalRoute.withName('/'),
+            );
           },
           child: const Text(
             'Sobre',

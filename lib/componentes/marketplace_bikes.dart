@@ -16,7 +16,7 @@ class _MarketplaceBikesState extends State<MarketplaceBikes> {
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
           constraints:
-              BoxConstraints(maxHeight: MediaQuery.of(context).size.height/2 , maxWidth: MediaQuery.of(context).size.width/2),
+              BoxConstraints(maxWidth: MediaQuery.of(context).size.width),
           child: ListView(
             children: [
               TopSection(),
@@ -27,7 +27,7 @@ class _MarketplaceBikesState extends State<MarketplaceBikes> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                     SizedBox(
-                        width: MediaQuery.of(context).size.width / 4,
+                        width: MediaQuery.of(context).size.width / 2,
                         height: 400,
                         child: Column(children: [ColorOptions(), TextField()])),
                     SizedBox(
@@ -44,55 +44,22 @@ class _MarketplaceBikesState extends State<MarketplaceBikes> {
                                 )),
                             onPressed: () {},
                             icon: const Icon(Icons.search)))
-                  ])),
-                  const GridMarcas()
+                  ]))
             ],
-
           ),
-        ));
-  }
-}
-
-enum Color { red, green }
-
-class ColorOptions extends StatefulWidget {
-  const ColorOptions({super.key});
-
-  @override
-  State<ColorOptions> createState() => _ColorOptionsState();
-}
-
-class _ColorOptionsState extends State<ColorOptions> {
-  Color _selectedColor = Color.red;
-
-  @override
-  Widget build(BuildContext context) {
-    return SegmentedButton<Color>(
-      style: ButtonStyle(
-          minimumSize: MaterialStateProperty.all(const Size(600, 400)),
-          shape: MaterialStateProperty.all(
-            const RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero,
-            ),
-          )),
-      selected: <Color>{_selectedColor},
-      showSelectedIcon: false,
-      onSelectionChanged: (Set<Color> newSelection) {
-        setState(() {
-          _selectedColor = newSelection.first;
-        });
-      },
-      segments: const <ButtonSegment<Color>>[
-        ButtonSegment<Color>(
-          value: Color.red,
-          label: Text('Bikes'),
-        ),
-        ButtonSegment<Color>(
-          value: Color.green,
-          label: Text('Peças e Acessórios'),
-        ),
-      ],
-      // style: buttonStyle,
-    );
+          Card(
+            color: Colors.blue[100],
+            child: Container(),
+          ),
+          Card(
+            color: Colors.blue[100],
+            child: Container(),
+          ),
+          Card(
+            color: Colors.blue[100],
+            child: Container(),
+          ),
+        ]
+    ]),);
   }
 }
