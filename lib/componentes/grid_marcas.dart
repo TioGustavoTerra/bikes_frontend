@@ -16,13 +16,14 @@ class _GridMarcasState extends State<GridMarcas> {
         body: Container(
             height: MediaQuery.of(context).size.height / 2,
             width: MediaQuery.of(context).size.width / 3,
-            child: SliverList(
-              delegate: SliverChildDelegate([ crossAxisCount: 3,
-                List.generate(6, (index) {
-                return const Card(
-                  color: Colors.blue,
-                );]),
+            // child: SliverList(
+            //   delegate: SliverChildDelegate([ crossAxisCount: 3,
+            //     List.generate(6, (index) {
+            //     return const Card(
+            //       color: Colors.blue,
+            //     );]),
              
-              )));
+            //   ))
+              ));
               }
 }
