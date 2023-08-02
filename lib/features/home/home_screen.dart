@@ -1,6 +1,8 @@
 import 'package:bikes_frontend/componentes/cabecalho.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
 import 'package:bikes_frontend/componentes/marketplace_bikes.dart';
+import 'package:bikes_frontend/componentes/pesquisa_bar_bikes.dart';
+import 'package:bikes_frontend/componentes/top_section.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
@@ -34,11 +36,38 @@ class _HomePageState extends State<HomePage> {
                 : const PreferredSize(
                     preferredSize: Size(double.infinity, 72),
                     child: Cabecalho(),
-                    ),
+                  ),
             drawer: Responsive.isMobile(context)
                 ? const Drawer(child: DrawerApp())
                 : null,
-            body: const MarketplaceBikes());
+            body: Align(
+                alignment: Alignment.topCenter,
+                child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width),
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: [
+                        Expanded(
+                            child: Column(children: [
+                          Stack(
+                            children: [
+                              const Positioned(child: TopSection()),
+                              Positioned(
+                                child: const PesquisaBarBikes(),
+                                left: MediaQuery.of(context).size.width / 4,
+                                top: 500
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 600,
+                            width: 600,
+                            child: MarketplaceBikes(),
+                          )
+                        ]))
+                      ],
+                    ))));
       },
     );
   }
