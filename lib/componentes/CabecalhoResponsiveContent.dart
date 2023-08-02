@@ -48,7 +48,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/home');
                   },
-                  child: SvgPicture.asset(
+                  child:SvgPicture.asset(
                     'site-sistema/Menu/botao-carrinho.svg',
                     width: 40,
                     height: 40,
