@@ -1,14 +1,13 @@
-import 'package:bikes_frontend/componentes/top_section.dart';
 import 'package:flutter/material.dart';
 
-class GridMarcas extends StatefulWidget {
-  const GridMarcas({Key? key}) : super(key: key);
+class Destaque extends StatefulWidget {
+  const Destaque({super.key});
 
   @override
-  _GridMarcasState createState() => _GridMarcasState();
+  State<Destaque> createState() => _DestaqueState();
 }
 
-class _GridMarcasState extends State<GridMarcas> {
+class _DestaqueState extends State<Destaque> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +16,7 @@ class _GridMarcasState extends State<GridMarcas> {
      const SliverAppBar(
               centerTitle: true,
               title: Text(
-                'Escolha por marca',
+                'Destaques da semana',
                 style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
             ),
@@ -35,22 +34,6 @@ class _GridMarcasState extends State<GridMarcas> {
           ),
           Card(
             color: Colors.blue[400],
-            child: Container(),
-          ),
-          Card(
-            color: Colors.blue[600],
-            child: Container(),
-          ),
-          Card(
-            color: Colors.blue[100],
-            child: Container(),
-          ),
-          Card(
-            color: Colors.blue[100],
-            child: Container(),
-          ),
-          Card(
-            color: Colors.blue[100],
             child: Container(),
           ),
         ],
