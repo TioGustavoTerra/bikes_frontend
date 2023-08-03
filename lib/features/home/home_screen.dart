@@ -1,7 +1,9 @@
 import 'package:bikes_frontend/componentes/cabecalho.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
+import 'package:bikes_frontend/componentes/destaque.dart';
 import 'package:bikes_frontend/componentes/grid_marcas.dart';
 import 'package:bikes_frontend/componentes/pesquisa_bar_bikes.dart';
+import 'package:bikes_frontend/componentes/rodape.dart';
 import 'package:bikes_frontend/componentes/top_section.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +69,14 @@ class _HomePageState extends State<HomePage> {
                             height: 600,
                             width: 600,
                             child: GridMarcas(),
-                          )
+                          ),
+
+                       const SizedBox(
+                            height: 800,
+                            width: 800,
+                            child: Destaque(),
+                          ),
+                          const RodapeApp(),
                         ]))
                       ],
                     ))));
