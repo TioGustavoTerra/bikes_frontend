@@ -46,7 +46,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
                 TextButton(
                   style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/home');
+             Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
                   },
                   child:SvgPicture.asset(
                     'site-sistema/Menu/botao-carrinho.svg',
@@ -58,7 +58,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
               TextButton(
                 style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/home');
+             Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
                 },
                 child: SvgPicture.asset(
                   'site-sistema/Menu/botao-lista-de-desejos.svg',
@@ -70,7 +70,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
               TextButton(
                 style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/perfil');
+             Navigator.pushNamedAndRemoveUntil(context, "/perfil", ModalRoute.withName('/perfil'),);
                 },
                 child: SvgPicture.asset(
                   'site-sistema/Menu/botao-entrar.svg',

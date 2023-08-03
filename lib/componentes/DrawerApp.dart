@@ -16,13 +16,13 @@ class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Drawer(
+  Widget build(BuildContext context) => Drawer(backgroundColor:const Color.fromARGB(255, 9, 188, 138),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Material(
-                color: Colors.green.shade700,
+                color: const Color.fromARGB(255, 9, 188, 138),
                 child: InkWell(
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => PerfilScreen()));
@@ -34,6 +34,7 @@ class NavigationDrawer extends StatelessWidget {
                     ),
                     child: const Column(
                       children: [
+                        // Icon(Icons., color: Colors.black,),
                         CircleAvatar(
                           radius: 52,
                           backgroundImage: NetworkImage(
@@ -52,38 +53,69 @@ class NavigationDrawer extends StatelessWidget {
                 ),
               ),
               Container(
+                color: const Color.fromARGB(255, 9, 188, 138),
                 padding: const EdgeInsets.all(24),
                 child: Wrap(
                   runSpacing: 16,
                   children: [
                     ListTile(
-                        leading: const Icon(Icons.home_mini_outlined),
-                        title: const Text('Home'),
+                        leading: const Icon(Icons.home, color: Colors.white,),
+                        title: const Text('Home', style: TextStyle(color: Colors.white),),
                         onTap: () => Navigator.of(context)
                                 .pushReplacement(MaterialPageRoute(
                               builder: (context) => HomePage(),
                             ))),
                     ListTile(
-                      leading: const Icon(Icons.face),
-                      title: const Text('Conta'),
-                      onTap: () {},
+                      leading: const Icon(Icons.face, color: Colors.white,),
+                      title: const Text('Conta', style: TextStyle(color: Colors.white),),
+                      onTap: () {
+                     Navigator.pushNamedAndRemoveUntil(context, "/perfil", ModalRoute.withName('/perfil'),);
+                      },
+                  
                     ),
                     const Divider(color: Colors.black54),
                     ListTile(
-                      leading: const Icon(Icons.shopping_cart),
-                      title: const Text('Lista de compras'),
+                      leading: const Icon(Icons.shopping_cart, color: Colors.white,),
+                      title: const Text('Lista de compras', style: TextStyle(color: Colors.white),),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: const Icon(Icons.favorite),
-                      title: const Text('Favoritos'),
+                      leading: const Icon(Icons.favorite, color: Colors.white,),
+                      title: const Text('Favoritos', style: TextStyle(color: Colors.white),),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: const Icon(Icons.logout),
-                      title: const Text('Sair'),
+                      leading: const Icon(Icons.face, color: Colors.white,),
+                      title: const Text('Sobre', style: TextStyle(color: Colors.white),),
+                      onTap: () {
+                    Navigator.pushNamedAndRemoveUntil(context, "/about", ModalRoute.withName('/about'),);
+                      },
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.sell, color: Colors.white,),
+                      title: const Text('Comprar', style: TextStyle(color: Colors.white),),
                       onTap: () {},
-                    )
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.sell, color: Colors.white,),
+                      title: const Text('Vender', style: TextStyle(color: Colors.white),),
+                      onTap: () {},
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.phone, color: Colors.white,),
+                      title: const Text('Contato', style: TextStyle(color: Colors.white),),
+                      onTap: () {},
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.search, color: Colors.white,),
+                      title: const Text('Pesquisar', style: TextStyle(color: Colors.white),),
+                      onTap: () {},
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.logout, color: Colors.white,),
+                      title: const Text('Sair', style: TextStyle(color: Colors.white),),
+                      onTap: () {},
+                    ),
                   ],
                 ),
               )

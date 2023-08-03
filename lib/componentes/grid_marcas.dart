@@ -15,6 +15,7 @@ class _GridMarcasState extends State<GridMarcas> {
         body: CustomScrollView(slivers: [
       // SliverGrid #1
      const SliverAppBar(
+      
               centerTitle: true,
               title: Text(
                 'Escolha por marca',
