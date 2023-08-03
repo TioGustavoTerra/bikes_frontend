@@ -17,10 +17,11 @@ class Messages {
         // ),
         MaterialBanner(
       backgroundColor: color,
-      content: Text(
+      content: Center(
+          child: Text(
         message,
         style: TextStyle(color: Colors.white),
-      ),
+      )),
       actions: [
         ElevatedButton(
             onPressed: () =>
@@ -28,14 +29,15 @@ class Messages {
             child: Text("X"))
       ],
     ));
-    await fecharMessagem().timeout(const Duration(seconds: 10), onTimeout: () => {ScaffoldMessenger.of(context).clearMaterialBanners()});
+    await fecharMessagem(5).timeout(const Duration(seconds: 10),
+        onTimeout: () =>
+            {ScaffoldMessenger.of(context).clearMaterialBanners()});
   }
 
   /// Prints "printed" after five seconds.
-  Future<void> fecharMessagem() async {
-    await Future.delayed(const Duration(seconds: 5));
-    print("CHAMOUUUUUU!");
-    //;
+  Future<void> fecharMessagem(int tempo) async {
+    await Future.delayed(Duration(seconds: tempo));
+    ScaffoldMessenger.of(context).clearMaterialBanners();
   }
 
   void showError(String message) => _showMessage(message, Colors.red);

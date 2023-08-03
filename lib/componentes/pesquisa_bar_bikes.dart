@@ -12,21 +12,20 @@ class _PesquisaBarBikesState extends State<PesquisaBarBikes> {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.white,
+        
         child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                  width: MediaQuery.of(context).size.width / 2,
+              const SizedBox(
+                  width: 439,
                   height: 100,
-                  child: const Column(children: [ColorOptions(), TextField()])),
+                  child: Column(children: [ColorOptions(), TextField()])),
               SizedBox(
-                  width: 80,
-                  height: 80,
+                  width: 100,
+                  height: 100,
                   child: IconButton.filled(
                       style: ButtonStyle(
-                          minimumSize:
-                              MaterialStateProperty.all(const Size(80, 80)),
                           shape: MaterialStateProperty.all(
                             const RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero,
@@ -54,7 +53,6 @@ class _ColorOptionsState extends State<ColorOptions> {
   Widget build(BuildContext context) {
     return SegmentedButton<Color>(
       style: ButtonStyle(
-          minimumSize: MaterialStateProperty.all(const Size(600, 400)),
           shape: MaterialStateProperty.all(
             const RoundedRectangleBorder(
               borderRadius: BorderRadius.zero,
@@ -70,11 +68,12 @@ class _ColorOptionsState extends State<ColorOptions> {
       segments: const <ButtonSegment<Color>>[
         ButtonSegment<Color>(
           value: Color.red,
-          label: Text('Bikes'),
+          label: Padding(padding: EdgeInsets.only(left:2, right: 2), child: Text('Bikes' , style: TextStyle(height: 2, letterSpacing: 4, fontSize: 20, fontWeight: FontWeight.bold),)),
         ),
         ButtonSegment<Color>(
           value: Color.green,
-          label: Text('Peças e Acessórios'),
+          label: Text('Peças e Acessórios', style: TextStyle(
+                  letterSpacing: 1, fontSize: 20, fontWeight: FontWeight.bold)),
         ),
       ],
       // style: buttonStyle,

@@ -3,11 +3,15 @@ import 'package:bikes_frontend/componentes/button.dart';
 import 'package:bikes_frontend/componentes/cabecalho.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
 import 'package:bikes_frontend/componentes/cpfTextField.dart';
+import 'package:bikes_frontend/componentes/messages.dart';
 import 'package:bikes_frontend/componentes/textfield.dart';
+import 'package:bikes_frontend/models/register_user.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../../services/registerUser_service.dart';
 
 class PerfilScreen extends StatelessWidget {
   const PerfilScreen({super.key});
@@ -89,18 +93,13 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
   final telController = TextEditingController();
   final oldPasswordController = TextEditingController();
 
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
+  final RegisterUserService _registerUserService = RegisterUserService();
 
-      // Aqui, você pode salvar os dados do perfil em algum lugar, como um banco de dados ou serviço.
-
-      // Exemplo: Enviar os dados para um serviço.
-      // _sendDataToService(_name, _email, _dateOfBirth);
-
-      // Exemplo: Navegar para a próxima tela após o envio bem-sucedido.
-      // Navigator.push(context, MaterialPageRoute(builder: (context) => NextScreen()));
-    }
+  @override
+  void initState() {
+    // TODO: implement initState
+    _buscarDados();
+    super.initState();
   }
 
   @override
@@ -188,14 +187,13 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                 const Text(
-                      "Alterar a senha",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
-                      textAlign: TextAlign.start,
-                    
+                  const Text(
+                    "Alterar a senha",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.start,
                   ),
                   const SizedBox(height: 5),
                   MyPasswordTextField(
@@ -219,10 +217,10 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
                     height: 10,
                   ),
                   MyButtonAgree(
-                    text: "Salavar",
+                    text: "Salvar",
                     image: "site-sistema/Home/icone-seta.svg",
                     onTap: () {
-                      registrar(
+                      _salvar(
                           cpfController.text,
                           emailController.text,
                           usernameController.text,
@@ -241,7 +239,7 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
     );
   }
 
-    Future<void> registrar(
+  Future<void> _salvar(
       String cpf,
       String email,
       String nome,
@@ -253,32 +251,57 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
       if (_formKey.currentState!.validate()) {
         var dateNasc = dataNascimento.split('/');
 
-        // var usuario = User(
-        //     cpfCnpj: UtilBrasilFields.removeCaracteres(cpf),
-        //     email: email,
-        //     name: nome,
-        //     birthDate: '${dateNasc[2]}-${dateNasc[1]}-${dateNasc[0]}',
-        //     password: senha,
-        //     passwordConfirmation: confirmarSenha,
-        //     phoneNumber:
-        //         UtilBrasilFields.obterTelefone(telefone, mascara: false));
+        var usuario = User(
+            cpfCnpj: UtilBrasilFields.removeCaracteres(cpf),
+            email: email,
+            name: nome,
+            birthDate: '${dateNasc[2]}-${dateNasc[1]}-${dateNasc[0]}',
+            password: senha,
+            passwordConfirmation: confirmarSenha,
+            phoneNumber:
+                UtilBrasilFields.obterTelefone(telefone, mascara: false));
 
-        // User? user = await _registerUserService.registrar(usuario);
+        User? user = await _registerUserService.registrar(usuario);
 
-        // if (user != null) {
-        //   _showToastInfo(context, 'Cadastro realizado com Sucesso!');
-        //   Navigator.pushNamed(context, "/login");
-        // } else {
-        //   _showToastErro(context, 'Ops, algo deu errado!');
-        // }
+        if (user != null) {
+          _showToastInfo(context, 'Cadastro realizado com Sucesso!');
+          Navigator.pushNamed(context, "/login");
+        } else {
+          _showToastErro(context, 'Ops, algo deu errado!');
+        }
       } else {
-        // _showToastErro(context, 'Favor preencher todos os campos!');
+        _showToastErro(context, 'Favor preencher todos os campos!');
       }
     } catch (e) {
       print(e);
-      // _showToastErro(context, 'Ops, algo deu errado! ${e}');
+      _showToastErro(context, 'Ops, algo deu errado! ${e}');
     }
   }
+
+  _buscarDados() async {
+    User? user;
+
+    try {
+      await _registerUserService.getDadosUsuario().then((value) {
+        user = value;
+      });
+      usernameController.text = user!.name;
+      cpfController.text = UtilBrasilFields.obterCpf(user!.cpfCnpj);
+      dataNascimentoController.text =
+          UtilData.obterDataDDMMAAAA(DateTime.parse(user!.birthDate));
+      telController.text = UtilBrasilFields.obterTelefone(user!.phoneNumber);
+      emailController.text = user!.email;
+    } catch (e) {
+      print(e);
+      _showToastErro(context, 'Ops, algo deu errado! ${e}');
+    }
+  }
+
+  void _showToastErro(BuildContext context, msg) {
+    Messages.of(context).showError(msg);
+  }
+
+  void _showToastInfo(BuildContext context, msg) {
+    Messages.of(context).showInfo(msg);
+  }
 }
-
-

@@ -1,28 +1,51 @@
+import 'package:bikes_frontend/componentes/top_section.dart';
 import 'package:flutter/material.dart';
 
 class GridMarcas extends StatefulWidget {
-  const GridMarcas({super.key});
+  const GridMarcas({Key? key}) : super(key: key);
 
   @override
-  State<GridMarcas> createState() => _GridMarcasState();
+  _GridMarcasState createState() => _GridMarcasState();
 }
 
 class _GridMarcasState extends State<GridMarcas> {
-  final List<String> items = List.generate(6, (index) => 'Item $index');
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            height: MediaQuery.of(context).size.height / 2,
-            width: MediaQuery.of(context).size.width / 3,
-            child: SliverList(
-              delegate: SliverChildDelegate([ crossAxisCount: 3,
-                List.generate(6, (index) {
-                return const Card(
-                  color: Colors.blue,
-                );]),
-             
-              )));
-              }
+        body: CustomScrollView(slivers: [
+      // SliverGrid #1
+      SliverGrid.count(
+        crossAxisCount: 3,
+        mainAxisSpacing: 10.0,
+        crossAxisSpacing: 10.0,
+        childAspectRatio: 1,
+        children: [
+          Card(
+            color: Colors.blue[200],
+            child: Container(),
+          ),
+          Card(
+            color: Colors.blue[400],
+            child: Container(),
+          ),
+          Card(
+            color: Colors.blue[600],
+            child: Container(),
+          ),
+          Card(
+            color: Colors.blue[100],
+            child: Container(),
+          ),
+          Card(
+            color: Colors.blue[100],
+            child: Container(),
+          ),
+          Card(
+            color: Colors.blue[100],
+            child: Container(),
+          ),
+        ],
+      ),
+    ]));
+  }
 }

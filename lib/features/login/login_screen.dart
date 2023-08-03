@@ -33,6 +33,12 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
 
   @override
+  void dispose() {
+    Messages.of(context).fecharMessagem(1);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -215,35 +221,35 @@ class _LoginPageState extends State<LoginPage> {
                                     textAlign: TextAlign.center,
                                   ),
                                   const SizedBox(height: 10),
-                                   Padding(
+                                  Padding(
                                     padding: EdgeInsets.all(8.0),
-
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-
                                         InkWell(
-                                          onTap: () { print("Olá "); },
+                                          onTap: () {
+                                            print("Olá ");
+                                          },
                                           child: const SquareTile(
                                               imagePath:
                                                   'site-sistema/cadastro/botao-facebook.svg',
                                               title: ""),
                                         ),
-
-                                       const SizedBox(height: 10),
-
+                                        const SizedBox(height: 10),
                                         InkWell(
-                                          onTap: () { print("Olá2"); },
+                                          onTap: () {
+                                            print("Olá2");
+                                          },
                                           child: const SquareTile(
-                                            imagePath: 'site-sistema/cadastro/botao-facebook.svg',
+                                            imagePath:
+                                                'site-sistema/cadastro/botao-facebook.svg',
                                             title: "",
                                           ),
                                         ),
                                       ],
                                     ),
-
                                   ),
                                 ],
                               ),
@@ -269,17 +275,24 @@ class _LoginPageState extends State<LoginPage> {
     try {
       if (_formKey.currentState!.validate()) {
         String? token = await _loginService.logar(email, senha);
-      // Map<String, dynamic> data = await _loginService.logar(email, senha);
+        // Map<String, dynamic> data = await _loginService.logar(email, senha);
 
-      //   final SharedPreferences prefs = await SharedPreferences.getInstance();
-      //   await prefs.setString('nome', data['nome']);
-      //   await prefs.getString('nome');
+        //   final SharedPreferences prefs = await SharedPreferences.getInstance();
+        //   await prefs.setString('nome', data['nome']);
+        //   await prefs.getString('nome');
 
         if (token!.isEmpty) {
           _showToastErro(context, 'Ops, algo deu errado!');
         } else {
           _showToastInfo(context, 'Login realizado com Sucesso!');
-          Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
+
+          Messages.of(context).fecharMessagem(2).then((value) {
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              "/home",
+              ModalRoute.withName('/'),
+            );
+          });
         }
       } else {
         _showToastErro(context, 'Favor preencher todos os campos!');

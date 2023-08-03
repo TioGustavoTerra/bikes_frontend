@@ -1,6 +1,6 @@
 import 'package:bikes_frontend/componentes/cabecalho.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
-import 'package:bikes_frontend/componentes/marketplace_bikes.dart';
+import 'package:bikes_frontend/componentes/grid_marcas.dart';
 import 'package:bikes_frontend/componentes/pesquisa_bar_bikes.dart';
 import 'package:bikes_frontend/componentes/top_section.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
@@ -50,20 +50,23 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Expanded(
                             child: Column(children: [
-                          Stack(
-                            children: [
-                              const Positioned(child: TopSection()),
-                              Positioned(
-                                child: const PesquisaBarBikes(),
-                                left: MediaQuery.of(context).size.width / 4,
-                                top: 500
-                              ),
-                            ],
+                          Center(
+                            child: Stack(
+                              children: [
+                                const TopSection(),
+                                Positioned(
+                                    child: const PesquisaBarBikes(),
+                                    right: (MediaQuery.of(context).size.width -
+                                            550) /
+                                        2,
+                                    bottom: 0),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 600,
                             width: 600,
-                            child: MarketplaceBikes(),
+                            child: GridMarcas(),
                           )
                         ]))
                       ],
