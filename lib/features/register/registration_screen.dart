@@ -230,7 +230,7 @@ class _SignupState extends State<Signup> {
                                           textStyle:
                                               const TextStyle(fontSize: 0)),
                                       onPressed: () {
-                                        Navigator.pushNamed(context, '/home');
+             Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
                                       },
                                       child: const Text(
                                         'Já tem conta?',

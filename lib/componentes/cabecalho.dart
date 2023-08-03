@@ -27,7 +27,7 @@ class Cabecalho extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-            Navigator.pushNamed(context, '/home');
+             Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
           },
           child: SvgPicture.asset(
             'site-sistema/Menu/Logo-bikes.svg',
@@ -57,7 +57,7 @@ class Cabecalho extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-            Navigator.pushNamed(context, '/login');
+             Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
           },
           child: const Text(
             'Comprar',
@@ -71,7 +71,7 @@ class Cabecalho extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-            Navigator.pushNamed(context, '/login');
+                     Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
           },
           child: const Text(
             'Vender',
@@ -85,7 +85,7 @@ class Cabecalho extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-            Navigator.pushNamed(context, '/login');
+                         Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
           },
           child: const Text(
             'Contato',
@@ -97,22 +97,8 @@ class Cabecalho extends StatelessWidget {
           ),
         ),
 
-        CabecalhoResponsiveContent(),
+      const  CabecalhoResponsiveContent(),
 
-        // TextButton(
-        //   style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
-        //   onPressed: () {
-        //     Navigator.pushNamed(context, '/login');
-        //   },
-        //   child: const Text(
-        //     '| Entrar',
-        //     style: TextStyle(
-        //       color: Colors.black,
-        //       fontWeight: FontWeight.bold,
-        //       fontSize: 15,
-        //     ),
-        //   ),
-        // ),
         Expanded(
           child: LayoutBuilder(
             builder: (context, constraints) {
