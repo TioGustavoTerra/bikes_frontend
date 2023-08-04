@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:bikes_frontend/componentes/DrawerApp.dart';
+import 'package:bikes_frontend/componentes/about_responsive_web.dart';
 import 'package:bikes_frontend/componentes/cabecalho.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
@@ -20,7 +23,9 @@ class QuemSomos extends StatelessWidget {
                     preferredSize: Size(double.infinity, 72)),
             drawer: Responsive.isMobile(context)
                 ? const Drawer(child: DrawerApp())
-                : null);
+                : null,
+                body: AboutResponsiveWeb(),
+                );
       },
     );
   }

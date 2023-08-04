@@ -57,7 +57,7 @@ class _SignupState extends State<Signup> {
                 fit: BoxFit.cover,
               ),
               Container(
-                color: const Color.fromRGBO(30, 122, 97, 100),
+                color: const Color.fromARGB(100, 9, 188, 138),
               ),
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
                 //Cadastro
@@ -230,14 +230,14 @@ class _SignupState extends State<Signup> {
                                           textStyle:
                                               const TextStyle(fontSize: 0)),
                                       onPressed: () {
-             Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
+             Navigator.pushNamedAndRemoveUntil(context, "/login", ModalRoute.withName('/login'),);
                                       },
                                       child: const Text(
                                         'Já tem conta?',
                                         // padding: const EdgeInsets.only(left: 0, right: 0, bottom: 10, top: 10),
                                         style: TextStyle(
                                             color: Color.fromARGB(
-                                                255, 29, 118, 94),
+                                                255, 9, 188, 138),
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20),
                                       ),

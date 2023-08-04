@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                 fit: BoxFit.cover,
               ),
               Container(
-                color: const Color.fromRGBO(30, 122, 97, 100),
+                color: const Color.fromARGB(100, 9, 188, 138),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -166,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                                               Text('Esqueçeu sua senha? ',
                                                   style: TextStyle(
                                                       color: Color.fromARGB(
-                                                          255, 29, 118, 94),
+                                                          255, 9, 188, 138),
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontSize: 14),
@@ -204,7 +204,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 'Faça o cadastro',
                                                 style: TextStyle(
                                                     color: Color.fromARGB(
-                                                        255, 29, 118, 94),
+                                                        255, 9, 188, 138),
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 14),
                                               ),
@@ -222,30 +222,26 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   const SizedBox(height: 10),
                                   Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         InkWell(
-                                          onTap: () {
-                                            print("Olá ");
-                                          },
+                                          onTap: () {},
                                           child: const SquareTile(
                                               imagePath:
-                                                  'site-sistema/cadastro/botao-facebook.svg',
-                                              title: ""),
+                                                  'site-sistema/cadastro/botao-google.svg',
+                                              title: "Login com Google"),
                                         ),
                                         const SizedBox(height: 10),
                                         InkWell(
-                                          onTap: () {
-                                            print("Olá2");
-                                          },
+                                          onTap: () {},
                                           child: const SquareTile(
                                             imagePath:
-                                                'site-sistema/cadastro/botao-facebook.svg',
-                                            title: "",
+                                                'site-sistema/cadastro/botao-facebook2.svg',
+                                            title: "Login com Facebook",
                                           ),
                                         ),
                                       ],
