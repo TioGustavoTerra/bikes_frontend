@@ -58,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 color: const Color.fromARGB(100, 9, 188, 138),
               ),
+
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -235,6 +236,7 @@ class _LoginPageState extends State<LoginPage> {
                                                   'site-sistema/cadastro/botao-google.svg',
                                               title: "Login com Google"),
                                         ),
+
                                         const SizedBox(height: 10),
                                         InkWell(
                                           onTap: () {},
@@ -259,11 +261,12 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              // const Rodape()
+              
             ],
           ),
         ),
       ),
+      // Rodape()
     );
   }
 

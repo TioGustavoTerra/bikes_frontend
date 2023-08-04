@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import '../../componentes/DrawerApp.dart';
+import '../../componentes/qual_estilo.dart';
+import '../../componentes/rodapeApp.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -57,11 +59,11 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 const TopSection(),
                                 Positioned(
-                                    child: const PesquisaBarBikes(),
                                     right: (MediaQuery.of(context).size.width -
                                             550) /
                                         2,
-                                    bottom: 0),
+                                    bottom: 0,
+                                    child: const PesquisaBarBikes()),
                               ],
                             ),
                           ),
@@ -76,7 +78,14 @@ class _HomePageState extends State<HomePage> {
                             width: 800,
                             child: Destaque(),
                           ),
-                          const RodapeApp(),
+                          
+                         const SizedBox(
+                            height: 800,
+                            width: 800,
+                          child: QualoEstilo(),
+
+                        ),
+                           Rodape(),
                         ]))
                       ],
                     ))));

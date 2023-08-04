@@ -1,4 +1,5 @@
 import 'package:bikes_frontend/componentes/destaque.dart';
+import 'package:bikes_frontend/componentes/qual_estilo.dart';
 import 'package:bikes_frontend/componentes/rodape.dart';
 import 'package:bikes_frontend/componentes/rodapeApp.dart';
 // import 'package:bikes_frontend/componentes/grid_marcas.dart';
@@ -14,6 +15,6 @@ class Test extends StatefulWidget {
 class _TestState extends State<Test> {
   @override
   Widget build(BuildContext context) {
-    return const RodapeApp();
+    return QualoEstilo();
   }
 }

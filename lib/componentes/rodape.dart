@@ -1,8 +1,20 @@
+import 'package:bikes_frontend/componentes/square_title.dart';
+import 'package:bikes_frontend/componentes/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class RodapeApp extends StatelessWidget {
-  const RodapeApp({Key? key}) : super(key: key);
+import '../features/register/registration_screen.dart';
+import 'button.dart';
+
+class Rodape extends StatefulWidget {
+  Rodape({Key? key}) : super(key: key);
+
+  @override
+  _SignupState createState() => _SignupState();
+}
+
+class _SignupState extends State<Rodape> {
+  final emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,44 +31,201 @@ class RodapeApp extends StatelessWidget {
                   width: 60,
                   height: 60,
                 ),
-                const Row(
+                Row(
                   children: [
                     //Primeira coluna
-                    Column(children: [Text(
-                      'Destaques da semana',
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                    Column(
+                      children: [
+                        TextButton(
+                          style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 14)),
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              "/",
+                              ModalRoute.withName('/'),
+                            );
+                          },
+                          child: const Text(
+                            'Política de troca',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14),
+                          ),
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 14)),
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              "/",
+                              ModalRoute.withName('/'),
+                            );
+                          },
+                          child: const Text(
+                            'Perguntas frequentes',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14),
+                          ),
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 14)),
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              "/",
+                              ModalRoute.withName('/'),
+                            );
+                          },
+                          child: const Text(
+                            'Política de privacidade',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14),
+                          ),
+                        ),
+                      ],
                     ),
-                  Text(
-                      'Destaques da semana',
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'Destaques da semana',
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ),],),
                     //Segunda coluna
-                    Column(children: [Text(
-                      '  Destaques da semana',
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                    Column(
+                      children: [
+                        TextButton(
+                          style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 14)),
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              "/",
+                              ModalRoute.withName('/'),
+                            );
+                          },
+                          child: const Text(
+                            'Crie sua conta',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14),
+                          ),
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 14)),
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              "/",
+                              ModalRoute.withName('/'),
+                            );
+                          },
+                          child: const Text(
+                            'Trabalhe conosco',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14),
+                          ),
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 14)),
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              "/",
+                              ModalRoute.withName('/'),
+                            );
+                          },
+                          child: const Text(
+                            'Anuncie na Bikes.com.br',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14),
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      '  Destaques da semana',
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      '  Destaques da semana',
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ),
-                    ],)
-                    
+                    TextButton(
+                        style: TextButton.styleFrom(
+                            textStyle: const TextStyle(fontSize: 0)),
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            "/login",
+                            ModalRoute.withName('/login'),
+                          );
+                        },
+                        child:
+                            SvgPicture.asset('site-sistema/Menu/whatsapp.svg')),
+                    TextButton(
+                        style: TextButton.styleFrom(
+                            textStyle: const TextStyle(fontSize: 0)),
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            "/login",
+                            ModalRoute.withName('/login'),
+                          );
+                        },
+                        child:
+                            SvgPicture.asset('site-sistema/Menu/facebook.svg')),
+                    TextButton(
+                        style: TextButton.styleFrom(
+                            textStyle: const TextStyle(fontSize: 0)),
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            "/login",
+                            ModalRoute.withName('/login'),
+                          );
+                        },
+                        child: SvgPicture.asset(
+                            'site-sistema/Menu/instagram.svg')),
+
+                      Column(
+                    children: [
+                        const Text(
+                          "Assine nossa Newsletter",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+
+                        SizedBox(
+                          width: 200,
+                          child: MyTextField(
+                            hintText: 'Email',
+                            controller: emailController,
+                            obscureText: false,
+                            inputFormatter: const [],
+                          ),
+                        ),
+                      const SizedBox(height: 10),
+
+                        MyButtonAgree(
+                          text: "Assinar",
+                          image: "site-sistema/Home/icone-seta.svg",
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Signup()),
+                            );
+                          },
+
+                      ),
+                    ],
+                  )
                   ],
-                )
+                ),
               ])
             ],
           )),

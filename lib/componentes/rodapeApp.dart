@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import '../features/register/registration_screen.dart';
 import 'button.dart';
 
-class RodapeWeb extends StatelessWidget {
-  const RodapeWeb({Key? key}) : super(key: key);
+class rodapeApp extends StatelessWidget {
+  const rodapeApp({Key? key}) : super(key: key);
 
   get emailController => null;
 
