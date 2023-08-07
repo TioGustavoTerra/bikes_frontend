@@ -85,7 +85,19 @@ class _HomePageState extends State<HomePage> {
                           child: QualoEstilo(),
 
                         ),
-                           Rodape(),
+                        // rodapeApp(),
+                        // Rodape(),
+
+                       if (Responsive.isMobile(context))
+                 const PreferredSize(
+                    preferredSize: Size(double.infinity, 56),
+                    child: rodapeApp(),
+                  )
+                    else( PreferredSize(
+                    preferredSize: const Size(double.infinity, 72),
+                    child: Rodape(),
+                  )),
+
                         ]))
                       ],
                     ))));

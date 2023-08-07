@@ -35,6 +35,7 @@ class _SignupState extends State<Rodape> {
                   children: [
                     //Primeira coluna
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextButton(
                           style: TextButton.styleFrom(
@@ -94,6 +95,7 @@ class _SignupState extends State<Rodape> {
                     ),
                     //Segunda coluna
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextButton(
                           style: TextButton.styleFrom(
@@ -101,8 +103,8 @@ class _SignupState extends State<Rodape> {
                           onPressed: () {
                             Navigator.pushNamedAndRemoveUntil(
                               context,
-                              "/",
-                              ModalRoute.withName('/'),
+                              "/register",
+                              ModalRoute.withName('/register'),
                             );
                           },
                           child: const Text(
@@ -188,8 +190,8 @@ class _SignupState extends State<Rodape> {
                         child: SvgPicture.asset(
                             'site-sistema/Menu/instagram.svg')),
 
-                      Column(
-                    children: [
+                    Column(
+                      children: [
                         const Text(
                           "Assine nossa Newsletter",
                           style: TextStyle(
@@ -198,7 +200,6 @@ class _SignupState extends State<Rodape> {
                           ),
                           textAlign: TextAlign.start,
                         ),
-
                         SizedBox(
                           width: 200,
                           child: MyTextField(
@@ -208,22 +209,19 @@ class _SignupState extends State<Rodape> {
                             inputFormatter: const [],
                           ),
                         ),
-                      const SizedBox(height: 10),
-
+                        const SizedBox(height: 10),
                         MyButtonAgree(
                           text: "Assinar",
                           image: "site-sistema/Home/icone-seta.svg",
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => Signup()),
+                              MaterialPageRoute(builder: (context) => Signup()),
                             );
                           },
-
-                      ),
-                    ],
-                  )
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ])

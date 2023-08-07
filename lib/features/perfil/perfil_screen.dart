@@ -11,6 +11,8 @@ import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../componentes/rodape.dart';
+import '../../componentes/rodapeApp.dart';
 import '../../services/registerUser_service.dart';
 
 class PerfilScreen extends StatelessWidget {
@@ -23,12 +25,12 @@ class PerfilScreen extends StatelessWidget {
         return Scaffold(
             appBar: Responsive.isMobile(context)
                 ? const PreferredSize(
-                    child: CabecalhoApp(),
                     preferredSize: Size(double.infinity, 56),
+                    child: CabecalhoApp(),
                   )
                 : const PreferredSize(
-                    child: Cabecalho(),
-                    preferredSize: Size(double.infinity, 72)),
+                    preferredSize: Size(double.infinity, 72),
+                    child: Cabecalho()),
             drawer: Responsive.isMobile(context)
                 ? const Drawer(child: DrawerApp())
                 : null,
