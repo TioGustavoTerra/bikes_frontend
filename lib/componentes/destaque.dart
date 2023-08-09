@@ -12,7 +12,6 @@ class _DestaqueState extends State<Destaque> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(slivers: [
-      // SliverGrid #1
      const SliverAppBar(
               centerTitle: true,
               title: Text(

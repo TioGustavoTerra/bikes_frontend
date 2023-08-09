@@ -3,6 +3,7 @@ import 'package:bikes_frontend/features/home/home_screen.dart';
 import 'package:bikes_frontend/features/about/quem-somos.dart';
 import 'package:bikes_frontend/features/register/registration_screen.dart';
 import 'package:bikes_frontend/features/login/login_screen.dart';
+import 'package:bikes_frontend/features/vender/vender.dart';
 import 'package:flutter/material.dart';
 import 'features/perfil/perfil_screen.dart';
 
@@ -24,10 +25,11 @@ class MyApp extends StatelessWidget {
       routes: {
         '/teste':(context) => const Test(),
         '/perfil': (context) => const PerfilScreen(),
-        '/about': (context) => QuemSomos(),
+        '/sobre': (context) => QuemSomos(),
         '/login': (context) => LoginPage(),
-        '/register': (context) => Signup(),
+        '/registro': (context) => Signup(),
         '/home': (context) =>  HomePage(),
+        '/vender':(context) => Vender()
       },
     );
   }

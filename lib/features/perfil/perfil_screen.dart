@@ -38,11 +38,37 @@ class PerfilScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: ConstrainedBox(
                   constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width / 2),
+                      maxWidth: Responsive.isDesktop(context)
+                          ? MediaQuery.of(context).size.width / 2
+                          : MediaQuery.of(context).size.width),
                   child: ListView(
                     children: [
                       ProfileCard(),
                       ProfileFormScreen(),
+                      Expanded(
+                          child: Column(
+                        children: [
+                          Center(
+                            child: Stack(
+                              children: [
+                                
+                                if (Responsive.isMobile(context))
+                                  const PreferredSize(
+                                    preferredSize: Size(double.infinity, 56),
+                                    child: rodapeApp(),
+                                  )
+                                else
+                                  (PreferredSize(
+                                    preferredSize:
+                                        const Size(double.infinity, 72),
+                                    child: Rodape(),
+                                  )),
+                              ],
+                            ),
+                          )
+                        ],
+                      ))
+
                     ],
                   )),
             ));

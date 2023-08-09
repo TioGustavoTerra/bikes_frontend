@@ -26,7 +26,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
                 child: Row(
                   children: [
                     const SizedBox(width: 4),
-                    IconButton(icon: Icon(Icons.search), onPressed: () {}),
+                    IconButton(icon: const Icon(Icons.search), onPressed: () {}),
                   const Expanded(
                       child: TextField(
                         decoration: InputDecoration(
