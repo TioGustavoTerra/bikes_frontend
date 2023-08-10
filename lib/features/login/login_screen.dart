@@ -62,14 +62,14 @@ class _LoginPageState extends State<LoginPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  //Acesse
+
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   const Text("Acesse sua conta",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold)),
-                  //Acesse
+
 
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   ClipRect(
@@ -92,6 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: Responsive.isTablet(context)
                             ? MediaQuery.of(context).size.height * 0.80
                             : null,
+                            
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Form(

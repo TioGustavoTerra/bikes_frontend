@@ -41,8 +41,8 @@ class Cabecalho extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamedAndRemoveUntil(
               context,
-              "/about",
-              ModalRoute.withName('/'),
+              "/sobre",
+              ModalRoute.withName('/sobre'),
             );
           },
           child: const Text(
@@ -71,7 +71,7 @@ class Cabecalho extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-                     Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
+                     Navigator.pushNamedAndRemoveUntil(context, "/vender", ModalRoute.withName('/vender'),);
           },
           child: const Text(
             'Vender',

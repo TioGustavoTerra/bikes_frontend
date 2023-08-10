@@ -221,7 +221,8 @@ class _SignupState extends State<Rodape> {
                           },
                         ),
                       ],
-                    )
+                    ),
+                    const Divider(color: Colors.black54),
                   ],
                 ),
               ])

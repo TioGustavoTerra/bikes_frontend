@@ -45,6 +45,30 @@ class PerfilScreen extends StatelessWidget {
                     children: [
                       ProfileCard(),
                       ProfileFormScreen(),
+                      Expanded(
+                          child: Column(
+                        children: [
+                          Center(
+                            child: Stack(
+                              children: [
+                                
+                                if (Responsive.isMobile(context))
+                                  const PreferredSize(
+                                    preferredSize: Size(double.infinity, 56),
+                                    child: rodapeApp(),
+                                  )
+                                else
+                                  (PreferredSize(
+                                    preferredSize:
+                                        const Size(double.infinity, 72),
+                                    child: Rodape(),
+                                  )),
+                              ],
+                            ),
+                          )
+                        ],
+                      ))
+
                     ],
                   )),
             ));

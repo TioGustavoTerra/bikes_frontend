@@ -13,7 +13,6 @@ class _GridMarcasState extends State<GridMarcas> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(slivers: [
-      // SliverGrid #1
      const SliverAppBar(
       
               centerTitle: true,
