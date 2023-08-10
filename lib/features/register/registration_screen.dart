@@ -14,7 +14,7 @@ import '../../models/register_user.dart';
 import '../../services/registerUser_service.dart';
 
 class Signup extends StatefulWidget {
-   Signup({Key? key}) : super(key: key);
+  Signup({Key? key}) : super(key: key);
 
   @override
   _SignupState createState() => _SignupState();
@@ -155,7 +155,7 @@ class _SignupState extends State<Signup> {
                                           FilteringTextInputFormatter
                                               .digitsOnly,
                                           TelefoneInputFormatter(),
-                                        ], 
+                                        ],
                                       ),
                                     ),
                                     const SizedBox(height: 10),
@@ -190,23 +190,18 @@ class _SignupState extends State<Signup> {
                                       ),
                                     ),
                                     const SizedBox(height: 5),
-
                                     MyPasswordTextField(
                                       obscureText: true,
                                       controller: passwordController,
                                       hintText: 'Senha',
-                                      
                                     ),
-
                                     const SizedBox(height: 10),
                                     const SizedBox(height: 5),
-
                                     MyPasswordTextField(
                                       obscureText: true,
                                       controller: confirmPasswordController,
                                       hintText: 'Confirmar senha',
                                     ),
-                                    
                                     const SizedBox(
                                       height: 10,
                                     ),
@@ -230,7 +225,11 @@ class _SignupState extends State<Signup> {
                                           textStyle:
                                               const TextStyle(fontSize: 0)),
                                       onPressed: () {
-             Navigator.pushNamedAndRemoveUntil(context, "/login", ModalRoute.withName('/login'),);
+                                        Navigator.pushNamedAndRemoveUntil(
+                                          context,
+                                          "/login",
+                                          ModalRoute.withName('/login'),
+                                        );
                                       },
                                       child: const Text(
                                         'Já tem conta?',
@@ -278,6 +277,8 @@ class _SignupState extends State<Signup> {
             email: email,
             name: nome,
             birthDate: '${dateNasc[2]}-${dateNasc[1]}-${dateNasc[0]}',
+            imageProfile:
+                "https://t.ctcdn.com.br/essK16aBUDd_65hp5umT3aMn_i8=/400x400/smart/filters:format(webp)/i606944.png",
             password: senha,
             passwordConfirmation: confirmarSenha,
             phoneNumber:
@@ -295,7 +296,7 @@ class _SignupState extends State<Signup> {
         _showToastErro(context, 'Favor preencher todos os campos!');
       }
     } catch (e) {
-      print (e);
+      print(e);
       _showToastErro(context, 'Ops, algo deu errado! ${e}');
     }
   }

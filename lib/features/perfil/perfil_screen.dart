@@ -38,7 +38,9 @@ class PerfilScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: ConstrainedBox(
                   constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width / 2),
+                      maxWidth: Responsive.isDesktop(context)
+                          ? MediaQuery.of(context).size.width / 2
+                          : MediaQuery.of(context).size.width),
                   child: ListView(
                     children: [
                       ProfileCard(),
@@ -61,7 +63,7 @@ class ProfileCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CircleAvatar(
-            backgroundImage: AssetImage('assets/profile_picture.jpg'),
+            // backgroundImage: AssetImage('assets/profile_picture.jpg'),
             radius: 60.0,
           ),
           SizedBox(height: 20.0),
@@ -96,6 +98,7 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
   final oldPasswordController = TextEditingController();
 
   final RegisterUserService _registerUserService = RegisterUserService();
+  bool trocarSenha = false;
 
   @override
   void initState() {
@@ -106,6 +109,7 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       padding: const EdgeInsets.all(20.0),
       child: Form(
@@ -184,55 +188,69 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
                 ],
               ),
               const SizedBox(height: 10),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Text(
-                    "Alterar a senha",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
+              TextButton(
+                  onPressed: () {
+                    setState(() {
+                      trocarSenha = !trocarSenha;
+                    });
+                  },
+                  child: const Text(
+                    "Mudar a senha",
+                    style: TextStyle(color: Colors.red),
+                  )),
+              trocarSenha
+                  ? Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const Text(
+                          "Alterar a senha",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                        const SizedBox(height: 5),
+                        MyPasswordTextField(
+                          obscureText: true,
+                          controller: oldPasswordController,
+                          hintText: 'Senha Atual',
+                        ),
+                        const SizedBox(height: 15),
+                        MyPasswordTextField(
+                          obscureText: true,
+                          controller: passwordController,
+                          hintText: 'Senha',
+                        ),
+                        const SizedBox(height: 15),
+                        MyPasswordTextField(
+                          obscureText: true,
+                          controller: confirmPasswordController,
+                          hintText: 'Confirmar senha',
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    )
+                  : const SizedBox(
+                      height: 40,
                     ),
-                    textAlign: TextAlign.start,
-                  ),
-                  const SizedBox(height: 5),
-                  MyPasswordTextField(
-                    obscureText: true,
-                    controller: oldPasswordController,
-                    hintText: 'Senha Atual',
-                  ),
-                  const SizedBox(height: 15),
-                  MyPasswordTextField(
-                    obscureText: true,
-                    controller: passwordController,
-                    hintText: 'Senha',
-                  ),
-                  const SizedBox(height: 15),
-                  MyPasswordTextField(
-                    obscureText: true,
-                    controller: confirmPasswordController,
-                    hintText: 'Confirmar senha',
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  MyButtonAgree(
-                    text: "Salvar",
-                    image: "site-sistema/Home/icone-seta.svg",
-                    onTap: () {
-                      _salvar(
-                          cpfController.text,
-                          emailController.text,
-                          usernameController.text,
-                          dataNascimentoController.text,
-                          passwordController.text,
-                          confirmPasswordController.text,
-                          telController.text);
-                    },
-                  ),
-                ],
+              MyButtonAgree(
+                text: "Salvar",
+                image: "site-sistema/Home/icone-seta.svg",
+                onTap: () {
+                  _salvar(
+                      cpfController.text,
+                      emailController.text,
+                      usernameController.text,
+                      dataNascimentoController.text,
+                      passwordController.text,
+                      confirmPasswordController.text,
+                      telController.text);
+                },
               ),
             ],
           ),
@@ -258,12 +276,11 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
             email: email,
             name: nome,
             birthDate: '${dateNasc[2]}-${dateNasc[1]}-${dateNasc[0]}',
-            password: senha,
-            passwordConfirmation: confirmarSenha,
+            imageProfile: "https://t.ctcdn.com.br/essK16aBUDd_65hp5umT3aMn_i8=/400x400/smart/filters:format(webp)/i606944.png",
             phoneNumber:
                 UtilBrasilFields.obterTelefone(telefone, mascara: false));
 
-        User? user = await _registerUserService.registrar(usuario);
+        User? user = await _registerUserService.atualizar(usuario);
 
         if (user != null) {
           _showToastInfo(context, 'Cadastro realizado com Sucesso!');
