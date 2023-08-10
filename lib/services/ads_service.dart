@@ -1,15 +1,13 @@
-import 'dart:convert';
-
 import 'package:bikes_frontend/models/failure_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
-import '../models/register_bike.dart';
+import '../models/ads.dart';
 
-class RegisterBikeService {
-  final String postsURL = "http://localhost:1337/api/sell";
+class AdsService {
+  final String postsURL = "http://localhost:1337/api/ads";
 
-  Future<Sell?> registrar(Sell vender) async {
+  Future<Ads?> registrar(Ads vender) async {
     try {
       Dio dio = Dio();
       dio.options.connectTimeout = const Duration(seconds: 30);
@@ -19,7 +17,7 @@ class RegisterBikeService {
       var res = await dio.post(postsURL, data: vender.toJson());
 
       if (res.statusCode == 200) {
-        Sell sell = Sell.fromJson(res.data);
+        Ads sell = Ads.fromJson(res.data);
         return sell;
       } else {
         print(res.statusCode);
@@ -37,7 +35,7 @@ class RegisterBikeService {
     }
   }
 
-  Future<Sell?> getDadosvender() async {
+  Future<Ads?> getAds() async {
     try {
       var token;
       var refreshToken;
@@ -55,7 +53,7 @@ class RegisterBikeService {
       var res = await dio.get(postsURL);
 
       if (res.statusCode == 200) {
-        Sell sell = Sell.fromJson(res.data);
+        Ads sell = Ads.fromJson(res.data);
         return sell;
       } else {
         print(res.statusCode);

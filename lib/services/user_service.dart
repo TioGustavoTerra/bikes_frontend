@@ -4,9 +4,9 @@ import 'package:bikes_frontend/models/failure_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
-import '../models/register_user.dart';
+import '../models/user.dart';
 
-class RegisterUserService {
+class UserService {
   final String postsURL = "http://localhost:1337/api/users";
 
   Future<User?> registrar(User usuario) async {

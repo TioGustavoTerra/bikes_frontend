@@ -5,7 +5,7 @@ import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
 import 'package:bikes_frontend/componentes/cpfTextField.dart';
 import 'package:bikes_frontend/componentes/messages.dart';
 import 'package:bikes_frontend/componentes/textfield.dart';
-import 'package:bikes_frontend/models/register_user.dart';
+import 'package:bikes_frontend/models/user.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ import 'package:flutter/services.dart';
 
 import '../../componentes/rodape.dart';
 import '../../componentes/rodapeApp.dart';
-import '../../services/registerUser_service.dart';
+import '../../services/user_service.dart';
 
 class PerfilScreen extends StatelessWidget {
   const PerfilScreen({super.key});
@@ -121,7 +121,7 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
   final telController = TextEditingController();
   final oldPasswordController = TextEditingController();
 
-  final RegisterUserService _registerUserService = RegisterUserService();
+  final UserService _registerUserService = UserService();
   bool trocarSenha = false;
 
   @override

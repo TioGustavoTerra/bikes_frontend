@@ -10,8 +10,8 @@ import 'package:flutter/services.dart';
 import '../../componentes/button.dart';
 import '../../componentes/messages.dart';
 import '../../componentes/textfield.dart';
-import '../../models/register_user.dart';
-import '../../services/registerUser_service.dart';
+import '../../models/user.dart';
+import '../../services/user_service.dart';
 
 class Signup extends StatefulWidget {
   Signup({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _SignupState extends State<Signup> {
   final confirmPasswordController = TextEditingController();
   final telController = TextEditingController();
 
-  final RegisterUserService _registerUserService = RegisterUserService();
+  final UserService _registerUserService = UserService();
 
   double _sigmaX = 5; // from 0-10
   double _sigmaY = 5; // from 0-10

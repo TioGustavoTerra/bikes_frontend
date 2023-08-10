@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:bikes_frontend/componentes/DrawerApp.dart';
 import 'package:bikes_frontend/componentes/about_responsive_web.dart';
 import 'package:bikes_frontend/componentes/cabecalho.dart';

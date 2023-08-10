@@ -9,11 +9,10 @@ import '../../componentes/cabecalhoapp.dart';
 import '../../componentes/messages.dart';
 import '../../componentes/rodape.dart';
 import '../../componentes/rodapeApp.dart';
-import '../../componentes/square_title.dart';
 import '../../componentes/textfield.dart';
-import '../../models/register_bike.dart';
+import '../../models/ads.dart';
 import '../../utils/responsive.dart';
-import '../../services/registerBike_service.dart';
+import '../../services/ads_service.dart';
 
 class Vender extends StatefulWidget {
   const Vender({super.key});
@@ -29,7 +28,7 @@ class _VenderState extends State<Vender> {
   final tamanhoController = TextEditingController();
   final aroController = TextEditingController();
   final descricaoController = TextEditingController();
-  final RegisterBikeService _registerBikeService = RegisterBikeService();
+  final AdsService _adsService = AdsService();
 
   @override
   Widget build(BuildContext context) {
@@ -189,14 +188,14 @@ class _VenderState extends State<Vender> {
       String descricao,) async {
     try {
       if (_formKey.currentState!.validate()) {
-        var Vender = Sell(
+        var vender = Ads(
             marca: marca,
             tipo: tipo,
             tamanho: tamanho,
             aro: aro,
             descricao: descricao);
 
-        Sell? user = await _registerBikeService.registrar(Vender);
+        Ads? user = await _adsService.registrar(vender);
 
         if (user != null) {
           _showToastInfo(context, 'Cadastro realizado com Sucesso!');

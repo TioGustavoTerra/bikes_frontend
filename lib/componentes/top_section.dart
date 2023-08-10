@@ -1,6 +1,6 @@
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 
 class TopSection extends StatelessWidget {
   const TopSection({Key? key}) : super(key: key);
@@ -9,7 +9,6 @@ class TopSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final maxWidth = constraints.maxWidth;
 
         if (Responsive.isDesktop(context)) {
           return AspectRatio(
