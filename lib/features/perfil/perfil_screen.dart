@@ -307,8 +307,7 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
         User? user = await _registerUserService.atualizar(usuario);
 
         if (user != null) {
-          _showToastInfo(context, 'Cadastro realizado com Sucesso!');
-          Navigator.pushNamed(context, "/login");
+          _showToastInfo(context, 'Cadastro Atualizado com Sucesso!');
         } else {
           _showToastErro(context, 'Ops, algo deu errado!');
         }

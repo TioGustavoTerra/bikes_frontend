@@ -3,7 +3,7 @@ import 'package:bikes_frontend/features/home/home_screen.dart';
 import 'package:bikes_frontend/features/about/quem-somos.dart';
 import 'package:bikes_frontend/features/register/registration_screen.dart';
 import 'package:bikes_frontend/features/login/login_screen.dart';
-import 'package:bikes_frontend/features/vender/vender.dart';
+import 'package:bikes_frontend/features/vender/vender_screen.dart';
 import 'package:flutter/material.dart';
 import 'features/perfil/perfil_screen.dart';
 

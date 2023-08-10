@@ -24,6 +24,7 @@ class Vender extends StatefulWidget {
 class _VenderState extends State<Vender> {
   final _formKey = GlobalKey<FormState>();
   final marcaController = TextEditingController();
+  late String _marca = 'Caloi';
   final tipoController = TextEditingController();
   final tamanhoController = TextEditingController();
   final aroController = TextEditingController();
@@ -47,7 +48,6 @@ class _VenderState extends State<Vender> {
             drawer: Responsive.isMobile(context)
                 ? const Drawer(child: DrawerApp())
                 : null,
-
             body: Align(
                 alignment: Alignment.topCenter,
                 child: ConstrainedBox(
@@ -77,8 +77,7 @@ class _VenderState extends State<Vender> {
                                       ? MediaQuery.of(context).size.width * 0.4
                                       : null,
                                   height: Responsive.isTablet(context)
-                                      ? MediaQuery.of(context).size.width *
-                                          0.80
+                                      ? MediaQuery.of(context).size.width * 0.80
                                       : null,
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
@@ -98,13 +97,37 @@ class _VenderState extends State<Vender> {
                                                   color: Colors.black,
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold),
-                                                  textAlign: TextAlign.center,
+                                              textAlign: TextAlign.center,
                                             ),
-                                            MyTextField(
-                                              hintText: 'Marca do quadro',
-                                              controller: marcaController,
-                                              obscureText: false,
-                                              inputFormatter: [],
+                                            // MyTextField(
+                                            //   hintText: 'Marca do quadro',
+                                            //   controller: marcaController,
+                                            //   obscureText: false,
+                                            //   inputFormatter: [],
+                                            // ),
+                                            DropdownButton(
+                                              items: const [
+                                                DropdownMenuItem(
+                                                  value: "Caloi",
+                                                  child: Text("Caloi"),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "Monarca",
+                                                  child: Text("Monarca"),
+                                                ),
+                                                DropdownMenuItem(
+                                                  child: Text("Audax"),
+                                                  value: "Audax",
+                                                ),
+                                              ],
+                                              value: _marca,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  _marca = value!;
+                                                });
+                                              },
+                                              isExpanded: true,
+                                              hint: Text("Marca"),
                                             ),
                                             const SizedBox(width: 50),
                                             const SizedBox(height: 50),
@@ -146,12 +169,14 @@ class _VenderState extends State<Vender> {
                                               image:
                                                   "site-sistema/Home/icone-seta.svg",
                                               onTap: () {
-                                              registrar(
-                                            marcaController.text,
-                                            tipoController.text,
-                                            tamanhoController.text,
-                                            aroController.text,
-                                            descricaoController.text,);
+                                                registrar(
+                                                  // marcaController.text,
+                                                  _marca,
+                                                  tipoController.text,
+                                                  tamanhoController.text,
+                                                  aroController.text,
+                                                  descricaoController.text,
+                                                );
                                               },
                                             ),
                                           ],
@@ -179,13 +204,14 @@ class _VenderState extends State<Vender> {
       },
     );
   }
-  
-   Future<void> registrar(
-      String marca,
-      String tipo,
-      String tamanho,
-      String aro,
-      String descricao,) async {
+
+  Future<void> registrar(
+    String marca,
+    String tipo,
+    String tamanho,
+    String aro,
+    String descricao,
+  ) async {
     try {
       if (_formKey.currentState!.validate()) {
         var vender = Ads(
@@ -207,7 +233,7 @@ class _VenderState extends State<Vender> {
         _showToastErro(context, 'Favor preencher todos os campos!');
       }
     } catch (e) {
-      print (e);
+      print(e);
       _showToastErro(context, 'Ops, algo deu errado! ${e}');
     }
   }
@@ -218,5 +244,5 @@ class _VenderState extends State<Vender> {
 
   void _showToastInfo(BuildContext context, msg) {
     Messages.of(context).showInfo(msg);
-  }}
-
+  }
+}
