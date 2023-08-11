@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:bikes_frontend/features/perfil/perfil_screen.dart';
 
 class CabecalhoResponsiveContent extends StatelessWidget {
   const CabecalhoResponsiveContent({Key? key}) : super(key: key);

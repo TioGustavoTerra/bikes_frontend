@@ -1,4 +1,3 @@
-import 'package:bikes_frontend/componentes/square_title.dart';
 import 'package:bikes_frontend/componentes/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

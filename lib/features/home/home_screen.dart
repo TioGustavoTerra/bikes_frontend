@@ -4,7 +4,7 @@ import 'package:bikes_frontend/componentes/destaque.dart';
 import 'package:bikes_frontend/componentes/grid_marcas.dart';
 import 'package:bikes_frontend/componentes/pesquisa_bar_bikes.dart';
 import 'package:bikes_frontend/componentes/rodape.dart';
-import 'package:bikes_frontend/componentes/top_section.dart';
+import 'package:bikes_frontend/componentes/home_img.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                           Center(
                             child: Stack(
                               children: [
-                                const TopSection(),
+                                const TopsectionHome(),
                                 Positioned(
                                     right: (MediaQuery.of(context).size.width -
                                             550) /

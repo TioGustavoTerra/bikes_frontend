@@ -25,6 +25,10 @@ class _VenderState extends State<Vender> {
   final _formKey = GlobalKey<FormState>();
   final marcaController = TextEditingController();
   late String _marca = 'Caloi';
+  late String _tipo = 'Mountain Bike';
+  late String _quadro = 'S';
+  late String _aro = '16';
+
   final tipoController = TextEditingController();
   final tamanhoController = TextEditingController();
   final aroController = TextEditingController();
@@ -105,6 +109,7 @@ class _VenderState extends State<Vender> {
                                             //   obscureText: false,
                                             //   inputFormatter: [],
                                             // ),
+                                            const Text('Marca', style: TextStyle(fontWeight: FontWeight.bold)),
                                             DropdownButton(
                                               items: const [
                                                 DropdownMenuItem(
@@ -116,8 +121,8 @@ class _VenderState extends State<Vender> {
                                                   child: Text("Monarca"),
                                                 ),
                                                 DropdownMenuItem(
-                                                  child: Text("Audax"),
                                                   value: "Audax",
+                                                  child: Text("Audax"),
                                                 ),
                                               ],
                                               value: _marca,
@@ -127,33 +132,115 @@ class _VenderState extends State<Vender> {
                                                 });
                                               },
                                               isExpanded: true,
-                                              hint: Text("Marca"),
+                                              hint: const Text("Marca"),
                                             ),
                                             const SizedBox(width: 50),
                                             const SizedBox(height: 50),
-                                            MyTextField(
-                                              hintText:
-                                                  'Tipo (Mountain bike, Speed...)',
-                                              controller: tipoController,
-                                              obscureText: false,
-                                              inputFormatter: [],
+                                            // MyTextField(
+                                            //   hintText:
+                                            //       'Tipo (Mountain bike, Speed...)',
+                                            //   controller: tipoController,
+                                            //   obscureText: false,
+                                            //   inputFormatter: [],
+                                            // ),
+                                            const Text('Tipo', style: TextStyle(fontWeight: FontWeight.bold),),
+                                            DropdownButton(
+                                              items: const [
+                                                DropdownMenuItem(
+                                                  value: "Mountain Bike",
+                                                  child: Text("Mountain Bike"),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "Speed",
+                                                  child: Text("Speed"),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "BMX",
+                                                  child: Text("BMX"),
+                                                ),
+                                              ],
+                                              value: _tipo,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  _tipo = value!;
+                                                });
+                                              },
+                                              isExpanded: true,
+                                              hint: const Text("Tipo"),
                                             ),
+
                                             const SizedBox(width: 50),
                                             const SizedBox(height: 50),
-                                            MyTextField(
-                                              hintText: 'Tamanho do quadro',
-                                              controller: tamanhoController,
-                                              obscureText: false,
-                                              inputFormatter: [],
+                                            // MyTextField(
+                                            //   hintText: 'Tamanho do quadro',
+                                            //   controller: tamanhoController,
+                                            //   obscureText: false,
+                                            //   inputFormatter: [],
+                                            // ),
+                                            const Text('Tamanho do quadro', style: TextStyle(fontWeight: FontWeight.bold)),
+                                            DropdownButton(
+                                              items: const [
+                                                DropdownMenuItem(
+                                                  value: "S",
+                                                  child: Text("S"),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "M",
+                                                  child: Text("M"),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "L",
+                                                  child: Text("L"),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "XL",
+                                                  child: Text("XL"),
+                                                ),
+                                              ],
+                                              value: _quadro,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  _quadro = value!;
+                                                });
+                                              },
+                                              isExpanded: true,
+                                              hint: const Text("Tamanho do quadro", style: TextStyle(fontWeight: FontWeight.bold)),
                                             ),
+
                                             const SizedBox(width: 50),
                                             const SizedBox(height: 50),
-                                            MyTextField(
-                                              hintText: 'Número do aro',
-                                              controller: aroController,
-                                              obscureText: false,
-                                              inputFormatter: [],
+                                            // MyTextField(
+                                            //   hintText: 'Número do aro',
+                                            //   controller: aroController,
+                                            //   obscureText: false,
+                                            //   inputFormatter: [],
+                                            // ),
+                                            const Text('Tamanho do aro', style: TextStyle(fontWeight: FontWeight.bold)),
+                                            DropdownButton(
+                                              items: const [
+                                                DropdownMenuItem(
+                                                  value: "16",
+                                                  child: Text("16"),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "20",
+                                                  child: Text("20"),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "24",
+                                                  child: Text("24"),
+                                                ),
+                                              ],
+                                              value: _aro,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  _aro = value!;
+                                                });
+                                              },
+                                              isExpanded: true,
+                                              hint: const Text("Tamanho do aro"),
                                             ),
+
                                             const SizedBox(width: 50),
                                             const SizedBox(height: 50),
                                             MyTextField(
@@ -171,10 +258,13 @@ class _VenderState extends State<Vender> {
                                               onTap: () {
                                                 registrar(
                                                   // marcaController.text,
+                                                  // tipoController.text,
+                                                  // tamanhoController.text,
+                                                  // aroController.text,
                                                   _marca,
-                                                  tipoController.text,
-                                                  tamanhoController.text,
-                                                  aroController.text,
+                                                  _aro,
+                                                  _quadro,
+                                                  _tipo,
                                                   descricaoController.text,
                                                 );
                                               },

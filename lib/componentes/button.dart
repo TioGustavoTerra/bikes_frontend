@@ -50,7 +50,7 @@ class MyButtonAgree extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             colors: [
-              Color.fromARGB(255, 9, 188, 138),
+              Color.fromARGB(255, 8, 188, 138),
               Color.fromARGB(255, 4, 18, 20),
             ],
             begin: Alignment.topLeft,

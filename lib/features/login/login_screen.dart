@@ -3,17 +3,11 @@ import 'dart:ui';
 import 'package:bikes_frontend/componentes/messages.dart';
 import 'package:bikes_frontend/services/login_service.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../componentes/button.dart';
-import '../../componentes/rodape.dart';
 import '../../componentes/square_title.dart';
 import '../../componentes/textfield.dart';
-import '../home/home_screen.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -23,8 +17,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   LoginUserService _loginService = LoginUserService();
-  late String _username;
-  late String _password;
+  // late String _username;
+  // late String _password;
 
   get confirmPasswordController => null;
 

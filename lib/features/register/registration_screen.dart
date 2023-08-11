@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:bikes_frontend/componentes/cpfTextField.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -32,11 +31,11 @@ class _SignupState extends State<Signup> {
 
   final UserService _registerUserService = UserService();
 
-  double _sigmaX = 5; // from 0-10
-  double _sigmaY = 5; // from 0-10
-  double _opacity = 0.2;
-  double _width = 350;
-  double _height = 300;
+  // double _sigmaX = 5; // from 0-10
+  // double _sigmaY = 5; // from 0-10
+  // double _opacity = 0.2;
+  // double _width = 350;
+  // double _height = 300;
   final _formKey = GlobalKey<FormState>();
 
   @override
