@@ -102,8 +102,8 @@ class _SignupState extends State<Rodape> {
                           onPressed: () {
                             Navigator.pushNamedAndRemoveUntil(
                               context,
-                              "/register",
-                              ModalRoute.withName('/register'),
+                              "/registro",
+                              ModalRoute.withName('/registro'),
                             );
                           },
                           child: const Text(

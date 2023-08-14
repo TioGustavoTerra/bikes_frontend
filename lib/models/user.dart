@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
@@ -9,6 +11,7 @@ class User {
   String email;
   String? password;
   String? passwordConfirmation;
+  String? currentPassword;
   String imageProfile;
 
   User(
@@ -19,7 +22,8 @@ class User {
       required this.email,
       required this.imageProfile,
       this.password,
-      this.passwordConfirmation});
+      this.passwordConfirmation,
+      this.currentPassword});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
@@ -41,17 +45,21 @@ class User {
     user["birthDate"] = birthDate;
     user["phoneNumber"] = phoneNumber;
     user["email"] = email;
-
-    if (password!.isNotEmpty) {
+    
+    if (password.isDefinedAndNotNull) {
       user["password"] = password;
     }
 
-    if (passwordConfirmation!.isNotEmpty) {
+    if (password.isDefinedAndNotNull) {
       user["passwordConfirmation"] = passwordConfirmation;
     }
 
-    if (passwordConfirmation!.isNotEmpty) {
+    if (passwordConfirmation.isDefinedAndNotNull) {
       user["passwordConfirmation"] = passwordConfirmation;
+    }
+
+    if (currentPassword.isDefinedAndNotNull) {
+      user["currentPassword"] = currentPassword;
     }
 
     user["imageProfile"] = imageProfile;
