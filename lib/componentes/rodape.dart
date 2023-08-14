@@ -102,8 +102,8 @@ class _SignupState extends State<Rodape> {
                           onPressed: () {
                             Navigator.pushNamedAndRemoveUntil(
                               context,
-                              "/register",
-                              ModalRoute.withName('/register'),
+                              "/registro",
+                              ModalRoute.withName('/registro'),
                             );
                           },
                           child: const Text(
@@ -138,8 +138,8 @@ class _SignupState extends State<Rodape> {
                           onPressed: () {
                             Navigator.pushNamedAndRemoveUntil(
                               context,
-                              "/",
-                              ModalRoute.withName('/'),
+                              "/vender",
+                              ModalRoute.withName('/vender'),
                             );
                           },
                           child: const Text(
@@ -158,8 +158,8 @@ class _SignupState extends State<Rodape> {
                         onPressed: () {
                           Navigator.pushNamedAndRemoveUntil(
                             context,
-                            "/login",
-                            ModalRoute.withName('/login'),
+                            "/",
+                            ModalRoute.withName('/'),
                           );
                         },
                         child:
@@ -170,8 +170,8 @@ class _SignupState extends State<Rodape> {
                         onPressed: () {
                           Navigator.pushNamedAndRemoveUntil(
                             context,
-                            "/login",
-                            ModalRoute.withName('/login'),
+                            "/",
+                            ModalRoute.withName('/'),
                           );
                         },
                         child:
@@ -182,8 +182,8 @@ class _SignupState extends State<Rodape> {
                         onPressed: () {
                           Navigator.pushNamedAndRemoveUntil(
                             context,
-                            "/login",
-                            ModalRoute.withName('/login'),
+                            "/",
+                            ModalRoute.withName('/'),
                           );
                         },
                         child: SvgPicture.asset(

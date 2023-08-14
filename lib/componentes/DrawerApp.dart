@@ -88,7 +88,7 @@ class NavigationDrawer extends StatelessWidget {
                       leading: const Icon(Icons.face, color: Colors.white,),
                       title: const Text('Sobre', style: TextStyle(color: Colors.white),),
                       onTap: () {
-                    Navigator.pushNamedAndRemoveUntil(context, "/about", ModalRoute.withName('/about'),);
+                    Navigator.pushNamedAndRemoveUntil(context, "/sobre", ModalRoute.withName('/sobre'),);
                       },
                     ),
                     ListTile(
@@ -99,7 +99,9 @@ class NavigationDrawer extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.sell, color: Colors.white,),
                       title: const Text('Vender', style: TextStyle(color: Colors.white),),
-                      onTap: () {},
+                      onTap: () {
+                      Navigator.pushNamedAndRemoveUntil(context, "/vender", ModalRoute.withName('/vender'),);
+                      },
                     ),
                     ListTile(
                       leading: const Icon(Icons.phone, color: Colors.white,),
@@ -114,7 +116,9 @@ class NavigationDrawer extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.logout, color: Colors.white,),
                       title: const Text('Sair', style: TextStyle(color: Colors.white),),
-                      onTap: () {},
+                      onTap: () {
+                      Navigator.pushNamedAndRemoveUntil(context, "/registro", ModalRoute.withName('/registro'),);
+                      },
                     ),
                   ],
                 ),
