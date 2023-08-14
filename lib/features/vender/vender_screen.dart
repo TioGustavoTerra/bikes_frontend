@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import '../../componentes/DrawerApp.dart';
 import '../../componentes/button.dart';
@@ -34,6 +35,12 @@ class _VenderState extends State<Vender> {
   final aroController = TextEditingController();
   final descricaoController = TextEditingController();
   final AdsService _adsService = AdsService();
+
+  @override
+  void initState() {
+    _requestUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -293,6 +300,17 @@ class _VenderState extends State<Vender> {
                     ))));
       },
     );
+  }
+
+    Future<void> _requestUser() async {
+    final user = await SessionManager().get('accessToken');
+    if (user == null) {
+      setState(() {
+        Navigator.pushNamedAndRemoveUntil(
+            context, "/login", ModalRoute.withName('/'));
+      });
+    }
+    //nomeUsuario = user['nome_usuario'];
   }
 
   Future<void> registrar(
