@@ -51,7 +51,6 @@ class PerfilScreen extends StatelessWidget {
                           Center(
                             child: Stack(
                               children: [
-                                
                                 if (Responsive.isMobile(context))
                                   const PreferredSize(
                                     preferredSize: Size(double.infinity, 56),
@@ -68,7 +67,6 @@ class PerfilScreen extends StatelessWidget {
                           )
                         ],
                       ))
-
                     ],
                   )),
             ));
@@ -133,7 +131,6 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       padding: const EdgeInsets.all(20.0),
       child: Form(
@@ -273,6 +270,7 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
                       dataNascimentoController.text,
                       passwordController.text,
                       confirmPasswordController.text,
+                      oldPasswordController.text,
                       telController.text);
                 },
               ),
@@ -290,19 +288,37 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
       String dataNascimento,
       String senha,
       String confirmarSenha,
+      String senhaAtual,
       String telefone) async {
     try {
       if (_formKey.currentState!.validate()) {
         var dateNasc = dataNascimento.split('/');
+        var usuario = null;
 
-        var usuario = User(
-            cpfCnpj: UtilBrasilFields.removeCaracteres(cpf),
-            email: email,
-            name: nome,
-            birthDate: '${dateNasc[2]}-${dateNasc[1]}-${dateNasc[0]}',
-            imageProfile: "https://t.ctcdn.com.br/essK16aBUDd_65hp5umT3aMn_i8=/400x400/smart/filters:format(webp)/i606944.png",
-            phoneNumber:
-                UtilBrasilFields.obterTelefone(telefone, mascara: false));
+        if (trocarSenha) {
+          usuario = User(
+              cpfCnpj: UtilBrasilFields.removeCaracteres(cpf),
+              email: email,
+              name: nome,
+              birthDate: '${dateNasc[2]}-${dateNasc[1]}-${dateNasc[0]}',
+              imageProfile:
+                  "https://t.ctcdn.com.br/essK16aBUDd_65hp5umT3aMn_i8=/400x400/smart/filters:format(webp)/i606944.png",
+              phoneNumber:
+                  UtilBrasilFields.obterTelefone(telefone, mascara: false),
+              password: senha,
+              passwordConfirmation: confirmarSenha,
+              currentPassword: senhaAtual);
+        } else {
+          usuario = User(
+              cpfCnpj: UtilBrasilFields.removeCaracteres(cpf),
+              email: email,
+              name: nome,
+              birthDate: '${dateNasc[2]}-${dateNasc[1]}-${dateNasc[0]}',
+              imageProfile:
+                  "https://t.ctcdn.com.br/essK16aBUDd_65hp5umT3aMn_i8=/400x400/smart/filters:format(webp)/i606944.png",
+              phoneNumber:
+                  UtilBrasilFields.obterTelefone(telefone, mascara: false));
+        }
 
         User? user = await _registerUserService.atualizar(usuario);
 
