@@ -10,6 +10,7 @@ import '../../componentes/cabecalhoapp.dart';
 import '../../componentes/messages.dart';
 import '../../componentes/rodape.dart';
 import '../../componentes/rodapeApp.dart';
+import '../../componentes/formulario.dart';
 import '../../componentes/textfield.dart';
 import '../../models/ads.dart';
 import '../../utils/responsive.dart';
@@ -247,6 +248,12 @@ class _VenderState extends State<Vender> {
                                               isExpanded: true,
                                               hint: const Text("Tamanho do aro"),
                                             ),
+
+
+                                            //
+                                            //const Formulario(),
+                                            //
+
 
                                             const SizedBox(width: 50),
                                             const SizedBox(height: 50),
