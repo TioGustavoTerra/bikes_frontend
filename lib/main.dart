@@ -5,6 +5,7 @@ import 'package:bikes_frontend/features/register/registration_screen.dart';
 import 'package:bikes_frontend/features/login/login_screen.dart';
 import 'package:bikes_frontend/features/vender/vender_screen.dart';
 import 'package:flutter/material.dart';
+import 'features/comprar/comprar_screen.dart';
 import 'features/perfil/perfil_screen.dart';
 
 void main() {
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/registro': (context) => Signup(),
         '/home': (context) =>  HomePage(),
-        '/vender':(context) => Vender()
+        '/vender':(context) => Vender(),
+        '/comprar':(context) => Comprar(),
       },
     );
   }

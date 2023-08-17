@@ -10,7 +10,7 @@ class CabecalhoApp extends StatelessWidget {
       title: TextButton(
         style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
         onPressed: () {
-          Navigator.pushNamed(context, '/home');
+          Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
         },
         child: SvgPicture.asset(
           'site-sistema/Menu/Logo-bikes.svg',

@@ -54,6 +54,8 @@ class _GridMarcasState extends State<GridMarcas> {
           ),
         ],
       ),
-    ]));
+  ]
+  )
+    );
   }
 }

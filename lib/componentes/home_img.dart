@@ -22,7 +22,7 @@ class TopsectionHome extends StatelessWidget {
                const Align(
                   alignment: Alignment.topCenter,
                   child: SizedBox(
-                    height: 270,
+                    height: 500,
                       child:  Center(
                         child: Text(
                           'Seu principal marketplace de bikes',

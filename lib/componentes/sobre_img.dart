@@ -21,10 +21,13 @@ class _TopsectionSobreState extends State<TopsectionSobre> {
             aspectRatio: 3.2,
             child: Stack(
               children: [
-                SvgPicture.asset('site-sistema/Quem-somos/topo_quem _somos.svg'),
+               Image.asset(
+                  'site-sistema/Quem-somos/topo-quem-somos.jpg',
+                  fit: BoxFit.cover,
+                ),
                 Container(
                   color: const Color.fromARGB(100, 9, 188, 138),
-                height: MediaQuery.of(context).size.height /2.59,
+                height: MediaQuery.of(context).size.height / 2.59,
                 ),
                const Align(
                   alignment: Alignment.topCenter,
@@ -52,7 +55,7 @@ class _TopsectionSobreState extends State<TopsectionSobre> {
               aspectRatio: 3.2,
               child: Stack(
                 children: [
-                   Image.asset(
+               Image.asset(
                   'site-sistema/Quem-somos/topo-quem-somos.jpg',
                   fit: BoxFit.cover,
                 ),

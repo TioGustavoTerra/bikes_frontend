@@ -57,7 +57,7 @@ class Cabecalho extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-             Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
+             Navigator.pushNamedAndRemoveUntil(context, "/comprar", ModalRoute.withName('/comprar'),);
           },
           child: const Text(
             'Comprar',

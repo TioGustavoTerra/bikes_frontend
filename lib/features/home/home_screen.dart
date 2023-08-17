@@ -85,13 +85,6 @@ class _HomePageState extends State<HomePage> {
                           child: QualoEstilo(),
                         ),
 
-
-
-
-
-
-
-
                        if (Responsive.isMobile(context))
                  const PreferredSize(
                     preferredSize: Size(double.infinity, 56),
