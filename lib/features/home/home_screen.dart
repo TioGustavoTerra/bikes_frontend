@@ -5,13 +5,16 @@ import 'package:bikes_frontend/componentes/grid_marcas.dart';
 import 'package:bikes_frontend/componentes/pesquisa_bar_bikes.dart';
 import 'package:bikes_frontend/componentes/rodape.dart';
 import 'package:bikes_frontend/componentes/home_img.dart';
+import 'package:bikes_frontend/componentes/selecionamos.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import '../../componentes/DrawerApp.dart';
+import '../../componentes/insta.dart';
 import '../../componentes/qual_estilo.dart';
 import '../../componentes/rodapeApp.dart';
+import '../../componentes/speed.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -83,6 +86,24 @@ class _HomePageState extends State<HomePage> {
                             height: 800,
                             width: 800,
                           child: QualoEstilo(),
+                        ),
+
+                        const SizedBox(
+                          height: 800,
+                          width: 800,
+                          child: Selecionamos(),
+                        ),
+
+                        const SizedBox(
+                          height: 800,
+                          width: 800,
+                          child: Speed(),
+                        ),
+
+                        const SizedBox(
+                          height: 800,
+                          width: 800,
+                          child: Insta(),
                         ),
 
                        if (Responsive.isMobile(context))

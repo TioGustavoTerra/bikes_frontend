@@ -164,7 +164,7 @@ class _ComprarState extends State<Comprar> {
                             ],
                           ))),
                       if (Responsive.isMobile(context))
-                        const PreferredSize(
+                        const PreferredSize(     
                           preferredSize: Size(double.infinity, 56),
                           child: rodapeApp(),
                         )
