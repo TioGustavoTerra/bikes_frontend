@@ -4,10 +4,10 @@ class PesquisaBarBikes extends StatefulWidget {
   const PesquisaBarBikes({Key? key}) : super(key: key);
 
   @override
-  _PesquisaBarBikesState createState() => _PesquisaBarBikesState();
+  PesquisaBarBikesState createState() => PesquisaBarBikesState();
 }
 
-class _PesquisaBarBikesState extends State<PesquisaBarBikes> {
+class PesquisaBarBikesState extends State<PesquisaBarBikes> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +19,7 @@ class _PesquisaBarBikesState extends State<PesquisaBarBikes> {
               color: Colors.black.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
           // borderRadius: BorderRadius.circular(50),
@@ -58,7 +58,7 @@ class _PesquisaBarBikesState extends State<PesquisaBarBikes> {
                 width: 20,
               ),
               Padding(
-                padding: EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 20),
                 child: DropdownButton(
                   onChanged: (value) {},
                   items: const [
@@ -82,10 +82,10 @@ class _PesquisaBarBikesState extends State<PesquisaBarBikes> {
                   ),
 
                   underline: Container(), //empty line
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                  dropdownColor: Color.fromARGB(255, 4, 20, 7),
+                  style: const TextStyle(fontSize: 18, color: Colors.white),
+                  dropdownColor: const Color(0xFF006B5A),
                   iconEnabledColor: Colors.white,
-                  icon: Icon(Icons.filter_list_sharp),
+                  icon: const Icon(Icons.filter_list_sharp),
                   iconSize: 20, //Icon color
                 ),
               )

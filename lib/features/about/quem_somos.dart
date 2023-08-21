@@ -2,7 +2,6 @@ import 'package:bikes_frontend/componentes/DrawerApp.dart';
 // import 'package:bikes_frontend/componentes/sobre.dart';
 import 'package:bikes_frontend/componentes/cabecalho.dart';
 import 'package:bikes_frontend/componentes/cabecalhoapp.dart';
-import 'package:bikes_frontend/componentes/rodape.dart';
 import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,8 @@ import 'package:flutter_svg/svg.dart';
 import '../../componentes/sobre_img.dart';
 
 class QuemSomos extends StatelessWidget {
+  const QuemSomos({super.key});
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -67,24 +68,18 @@ class QuemSomos extends StatelessWidget {
               ),
               Column(
                 children: [
-                 Container(
-                    child: SvgPicture.network(
-                      'site-sistema/Quem-somos/para_esporte.svg',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Container(
-                    child: SvgPicture.network(
-                      'site-sistema/Quem-somos/para_passeio.svg',
-                      fit: BoxFit.cover,
-                    ),
+                 SvgPicture.network(
+                   'site-sistema/Quem-somos/para_esporte.svg',
+                   fit: BoxFit.cover,
+                 ),
+                  SvgPicture.network(
+                    'site-sistema/Quem-somos/para_passeio.svg',
+                    fit: BoxFit.cover,
                   ),
                 ],
               ),
-              Container(
-                child: SvgPicture.network(
-                    'site-sistema/Quem-somos/para_passeio.svg'),
-              ),
+              SvgPicture.network(
+                  'site-sistema/Quem-somos/para_passeio.svg'),
             ],
           ),
         ),

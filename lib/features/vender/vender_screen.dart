@@ -4,13 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import '../../componentes/DrawerApp.dart';
-import '../../componentes/button.dart';
 import '../../componentes/cabecalho.dart';
 import '../../componentes/cabecalhoapp.dart';
 import '../../componentes/messages.dart';
-import '../../componentes/rodape.dart';
-import '../../componentes/rodapeApp.dart';
-import '../../componentes/textfield.dart';
 import '../../models/ads.dart';
 import '../../utils/responsive.dart';
 import '../../services/ads_service.dart';
