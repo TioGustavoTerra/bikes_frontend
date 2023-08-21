@@ -11,6 +11,8 @@ class Cabecalho extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: 100,
+      elevation: 8,
+      shadowColor: Colors.black,
       title: Row(children: [
         Expanded(
           child: LayoutBuilder(
@@ -35,7 +37,7 @@ class Cabecalho extends StatelessWidget {
             height: 55,
           ),
         ),
-        const SizedBox(width: 32),
+        const SizedBox(width: 50),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 20)),
           onPressed: () {
@@ -50,10 +52,11 @@ class Cabecalho extends StatelessWidget {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
-              fontSize: 15,
+              fontSize: 16,
             ),
           ),
         ),
+        const SizedBox(width: 50),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
@@ -64,10 +67,11 @@ class Cabecalho extends StatelessWidget {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
-              fontSize: 15,
+              fontSize: 16,
             ),
           ),
         ),
+        const SizedBox(width: 50),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
@@ -78,10 +82,11 @@ class Cabecalho extends StatelessWidget {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
-              fontSize: 15,
+              fontSize: 16,
             ),
           ),
         ),
+        const SizedBox(width: 50),
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
@@ -92,11 +97,11 @@ class Cabecalho extends StatelessWidget {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
-              fontSize: 15,
+              fontSize: 16,
             ),
           ),
         ),
-
+const SizedBox(width: 50),
       const  CabecalhoResponsiveContent(),
 
         Expanded(

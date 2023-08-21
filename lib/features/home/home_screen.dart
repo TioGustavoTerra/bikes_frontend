@@ -57,16 +57,13 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Expanded(
                             child: Column(children: [
-                          Center(
+                          const Center(
                             child: Stack(
+                              alignment: Alignment.center,
                               children: [
-                                const TopsectionHome(),
+                                TopsectionHome(),
                                 Positioned(
-                                    right: (MediaQuery.of(context).size.width -
-                                            550) /
-                                        2,
-                                    bottom: 0,
-                                    child: const PesquisaBarBikes()),
+                                    bottom: 20, child: PesquisaBarBikes()),
                               ],
                             ),
                           ),
@@ -75,47 +72,41 @@ class _HomePageState extends State<HomePage> {
                             width: 600,
                             child: GridMarcas(),
                           ),
-
-                       const SizedBox(
+                          const SizedBox(
                             height: 800,
                             width: 800,
                             child: Destaque(),
                           ),
-                          
-                         const SizedBox(
+                          const SizedBox(
                             height: 800,
                             width: 800,
-                          child: QualoEstilo(),
-                        ),
-
-                        const SizedBox(
-                          height: 800,
-                          width: 800,
-                          child: Selecionamos(),
-                        ),
-
-                        const SizedBox(
-                          height: 800,
-                          width: 800,
-                          child: Speed(),
-                        ),
-
-                        const SizedBox(
-                          height: 800,
-                          width: 800,
-                          child: Insta(),
-                        ),
-
-                       if (Responsive.isMobile(context))
-                 const PreferredSize(
-                    preferredSize: Size(double.infinity, 56),
-                    child: rodapeApp(),
-                  )
-                    else( PreferredSize(
-                    preferredSize: const Size(double.infinity, 72),
-                    child: Rodape(),
-                  )),
-
+                            child: QualoEstilo(),
+                          ),
+                          const SizedBox(
+                            height: 800,
+                            width: 800,
+                            child: Selecionamos(),
+                          ),
+                          const SizedBox(
+                            height: 800,
+                            width: 800,
+                            child: Speed(),
+                          ),
+                          const SizedBox(
+                            height: 800,
+                            width: 800,
+                            child: Insta(),
+                          ),
+                          if (Responsive.isMobile(context))
+                            const PreferredSize(
+                              preferredSize: Size(double.infinity, 56),
+                              child: rodapeApp(),
+                            )
+                          else
+                            (PreferredSize(
+                              preferredSize: const Size(double.infinity, 72),
+                              child: Rodape(),
+                            )),
                         ]))
                       ],
                     ))));

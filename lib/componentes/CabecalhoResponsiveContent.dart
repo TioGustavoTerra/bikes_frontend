@@ -6,7 +6,7 @@ class CabecalhoResponsiveContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
       child: LayoutBuilder(
         builder: (context, constraints) {
           print(
@@ -14,30 +14,30 @@ class CabecalhoResponsiveContent extends StatelessWidget {
 
           return Row(
             children: [
-              if(constraints.maxWidth >= 150)
-              Expanded(
-                  child: Container(
-                height: 45,
-                decoration: BoxDecoration(
-                  color: Colors.grey[100],
-                  border: Border.all(color: Colors.grey),
-                ),
-                child: Row(
-                  children: [
-                    const SizedBox(width: 4),
-                    IconButton(icon: const Icon(Icons.search), onPressed: () {}),
-                  const Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Pesquisar',
-                          isCollapsed: true,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              )),
+              // if(constraints.maxWidth >= 150)
+              // Expanded(
+              //     child: Container(
+              //   height: 45,
+              //   decoration: BoxDecoration(
+              //     color: Colors.grey[100],
+              //     border: Border.all(color: Colors.grey),
+              //   ),
+              //   child: Row(
+              //     children: [
+              //       const SizedBox(width: 4),
+              //       IconButton(icon: const Icon(Icons.search), onPressed: () {}),
+              //     const Expanded(
+              //         child: TextField(
+              //           decoration: InputDecoration(
+              //             border: InputBorder.none,
+              //             hintText: 'Pesquisar',
+              //             isCollapsed: true,
+              //           ),
+              //         ),
+              //       )
+              //     ],
+              //   ),
+              // )),
 
 
               if(constraints.maxWidth >= 300)

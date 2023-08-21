@@ -4,6 +4,7 @@ import 'package:bikes_frontend/features/about/quem_somos.dart';
 import 'package:bikes_frontend/features/register/registration_screen.dart';
 import 'package:bikes_frontend/features/login/login_screen.dart';
 import 'package:bikes_frontend/features/vender/vender_screen.dart';
+import 'package:bikes_frontend/styles/color_schemes.dart';
 import 'package:flutter/material.dart';
 import 'features/comprar/comprar_screen.dart';
 import 'features/perfil/perfil_screen.dart';
@@ -18,10 +19,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'bikes.com.br',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          useMaterial3: true
-      ),
+      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       initialRoute: '/home',
       routes: {
         '/teste':(context) => const Teste(),

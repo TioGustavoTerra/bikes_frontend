@@ -39,7 +39,7 @@ class _VenderState extends State<Vender> {
 
   @override
   void initState() {
-    // _requestUser();
+    _requestUser();
     super.initState();
   }
 

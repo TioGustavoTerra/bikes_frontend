@@ -10,6 +10,7 @@ import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import '../../componentes/rodape.dart';
 import '../../componentes/rodapeApp.dart';
@@ -125,7 +126,7 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    _buscarDados();
+    _requestUser();
     super.initState();
   }
 
@@ -333,6 +334,18 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
     } catch (e) {
       print(e);
       _showToastErro(context, 'Ops, algo deu errado! ${e}');
+    }
+  }
+
+  Future<void> _requestUser() async {
+    final user = await SessionManager().get('accessToken');
+    if (user == null) {
+      setState(() {
+        Navigator.pushNamedAndRemoveUntil(
+            context, "/login", ModalRoute.withName('/'));
+      });
+    }else {
+       _buscarDados();
     }
   }
 
