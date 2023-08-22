@@ -1,5 +1,4 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:bikes_frontend/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,7 +15,7 @@ class TopsectionHome extends StatelessWidget {
               children: [
                 Container(
                   height: 250,
-                  color: Color.fromARGB(255, 8, 188, 138),
+                  color: const Color.fromARGB(255, 8, 188, 138),
                 ),
                 Align(
                   alignment: Alignment.topCenter,

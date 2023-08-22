@@ -12,18 +12,15 @@ class _GridMarcasState extends State<GridMarcas> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(slivers: [
-     const SliverAppBar(
-      
-              centerTitle: true,
-              title: Text(
-                'Escolha por marca',
-                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-              ),
-            ),
-        
-
+      const SliverAppBar(
+        centerTitle: true,
+        title: Text(
+          'Escolha por marca',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+      ),
       SliverGrid.count(
-        crossAxisCount: 3,
+        crossAxisCount: 6,
         mainAxisSpacing: 10.0,
         crossAxisSpacing: 10.0,
         childAspectRatio: 1,
@@ -54,8 +51,6 @@ class _GridMarcasState extends State<GridMarcas> {
           ),
         ],
       ),
-  ]
-  )
-    );
+    ]));
   }
 }

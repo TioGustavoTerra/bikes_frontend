@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // TODO: implement initState
-    //_requestUser();
+    // _requestUser();
   }
 
   @override
@@ -69,34 +69,40 @@ class _HomePageState extends State<HomePage> {
                           ),
                           const SizedBox(
                             height: 600,
-                            width: 600,
+                            width: 900,
                             child: GridMarcas(),
                           ),
+
                           const SizedBox(
                             height: 800,
                             width: 800,
                             child: Destaque(),
                           ),
+
                           const SizedBox(
                             height: 800,
                             width: 800,
                             child: QualoEstilo(),
                           ),
+
                           const SizedBox(
                             height: 800,
                             width: 800,
                             child: Selecionamos(),
                           ),
+
                           const SizedBox(
                             height: 800,
                             width: 800,
                             child: Speed(),
                           ),
+
                           const SizedBox(
                             height: 800,
                             width: 800,
                             child: Insta(),
                           ),
+
                           if (Responsive.isMobile(context))
                             const PreferredSize(
                               preferredSize: Size(double.infinity, 56),

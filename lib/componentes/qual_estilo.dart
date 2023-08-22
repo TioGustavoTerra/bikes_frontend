@@ -14,7 +14,7 @@ class _QualoEstiloState extends State<QualoEstilo> {
       body: CustomScrollView(slivers: [
      const SliverAppBar(
       
-              centerTitle: false,
+              centerTitle: true,
               title: Text(
                 'Qual o seu \n ESTILO?',
                 style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
