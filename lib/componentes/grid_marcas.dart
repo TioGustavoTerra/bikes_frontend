@@ -4,10 +4,10 @@ class GridMarcas extends StatefulWidget {
   const GridMarcas({Key? key}) : super(key: key);
 
   @override
-  _GridMarcasState createState() => _GridMarcasState();
+  GridMarcasState createState() => GridMarcasState();
 }
 
-class _GridMarcasState extends State<GridMarcas> {
+class GridMarcasState extends State<GridMarcas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -10,13 +10,15 @@ import '../../componentes/square_title.dart';
 import '../../componentes/textfield.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  LoginUserService _loginService = LoginUserService();
+  final LoginUserService _loginService = LoginUserService();
   // late String _username;
   // late String _password;
 
@@ -109,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                                     hintText: 'Email',
                                     controller: emailController,
                                     obscureText: false,
-                                    inputFormatter: [],
+                                    inputFormatter: const [],
                                   ),
                                   const SizedBox(height: 10),
                                   const Padding(
