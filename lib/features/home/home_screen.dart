@@ -68,41 +68,35 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           const SizedBox(
-                            height: 600,
+                            height: 400,
                             width: 900,
                             child: GridMarcas(),
                           ),
-
                           const SizedBox(
-                            height: 800,
+                            height: 700,
                             width: 800,
                             child: Destaque(),
                           ),
-
                           const SizedBox(
-                            height: 800,
+                            height: 700,
                             width: 800,
                             child: QualoEstilo(),
                           ),
-
                           const SizedBox(
-                            height: 800,
+                            height: 1000,
                             width: 800,
                             child: Selecionamos(),
                           ),
-
                           const SizedBox(
-                            height: 800,
+                            height: 400,
                             width: 800,
                             child: Speed(),
                           ),
-
                           const SizedBox(
                             height: 800,
                             width: 800,
                             child: Insta(),
                           ),
-
                           if (Responsive.isMobile(context))
                             const PreferredSize(
                               preferredSize: Size(double.infinity, 56),

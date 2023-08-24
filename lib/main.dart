@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       initialRoute: '/home',
       routes: {
-        '/teste':(context) => const Teste(),
+        '/teste':(context) =>  Teste(),
         '/perfil': (context) => const PerfilScreen(),
         '/sobre': (context) => QuemSomos(),
         '/login': (context) => LoginPage(),

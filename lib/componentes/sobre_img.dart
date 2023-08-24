@@ -14,96 +14,24 @@ class _TopsectionSobreState extends State<TopsectionSobre> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-
         if (Responsive.isDesktop(context)) {
           return AspectRatio(
             aspectRatio: 3.2,
             child: Stack(
               children: [
-               Image.asset(
+                Image.asset(
                   'site-sistema/Quem-somos/topo-quem-somos.jpg',
                   fit: BoxFit.cover,
                 ),
-                Container(
-                  color: const Color.fromARGB(100, 9, 188, 138),
-                height: MediaQuery.of(context).size.height / 2.59,
-                ),
-               const Align(
+                const Align(
                   alignment: Alignment.topCenter,
                   child: SizedBox(
                     height: 270,
-                      child:  Center(
-                        child: Text(
-                          'Quem somos',
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-
-        if(Responsive.isTablet(context)) {
-            return AspectRatio(
-              aspectRatio: 3.2,
-              child: Stack(
-                children: [
-               Image.asset(
-                  'site-sistema/Quem-somos/topo-quem-somos.jpg',
-                  fit: BoxFit.cover,
-                ),
-                Container(
-                  color: const Color.fromARGB(100, 9, 188, 138),
-                height: MediaQuery.of(context).size.height /2.59,
-                ),
-                 const Align(
-                    alignment: Alignment.topCenter,
-                    child: SizedBox(
-                      height: 230,
-                        child: Center(
-                          child: Text(
-                            'Quem somos',
-                            style: TextStyle(
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            }
-
-      return AspectRatio(
-          aspectRatio: 3.2,
-          child: Stack(
-            children: [
-               Image.asset(
-                  'site-sistema/Quem-somos/topo-quem-somos.jpg',
-                  fit: BoxFit.cover,
-                ),
-                Container(
-                  color: const Color.fromARGB(100, 9, 188, 138),
-                height: MediaQuery.of(context).size.height /2.59,
-                ),
-             const Align(
-                alignment: Alignment.topCenter,
-                child: SizedBox(
-                  height: 144,
                     child: Center(
                       child: Text(
                         'Quem somos',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 40,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -114,7 +42,66 @@ class _TopsectionSobreState extends State<TopsectionSobre> {
               ],
             ),
           );
-        },
-      );
+        }
+
+        if (Responsive.isTablet(context)) {
+          return AspectRatio(
+            aspectRatio: 3.2,
+            child: Stack(
+              children: [
+                Image.asset(
+                  'site-sistema/Quem-somos/topo-quem-somos.jpg',
+                  fit: BoxFit.cover,
+                ),
+                const Align(
+                  alignment: Alignment.topCenter,
+                  child: SizedBox(
+                    height: 230,
+                    child: Center(
+                      child: Text(
+                        'Quem somos',
+                        style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+
+        return AspectRatio(
+          aspectRatio: 5,
+          child: Stack(
+            children: [
+              Image.asset(
+                'site-sistema/Quem-somos/topo-quem-somos.jpg',
+                fit: BoxFit.cover,
+              ),
+              const Align(
+                alignment: Alignment.topCenter,
+                child: SizedBox(
+                  height: 144,
+                  child: Center(
+                    child: Text(
+                      'Quem somos',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

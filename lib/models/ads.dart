@@ -6,14 +6,20 @@ class Ads {
   String tipo;
   String tamanho;
   String aro;
-  String descricao;
+  String suspensao;
+  String suspensaoT;
+  String freio;
+  String tipofreio;
 
   Ads({
     required this.marca,
     required this.tipo,
     required this.tamanho,
     required this.aro,
-    required this.descricao,
+    required this.suspensao,
+    required this.suspensaoT,
+    required this.freio,
+    required this.tipofreio,
   });
 
   factory Ads.fromJson(Map<String, dynamic> json) {
@@ -22,7 +28,10 @@ class Ads {
       tipo: json['tipo'] ?? json['tipo'],
       tamanho: json['tamanho'] ?? json['tamanho'],
       aro: json['aro'] ?? json['aro'],
-      descricao: json['descricao'] ?? json['descricao'],
+      suspensao: json['suspensao'] ?? json['suspensao'],
+      suspensaoT: json['suspensaoT'] ?? json['suspensaoT'],
+      freio: json['freio'] ?? json['freio'],
+      tipofreio: json['tipofreio'] ?? json['tipofreio'],
     );
   }
 
@@ -32,7 +41,10 @@ class Ads {
     sell["tipo"] = tipo;
     sell["tamanho"] = tamanho;
     sell["aro"] = aro;
-    sell["descrocao"] = descricao;
+    sell["suspensao"] = suspensao;
+    sell["suspensaoT"] = suspensaoT;
+    sell["freio"] = freio;
+    sell["tipofreio"] = tipofreio;
     return sell;
   }
 }

@@ -25,6 +25,10 @@ class _VenderState extends State<Vender> {
   late String _tipo = 'Mountain Bike';
   late String _quadro = 'S';
   late String _aro = '16';
+  late String _suspensao = 'RockShox';
+  late String _suspensaoT = 'RockShox';
+  late String _freio = 'Brembo';
+  late String _tipofreio = 'Freio a disco';
 
   final tipoController = TextEditingController();
   final tamanhoController = TextEditingController();
@@ -86,6 +90,8 @@ class _VenderState extends State<Vender> {
 
                         if (isLastStep) {
                           print('Completo');
+                          registrar(_marca, _tipo, _quadro, _aro, _suspensao,
+                              _suspensaoT, _freio, _tipofreio);
                           // Enviar dados para o servidor
                         } else {
                           setState(() => currentStep += 1);
@@ -96,267 +102,6 @@ class _VenderState extends State<Vender> {
                           : () => setState(() => currentStep -= 1),
                     ),
                   ),
-
-                  // ListView(
-                  //   shrinkWrap: true,
-                  //   children: [
-
-                  // Container(
-                  //   padding: const EdgeInsets.all(20.0),
-                  //   child:
-
-                  // Column(children: [
-                  //   ClipRect(
-                  //     child: BackdropFilter(
-                  //       filter: ImageFilter.blur(),
-                  //       child: Container(
-                  //         padding: const EdgeInsets.only(
-                  //           right: 10,
-                  //           left: 10,
-                  //           top: 10,
-                  //           bottom: 10,
-                  //         ),
-                  //         decoration: const BoxDecoration(
-                  //             color: Colors.white,
-                  //             borderRadius: BorderRadius.all(
-                  //                 Radius.circular(20))),
-                  //         width: Responsive.isDesktop(context)
-                  //             ? MediaQuery.of(context).size.width * 0.4
-                  //             : null,
-                  //         height: Responsive.isTablet(context)
-                  //             ? MediaQuery.of(context).size.width * 0.80
-                  //             : null,
-                  //         child: const Padding(
-                  //           padding: EdgeInsets.all(16.0),
-                  //child:
-                  // Form(
-                  //   key: _formKey,
-                  //   child: Center(
-                  //     child: Column(
-                  //       mainAxisSize: MainAxisSize.min,
-                  //       mainAxisAlignment:
-                  //           MainAxisAlignment.start,
-                  //       crossAxisAlignment:
-                  //           CrossAxisAlignment.stretch,
-                  //       children: [
-                  //         const Text(
-                  //           "Dados da bike",
-                  //           style: TextStyle(
-                  //               color: Colors.black,
-                  //               fontSize: 20,
-                  //               fontWeight: FontWeight.bold),
-                  //           textAlign: TextAlign.center,
-                  //         ),
-                  //         // MyTextField(
-                  //         //   hintText: 'Marca do quadro',
-                  //         //   controller: marcaController,
-                  //         //   obscureText: false,
-                  //         //   inputFormatter: [],
-                  //         // ),
-                  //         const Text('Marca',
-                  //             style: TextStyle(
-                  //                 fontWeight:
-                  //                     FontWeight.bold)),
-                  //         DropdownButton(
-                  //           items: const [
-                  //             DropdownMenuItem(
-                  //               value: "Caloi",
-                  //               child: Text("Caloi"),
-                  //             ),
-                  //             DropdownMenuItem(
-                  //               value: "Monarca",
-                  //               child: Text("Monarca"),
-                  //             ),
-                  //             DropdownMenuItem(
-                  //               value: "Audax",
-                  //               child: Text("Audax"),
-                  //             ),
-                  //           ],
-                  //           value: _marca,
-                  //           onChanged: (value) {
-                  //             setState(() {
-                  //               _marca = value!;
-                  //             });
-                  //           },
-                  //           isExpanded: true,
-                  //           hint: const Text("Marca"),
-                  //         ),
-                  //         const SizedBox(width: 50),
-                  //         const SizedBox(height: 50),
-                  //         // MyTextField(
-                  //         //   hintText:
-                  //         //       'Tipo (Mountain bike, Speed...)',
-                  //         //   controller: tipoController,
-                  //         //   obscureText: false,
-                  //         //   inputFormatter: [],
-                  //         // ),
-                  //         const Text(
-                  //           'Tipo',
-                  //           style: TextStyle(
-                  //               fontWeight: FontWeight.bold),
-                  //         ),
-                  //         DropdownButton(
-                  //           items: const [
-                  //             DropdownMenuItem(
-                  //               value: "Mountain Bike",
-                  //               child: Text("Mountain Bike"),
-                  //             ),
-                  //             DropdownMenuItem(
-                  //               value: "Speed",
-                  //               child: Text("Speed"),
-                  //             ),
-                  //             DropdownMenuItem(
-                  //               value: "BMX",
-                  //               child: Text("BMX"),
-                  //             ),
-                  //           ],
-                  //           value: _tipo,
-                  //           onChanged: (value) {
-                  //             setState(() {
-                  //               _tipo = value!;
-                  //             });
-                  //           },
-                  //           isExpanded: true,
-                  //           hint: const Text("Tipo"),
-                  //         ),
-
-                  //         const SizedBox(width: 50),
-                  //         const SizedBox(height: 50),
-                  //         // MyTextField(
-                  //         //   hintText: 'Tamanho do quadro',
-                  //         //   controller: tamanhoController,
-                  //         //   obscureText: false,
-                  //         //   inputFormatter: [],
-                  //         // ),
-                  //         const Text('Tamanho do quadro',
-                  //             style: TextStyle(
-                  //                 fontWeight:
-                  //                     FontWeight.bold)),
-                  //         DropdownButton(
-                  //           items: const [
-                  //             DropdownMenuItem(
-                  //               value: "S",
-                  //               child: Text("S"),
-                  //             ),
-                  //             DropdownMenuItem(
-                  //               value: "M",
-                  //               child: Text("M"),
-                  //             ),
-                  //             DropdownMenuItem(
-                  //               value: "L",
-                  //               child: Text("L"),
-                  //             ),
-                  //             DropdownMenuItem(
-                  //               value: "XL",
-                  //               child: Text("XL"),
-                  //             ),
-                  //           ],
-                  //           value: _quadro,
-                  //           onChanged: (value) {
-                  //             setState(() {
-                  //               _quadro = value!;
-                  //             });
-                  //           },
-                  //           isExpanded: true,
-                  //           hint: const Text(
-                  //               "Tamanho do quadro",
-                  //               style: TextStyle(
-                  //                   fontWeight:
-                  //                       FontWeight.bold)),
-                  //         ),
-
-                  //         const SizedBox(width: 50),
-                  //         const SizedBox(height: 50),
-                  //         // MyTextField(
-                  //         //   hintText: 'Número do aro',
-                  //         //   controller: aroController,
-                  //         //   obscureText: false,
-                  //         //   inputFormatter: [],
-                  //         // ),
-                  //         const Text('Tamanho do aro',
-                  //             style: TextStyle(
-                  //                 fontWeight:
-                  //                     FontWeight.bold)),
-                  //         DropdownButton(
-                  //           items: const [
-                  //             DropdownMenuItem(
-                  //               value: "16",
-                  //               child: Text("16"),
-                  //             ),
-                  //             DropdownMenuItem(
-                  //               value: "20",
-                  //               child: Text("20"),
-                  //             ),
-                  //             DropdownMenuItem(
-                  //               value: "24",
-                  //               child: Text("24"),
-                  //             ),
-                  //           ],
-                  //           value: _aro,
-                  //           onChanged: (value) {
-                  //             setState(() {
-                  //               _aro = value!;
-                  //             });
-                  //           },
-                  //           isExpanded: true,
-                  //           hint:
-                  //               const Text("Tamanho do aro"),
-                  //         ),
-
-                  //         //
-                  //         //const Formulario(),
-                  //         //
-
-                  //         const SizedBox(width: 50),
-                  //         const SizedBox(height: 50),
-                  //         MyTextField(
-                  //           hintText: 'Descrição',
-                  //           controller: descricaoController,
-                  //           obscureText: false,
-                  //           inputFormatter: [],
-                  //         ),
-                  //         const SizedBox(width: 50),
-                  //         const SizedBox(height: 50),
-                  //         MyButtonAgree(
-                  //           text: "Salvar",
-                  //           image:
-                  //               "site-sistema/Home/icone-seta.svg",
-                  //           onTap: () {
-                  //             registrar(
-                  //               // marcaController.text,
-                  //               // tipoController.text,
-                  //               // tamanhoController.text,
-                  //               // aroController.text,
-                  //               _marca,
-                  //               _aro,
-                  //               _quadro,
-                  //               _tipo,
-                  //               descricaoController.text,
-                  //             );
-                  //           },
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  //   if (Responsive.isMobile(context))
-                  //     const PreferredSize(
-                  //       preferredSize: Size(double.infinity, 56),
-                  //       child: rodapeApp(),
-                  //     )
-                  //   else
-                  //     (PreferredSize(
-                  //       preferredSize: const Size(double.infinity, 72),
-                  //       child: Rodape(),
-                  //     )),
-                  // ]),
-                  // ),
-                  // ],
-                  // )
                 )));
       },
     );
@@ -375,7 +120,6 @@ class _VenderState extends State<Vender> {
               const Text('Marca',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                onChanged: (value) {},
                 items: const [
                   DropdownMenuItem(
                     value: "Caloi",
@@ -390,14 +134,12 @@ class _VenderState extends State<Vender> {
                     child: Text("Audax"),
                   ),
                 ],
-
-                // value: _marca,
-                // onChanged: (value) {
-                //   setState(() {
-                //     _marca = value!;
-                //   });
-                // },
-
+                value: _marca,
+                onChanged: (value) {
+                  setState(() {
+                    _marca = value!;
+                  });
+                },
                 isExpanded: true,
                 hint: const Text(""),
               ),
@@ -406,7 +148,6 @@ class _VenderState extends State<Vender> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               DropdownButton(
-                onChanged: (value) {},
                 items: const [
                   DropdownMenuItem(
                     value: "Mountain Bike",
@@ -421,19 +162,18 @@ class _VenderState extends State<Vender> {
                     child: Text("BMX"),
                   ),
                 ],
-                // value: _tipo,
-                // onChanged: (value) {
-                //   setState(() {
-                //     _tipo = value!;
-                //   });
-                // },
+                value: _tipo,
+                onChanged: (value) {
+                  setState(() {
+                    _tipo = value!;
+                  });
+                },
                 isExpanded: true,
                 hint: const Text(""),
               ),
               const Text('Tamanho do quadro',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                onChanged: (value) {},
                 items: const [
                   DropdownMenuItem(
                     value: "S",
@@ -452,14 +192,12 @@ class _VenderState extends State<Vender> {
                     child: Text("XL"),
                   ),
                 ],
-
-                // value: _quadro,
-                // onChanged: (value) {
-                //   setState(() {
-                //     _quadro = value!;
-                //   });
-                // },
-
+                value: _quadro,
+                onChanged: (value) {
+                  setState(() {
+                    _quadro = value!;
+                  });
+                },
                 isExpanded: true,
                 hint: const Text("",
                     style: TextStyle(fontWeight: FontWeight.bold)),
@@ -467,7 +205,6 @@ class _VenderState extends State<Vender> {
               const Text('Tamanho do aro',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                onChanged: (value) {},
                 items: const [
                   DropdownMenuItem(
                     value: "16",
@@ -482,12 +219,12 @@ class _VenderState extends State<Vender> {
                     child: Text("24"),
                   ),
                 ],
-                // value: _aro,
-                // onChanged: (value) {
-                //   setState(() {
-                //     _aro = value!;
-                //   });
-                // },
+                value: _aro,
+                onChanged: (value) {
+                  setState(() {
+                    _aro = value!;
+                  });
+                },
                 isExpanded: true,
                 hint: const Text(""),
               ),
@@ -506,7 +243,6 @@ class _VenderState extends State<Vender> {
               const Text('Suspenção dianteira',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                onChanged: (value) {},
                 items: const [
                   DropdownMenuItem(
                     value: "RockShox",
@@ -537,20 +273,18 @@ class _VenderState extends State<Vender> {
                     child: Text("X-Fusion"),
                   ),
                 ],
-                // value: _suspensao,
-                // onChanged: (value) {
-                //   setState(() {
-                //     _suspensao = value!;
-                //   });
-                // },
-
+                value: _suspensao,
+                onChanged: (value) {
+                  setState(() {
+                    _suspensao = value!;
+                  });
+                },
                 isExpanded: true,
                 hint: const Text(""),
               ),
               const Text('Suspenção traseira',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                onChanged: (value) {},
                 items: const [
                   DropdownMenuItem(
                     value: "RockShox",
@@ -581,21 +315,18 @@ class _VenderState extends State<Vender> {
                     child: Text("DT Swiss"),
                   ),
                 ],
-                // value: _suspensaoT,
-                // onChanged: (value) {
-                //   setState(() {
-                //     _suspensaoT = value!;
-                //   });
-                // },
-
+                value: _suspensaoT,
+                onChanged: (value) {
+                  setState(() {
+                    _suspensaoT = value!;
+                  });
+                },
                 isExpanded: true,
                 hint: const Text(""),
               ),
-              
               const Text('Marca dos freios',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                onChanged: (value) {},
                 items: const [
                   DropdownMenuItem(
                     value: "Brembo",
@@ -630,20 +361,18 @@ class _VenderState extends State<Vender> {
                     child: Text("Raybestos"),
                   ),
                 ],
-                // value: _freio,
-                // onChanged: (value) {
-                //   setState(() {
-                //     _freio = value!;
-                //   });
-                //},
-
+                value: _freio,
+                onChanged: (value) {
+                  setState(() {
+                    _freio = value!;
+                  });
+                },
                 isExpanded: true,
                 hint: const Text(""),
               ),
-                const Text('Tipo do freio',
+              const Text('Tipo do freio',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                onChanged: (value) {},
                 items: const [
                   DropdownMenuItem(
                     value: "Freio a disco",
@@ -658,32 +387,14 @@ class _VenderState extends State<Vender> {
                     child: Text("Freio a tambor"),
                   ),
                 ],
-                // value: _tipofreio,
-                // onChanged: (value) {
-                //   setState(() {
-                //     _tipofreio = value!;
-                //   });
-                //},
-
+                value: _tipofreio,
+                onChanged: (value) {
+                  setState(() {
+                    _tipofreio = value!;
+                  });
+                },
                 isExpanded: true,
                 hint: const Text(""),
-              ),
-            ],
-          ),
-        ),
-        Step(
-          state: currentStep > 0 ? StepState.complete : StepState.indexed,
-          isActive: currentStep >= 2,
-          title: const Text(
-            'últimas informações',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-          content: const Column(
-            children: <Widget>[
-              Text(
-                ' Adicionar Nota fiscal ou DARF Adicionar descrição Adicionar valor Adicionar desconto',
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -699,6 +410,23 @@ class _VenderState extends State<Vender> {
             children: <Widget>[
               Text(
                 'Foto/vídeo',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+        Step(
+          state: currentStep > 0 ? StepState.complete : StepState.indexed,
+          isActive: currentStep >= 2,
+          title: const Text(
+            'últimas informações',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          content: const Column(
+            children: <Widget>[
+              Text(
+                'Adicionar Nota fiscal ou DARF; Adicionar descrição; Adicionar valor; Adicionar desconto',
                 style:
                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
@@ -723,22 +451,29 @@ class _VenderState extends State<Vender> {
     String tipo,
     String tamanho,
     String aro,
-    String descricao,
+    String suspensao,
+    String suspensaoT,
+    String freio,
+    String tipofreio,
   ) async {
     try {
       if (_formKey.currentState!.validate()) {
         var vender = Ads(
-            marca: marca,
-            tipo: tipo,
-            tamanho: tamanho,
-            aro: aro,
-            descricao: descricao);
+          marca: marca,
+          tipo: tipo,
+          tamanho: tamanho,
+          aro: aro,
+          suspensao: suspensao,
+          suspensaoT: suspensaoT,
+          freio: freio,
+          tipofreio: tipofreio,
+        );
 
         Ads? user = await _adsService.registrar(vender);
 
         if (user != null) {
           _showToastInfo(context, 'Cadastro realizado com Sucesso!');
-          Navigator.pushNamed(context, "/login");
+          Navigator.pushNamed(context, "/home");
         } else {
           _showToastErro(context, 'Ops, algo deu errado!');
         }
