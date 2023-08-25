@@ -5,9 +5,9 @@ class Ads {
   String marca;
   String tipo;
   String tamanho;
-  String aro;
-  String suspensao;
-  String suspensaoT;
+  int aro;
+  String suspensaoDianteira;
+  String suspensaoTraseira;
   String freio;
   String tipofreio;
 
@@ -16,8 +16,8 @@ class Ads {
     required this.tipo,
     required this.tamanho,
     required this.aro,
-    required this.suspensao,
-    required this.suspensaoT,
+    required this.suspensaoDianteira,
+    required this.suspensaoTraseira,
     required this.freio,
     required this.tipofreio,
   });
@@ -28,8 +28,8 @@ class Ads {
       tipo: json['tipo'] ?? json['tipo'],
       tamanho: json['tamanho'] ?? json['tamanho'],
       aro: json['aro'] ?? json['aro'],
-      suspensao: json['suspensao'] ?? json['suspensao'],
-      suspensaoT: json['suspensaoT'] ?? json['suspensaoT'],
+      suspensaoDianteira: json['suspensaoDianteira'] ?? json['suspensaoDianteira'],
+      suspensaoTraseira: json['suspensaoTraseira'] ?? json['suspensaoTraseira'],
       freio: json['freio'] ?? json['freio'],
       tipofreio: json['tipofreio'] ?? json['tipofreio'],
     );
@@ -41,8 +41,8 @@ class Ads {
     ads["tipo"] = tipo;
     ads["tamanho"] = tamanho;
     ads["aro"] = aro;
-    ads["suspensao"] = suspensao;
-    ads["suspensaoT"] = suspensaoT;
+    ads["suspensaoDianteira"] = suspensaoDianteira;
+    ads["suspensaoTraseira"] = suspensaoTraseira;
     ads["freio"] = freio;
     ads["tipofreio"] = tipofreio;
 

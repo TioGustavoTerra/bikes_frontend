@@ -1,3 +1,4 @@
+import 'dart:js_interop';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -36,6 +37,64 @@ class _VenderState extends State<Vender> {
   final descricaoController = TextEditingController();
   final AdsService _adsService = AdsService();
   int currentStep = 0;
+
+// List of items in our dropdown menu
+  var marcas = [
+    'Caloi',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+  var tipos = [
+    'Mountain Bike',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+  var quadros = [
+    'S',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+  var aros = [
+    '16',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+  var suspensaoDianteira = [
+    'RockShox',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+  var suspensaoTraseira = [
+    'RockShox',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+  var freios = [
+    'Brembo',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+  var tiposFreios = [
+    'Freio a disco',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
 
   @override
   void initState() {
@@ -120,20 +179,12 @@ class _VenderState extends State<Vender> {
               const Text('Marca',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                items: const [
-                  DropdownMenuItem(
-                    value: "Caloi",
-                    child: Text("Caloi"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Monarca",
-                    child: Text("Monarca"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Audax",
-                    child: Text("Audax"),
-                  ),
-                ],
+                items: marcas.map((String item) {
+                  return DropdownMenuItem(
+                    value: item,
+                    child: Text(item),
+                  );
+                }).toList(),
                 value: _marca,
                 onChanged: (value) {
                   setState(() {
@@ -148,20 +199,12 @@ class _VenderState extends State<Vender> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               DropdownButton(
-                items: const [
-                  DropdownMenuItem(
-                    value: "Mountain Bike",
-                    child: Text("Mountain Bike"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Speed",
-                    child: Text("Speed"),
-                  ),
-                  DropdownMenuItem(
-                    value: "BMX",
-                    child: Text("BMX"),
-                  ),
-                ],
+                items: tipos.map((String item) {
+                  return DropdownMenuItem(
+                    value: item,
+                    child: Text(item),
+                  );
+                }).toList(),
                 value: _tipo,
                 onChanged: (value) {
                   setState(() {
@@ -174,24 +217,12 @@ class _VenderState extends State<Vender> {
               const Text('Tamanho do quadro',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                items: const [
-                  DropdownMenuItem(
-                    value: "S",
-                    child: Text("S"),
-                  ),
-                  DropdownMenuItem(
-                    value: "M",
-                    child: Text("M"),
-                  ),
-                  DropdownMenuItem(
-                    value: "L",
-                    child: Text("L"),
-                  ),
-                  DropdownMenuItem(
-                    value: "XL",
-                    child: Text("XL"),
-                  ),
-                ],
+                items: quadros.map((String item) {
+                  return DropdownMenuItem(
+                    value: item,
+                    child: Text(item),
+                  );
+                }).toList(),
                 value: _quadro,
                 onChanged: (value) {
                   setState(() {
@@ -205,20 +236,12 @@ class _VenderState extends State<Vender> {
               const Text('Tamanho do aro',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                items: const [
-                  DropdownMenuItem(
-                    value: "16",
-                    child: Text("16"),
-                  ),
-                  DropdownMenuItem(
-                    value: "20",
-                    child: Text("20"),
-                  ),
-                  DropdownMenuItem(
-                    value: "24",
-                    child: Text("24"),
-                  ),
-                ],
+                items: aros.map((String item) {
+                  return DropdownMenuItem(
+                    value: item,
+                    child: Text(item),
+                  );
+                }).toList(),
                 value: _aro,
                 onChanged: (value) {
                   setState(() {
@@ -243,36 +266,12 @@ class _VenderState extends State<Vender> {
               const Text('Suspenção dianteira',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                items: const [
-                  DropdownMenuItem(
-                    value: "RockShox",
-                    child: Text("RockShox"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Fox Racing Shox",
-                    child: Text("Fox Racing Shox"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Manitou",
-                    child: Text("Manitou"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Suntour",
-                    child: Text("Suntour"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Marzocchi",
-                    child: Text("Marzocchi"),
-                  ),
-                  DropdownMenuItem(
-                    value: "DT Swiss",
-                    child: Text("DT Swiss"),
-                  ),
-                  DropdownMenuItem(
-                    value: "X-Fusion",
-                    child: Text("X-Fusion"),
-                  ),
-                ],
+                items: suspensaoDianteira.map((String item) {
+                  return DropdownMenuItem(
+                    value: item,
+                    child: Text(item),
+                  );
+                }).toList(),
                 value: _suspensao,
                 onChanged: (value) {
                   setState(() {
@@ -285,36 +284,12 @@ class _VenderState extends State<Vender> {
               const Text('Suspenção traseira',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                items: const [
-                  DropdownMenuItem(
-                    value: "RockShox",
-                    child: Text("RockShox"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Fox Racing Shox",
-                    child: Text("Fox Racing Shox"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Cane Creek",
-                    child: Text("Cane Creek"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Ohlins",
-                    child: Text("Ohlins"),
-                  ),
-                  DropdownMenuItem(
-                    value: "DVO ",
-                    child: Text("DVO "),
-                  ),
-                  DropdownMenuItem(
-                    value: "X-Fusion",
-                    child: Text("X-Fusion"),
-                  ),
-                  DropdownMenuItem(
-                    value: "DT Swiss",
-                    child: Text("DT Swiss"),
-                  ),
-                ],
+                items: suspensaoTraseira.map((String item) {
+                  return DropdownMenuItem(
+                    value: item,
+                    child: Text(item),
+                  );
+                }).toList(),
                 value: _suspensaoT,
                 onChanged: (value) {
                   setState(() {
@@ -327,40 +302,12 @@ class _VenderState extends State<Vender> {
               const Text('Marca dos freios',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                items: const [
-                  DropdownMenuItem(
-                    value: "Brembo",
-                    child: Text("Brembo"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Akebono",
-                    child: Text("Akebono"),
-                  ),
-                  DropdownMenuItem(
-                    value: "EBC Brakes",
-                    child: Text("EBC Brakes"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Wagner Brake",
-                    child: Text("Wagner Brake"),
-                  ),
-                  DropdownMenuItem(
-                    value: "TRW Automotive",
-                    child: Text("TRW Automotive"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Wilwood Engineering",
-                    child: Text("Wilwood Engineering"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Centric Parts",
-                    child: Text("Centric Parts"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Raybestos3",
-                    child: Text("Raybestos"),
-                  ),
-                ],
+                items: freios.map((String item) {
+                  return DropdownMenuItem(
+                    value: item,
+                    child: Text(item),
+                  );
+                }).toList(),
                 value: _freio,
                 onChanged: (value) {
                   setState(() {
@@ -373,20 +320,12 @@ class _VenderState extends State<Vender> {
               const Text('Tipo do freio',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                items: const [
-                  DropdownMenuItem(
-                    value: "Freio a disco",
-                    child: Text("Freio a disco"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Freio de aro",
-                    child: Text("Freio de aro"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Freio a tambor",
-                    child: Text("Freio a tambor"),
-                  ),
-                ],
+                items: tiposFreios.map((String item) {
+                  return DropdownMenuItem(
+                    value: item,
+                    child: Text(item),
+                  );
+                }).toList(),
                 value: _tipofreio,
                 onChanged: (value) {
                   setState(() {
@@ -457,15 +396,15 @@ class _VenderState extends State<Vender> {
     String tipofreio,
   ) async {
     try {
-      print(_formKey.currentState);
-      if (_formKey.currentState!.validate()) {
+      //print(_formKey.currentState);
+      // if (_formKey.currentState!.validate()) {
         var vender = Ads(
           marca: marca,
           tipo: tipo,
           tamanho: tamanho,
-          aro: aro,
-          suspensao: suspensao,
-          suspensaoT: suspensaoT,
+          aro: int.parse(aro),
+          suspensaoDianteira: suspensao,
+          suspensaoTraseira: suspensaoT,
           freio: freio,
           tipofreio: tipofreio,
         );
@@ -478,9 +417,11 @@ class _VenderState extends State<Vender> {
         } else {
           _showToastErro(context, 'Ops, algo deu errado!');
         }
-      } else {
-        _showToastErro(context, 'Favor preencher todos os campos!');
-      }
+      // } 
+      
+      // else {
+      //   _showToastErro(context, 'Favor preencher todos os campos!');
+      // }
     } catch (e) {
       print(e);
       _showToastErro(context, 'Ops, algo deu errado! ${e}');

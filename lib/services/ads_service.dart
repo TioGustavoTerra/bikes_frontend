@@ -9,10 +9,23 @@ class AdsService {
 
   Future<Ads?> registrar(Ads ads) async {
     try {
+
+      var token;
+      var refreshToken;
+
+      await SessionManager().get("accessToken").then((value) => token = value);
+      await SessionManager()
+          .get("refreshToken")
+          .then((value) => refreshToken = value);
+
       Dio dio = Dio();
       dio.options.connectTimeout = const Duration(seconds: 30);
       dio.options.receiveTimeout = const Duration(seconds: 30);
       dio.options.headers["Content-Type"] = 'application/json';
+      dio.options.headers["Authorization"] = "Bearer $token";
+      dio.options.headers["x-refresh"] = refreshToken;
+
+      print(ads.toJson());
 
       var res = await dio.post(postsURL, data: ads.toJson());
 
@@ -25,13 +38,9 @@ class AdsService {
         // throw "Unable to retrieve posts.";
       }
     } on DioError catch (err) {
-      String erros = '';
-      for (var element in err.response?.data) {
-        Failure fail = Failure.fromJson(element);
-        erros += '${fail.message}, ';
-      }
 
-      throw ' ${erros} Código: ${err.response?.statusCode}';
+      print(err);
+      throw ' ${err.response?.data} Código: ${err.response?.statusCode}';
     }
   }
 
@@ -41,7 +50,9 @@ class AdsService {
       var refreshToken;
 
       await SessionManager().get("accessToken").then((value) => token = value);
-      await SessionManager().get("refreshToken").then((value) => refreshToken = value);
+      await SessionManager()
+          .get("refreshToken")
+          .then((value) => refreshToken = value);
 
       Dio dio = Dio();
       dio.options.connectTimeout = const Duration(seconds: 30);
