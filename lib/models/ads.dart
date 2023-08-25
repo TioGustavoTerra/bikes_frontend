@@ -36,15 +36,16 @@ class Ads {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> sell = <String, dynamic>{};
-    sell["marca"] = marca;
-    sell["tipo"] = tipo;
-    sell["tamanho"] = tamanho;
-    sell["aro"] = aro;
-    sell["suspensao"] = suspensao;
-    sell["suspensaoT"] = suspensaoT;
-    sell["freio"] = freio;
-    sell["tipofreio"] = tipofreio;
-    return sell;
+    final Map<String, dynamic> ads = <String, dynamic>{};
+    ads["marca"] = marca;
+    ads["tipo"] = tipo;
+    ads["tamanho"] = tamanho;
+    ads["aro"] = aro;
+    ads["suspensao"] = suspensao;
+    ads["suspensaoT"] = suspensaoT;
+    ads["freio"] = freio;
+    ads["tipofreio"] = tipofreio;
+
+    return ads;
   }
 }

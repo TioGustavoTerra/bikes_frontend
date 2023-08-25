@@ -7,14 +7,14 @@ import '../models/ads.dart';
 class AdsService {
   final String postsURL = "http://localhost:1337/api/ads";
 
-  Future<Ads?> registrar(Ads vender) async {
+  Future<Ads?> registrar(Ads ads) async {
     try {
       Dio dio = Dio();
       dio.options.connectTimeout = const Duration(seconds: 30);
       dio.options.receiveTimeout = const Duration(seconds: 30);
       dio.options.headers["Content-Type"] = 'application/json';
 
-      var res = await dio.post(postsURL, data: vender.toJson());
+      var res = await dio.post(postsURL, data: ads.toJson());
 
       if (res.statusCode == 200) {
         Ads sell = Ads.fromJson(res.data);
@@ -53,15 +53,15 @@ class AdsService {
       var res = await dio.get(postsURL);
 
       if (res.statusCode == 200) {
-        Ads sell = Ads.fromJson(res.data);
-        return sell;
+        Ads ads = Ads.fromJson(res.data);
+        return ads;
       } else {
         print(res.statusCode);
         print(res);
         // throw "Unable to retrieve posts.";
       }
     } on DioError catch (err) {
-      throw 'Erro ao realizar o login ${err.response?.data} Código: ${err.response?.statusCode}';
+      throw 'Erro ao realizar a venda ${err.response?.data} Código: ${err.response?.statusCode}';
     }
   }
 }

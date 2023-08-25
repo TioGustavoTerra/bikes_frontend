@@ -204,6 +204,7 @@ class _SignupState extends State<Signup> {
                                     const SizedBox(
                                       height: 10,
                                     ),
+                                    
                                     MyButtonAgree(
                                       text: "Cadastrar",
                                       image: "site-sistema/Home/icone-seta.svg",

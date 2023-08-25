@@ -399,40 +399,40 @@ class _VenderState extends State<Vender> {
             ],
           ),
         ),
-        Step(
-          state: currentStep > 0 ? StepState.complete : StepState.indexed,
-          isActive: currentStep >= 3,
-          title: const Text(
-            'Foto/vídeo',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-          content: const Column(
-            children: <Widget>[
-              Text(
-                'Foto/vídeo',
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-        Step(
-          state: currentStep > 0 ? StepState.complete : StepState.indexed,
-          isActive: currentStep >= 2,
-          title: const Text(
-            'últimas informações',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-          content: const Column(
-            children: <Widget>[
-              Text(
-                'Adicionar Nota fiscal ou DARF; Adicionar descrição; Adicionar valor; Adicionar desconto',
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
+        // Step(
+        //   state: currentStep > 0 ? StepState.complete : StepState.indexed,
+        //   isActive: currentStep >= 3,
+        //   title: const Text(
+        //     'Foto/vídeo',
+        //     style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        //   ),
+        //   content: const Column(
+        //     children: <Widget>[
+        //       Text(
+        //         'Foto/vídeo',
+        //         style:
+        //             TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        //       ),
+        //     ],
+        //   ),
+        // ),
+        // Step(
+        //   state: currentStep > 0 ? StepState.complete : StepState.indexed,
+        //   isActive: currentStep >= 2,
+        //   title: const Text(
+        //     'últimas informações',
+        //     style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        //   ),
+        //   content: const Column(
+        //     children: <Widget>[
+        //       Text(
+        //         'Adicionar Nota fiscal ou DARF; Adicionar descrição; Adicionar valor; Adicionar desconto',
+        //         style:
+        //             TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ];
 
   Future<void> _requestUser() async {
@@ -457,6 +457,7 @@ class _VenderState extends State<Vender> {
     String tipofreio,
   ) async {
     try {
+      print(_formKey.currentState);
       if (_formKey.currentState!.validate()) {
         var vender = Ads(
           marca: marca,
@@ -469,10 +470,10 @@ class _VenderState extends State<Vender> {
           tipofreio: tipofreio,
         );
 
-        Ads? user = await _adsService.registrar(vender);
+        Ads? ads = await _adsService.registrar(vender);
 
-        if (user != null) {
-          _showToastInfo(context, 'Cadastro realizado com Sucesso!');
+        if (ads != null) {
+          _showToastInfo(context, 'Anúnco realizado com Sucesso!');
           Navigator.pushNamed(context, "/home");
         } else {
           _showToastErro(context, 'Ops, algo deu errado!');
