@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 import 'dart:io';
 import 'dart:js_interop';
 import 'dart:ui';
 
 import 'package:bikes_frontend/componentes/Dropped_file.dart';
+=======
+>>>>>>> 1b6f83aeac1866bbbb60f26ba7ea1953138cb2e8
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
@@ -27,14 +30,14 @@ class Vender extends StatefulWidget {
 class _VenderState extends State<Vender> {
   final _formKey = GlobalKey<FormState>();
   final marcaController = TextEditingController();
-  late String _marca = 'Caloi';
-  late String _tipo = 'Mountain Bike';
-  late String _quadro = 'S';
-  late String _aro = '16';
-  late String _suspensao = 'RockShox';
-  late String _suspensaoT = 'RockShox';
-  late String _freio = 'Brembo';
-  late String _tipofreio = 'Freio a disco';
+  String? _marca;
+  String? _tipo;
+  String? _quadro;
+  String? _aro;
+  String? _suspensao;
+  String? _suspensaoT;
+  String? _freio;
+  String? _tipofreio;
 
   final tipoController = TextEditingController();
   final tamanhoController = TextEditingController();
@@ -193,11 +196,11 @@ class _VenderState extends State<Vender> {
                 value: _marca,
                 onChanged: (value) {
                   setState(() {
-                    _marca = value!;
+                    _marca = value ?? "";
                   });
                 },
                 isExpanded: true,
-                hint: const Text(""),
+                hint: const Text("Selecione a Marca"),
               ),
               const Text(
                 'Tipo',
@@ -210,7 +213,7 @@ class _VenderState extends State<Vender> {
                     child: Text(item),
                   );
                 }).toList(),
-                value: _tipo,
+                // value: _tipo,
                 onChanged: (value) {
                   setState(() {
                     _tipo = value!;
@@ -399,21 +402,21 @@ class _VenderState extends State<Vender> {
   }
 
   Future<void> registrar(
-    String marca,
-    String tipo,
-    String tamanho,
-    String aro,
-    String suspensao,
-    String suspensaoT,
-    String freio,
-    String tipofreio,
+    String? marca,
+    String? tipo,
+    String? tamanho,
+    String? aro,
+    String? suspensao,
+    String? suspensaoT,
+    String? freio,
+    String? tipofreio,
   ) async {
     try {
       var vender = Ads(
         marca: marca,
         tipo: tipo,
         tamanho: tamanho,
-        aro: int.parse(aro),
+        aro: int.parse(aro!),
         suspensaoDianteira: suspensao,
         suspensaoTraseira: suspensaoT,
         freio: freio,
