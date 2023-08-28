@@ -405,14 +405,17 @@ class _VenderState extends State<Vender> {
 
       Ads? ads = await _adsService.registrar(vender);
 
-        if (ads != null) {
-          _showToastInfo(context, 'Anúnco realizado com Sucesso!');
-          Navigator.pushNamed(context, "/home");
-        } else {
-          _showToastErro(context, 'Ops, algo deu errado!');
-        }
-      // } 
-      
+      if (ads != null) {
+        _showToastInfo(context, 'Anúnco realizado com Sucesso!');
+        Messages.of(context).fecharMessagem(2).then((value) {
+          Navigator.pushNamedAndRemoveUntil(
+              context, "/home", ModalRoute.withName('/home'));
+        });
+      } else {
+        _showToastErro(context, 'Ops, algo deu errado!');
+      }
+      // }
+
       // else {
       //   _showToastErro(context, 'Favor preencher todos os campos!');
       // }
