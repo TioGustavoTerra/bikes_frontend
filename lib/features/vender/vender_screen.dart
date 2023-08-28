@@ -1,10 +1,14 @@
+import 'dart:io';
 import 'dart:js_interop';
 import 'dart:ui';
 
+import 'package:bikes_frontend/componentes/Dropped_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import '../../componentes/DrawerApp.dart';
+import '../../componentes/DroppedFileWidget.dart';
+import '../../componentes/Dropzone.dart';
 import '../../componentes/cabecalho.dart';
 import '../../componentes/cabecalhoapp.dart';
 import '../../componentes/messages.dart';
@@ -13,7 +17,8 @@ import '../../utils/responsive.dart';
 import '../../services/ads_service.dart';
 
 class Vender extends StatefulWidget {
-  const Vender({super.key});
+  DroppedFile? file;
+  Vender({super.key});
 
   @override
   State<Vender> createState() => _VenderState();
@@ -102,6 +107,7 @@ class _VenderState extends State<Vender> {
     super.initState();
   }
 
+  DroppedFile? file;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -337,23 +343,31 @@ class _VenderState extends State<Vender> {
             ],
           ),
         ),
-        // Step(
-        //   state: currentStep > 0 ? StepState.complete : StepState.indexed,
-        //   isActive: currentStep >= 3,
-        //   title: const Text(
-        //     'Foto/vídeo',
-        //     style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        //   ),
-        //   content: const Column(
-        //     children: <Widget>[
-        //       Text(
-        //         'Foto/vídeo',
-        //         style:
-        //             TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        //       ),
-        //     ],
-        //   ),
-        // ),
+        Step(
+          state: currentStep > 0 ? StepState.complete : StepState.indexed,
+          isActive: currentStep >= 3,
+          title: const Text(
+            'Adicione uma Foto ou vídeo',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          content: Column(
+            children: <Widget>[
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  DroppedFileWidget(file: file),
+                  const SizedBox(height: 16),
+                  Container(
+                    height: 300,
+                    child: DropzoneWidget(
+                      onDroppedFile: (file) => setState(() => this.file = file),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
         // Step(
         //   state: currentStep > 0 ? StepState.complete : StepState.indexed,
         //   isActive: currentStep >= 2,

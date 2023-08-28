@@ -1,4 +1,9 @@
+import 'dart:io';
+
+import 'package:bikes_frontend/componentes/Dropped_file.dart';
 import 'package:flutter/material.dart';
+
+import '../../componentes/Dropzone.dart';
 
 void main() {
   runApp(Teste());
