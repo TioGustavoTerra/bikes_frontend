@@ -148,7 +148,6 @@ class _VenderState extends State<Vender> {
                         final isLastStep = currentStep == getSteps().length - 1;
 
                         if (isLastStep) {
-                          print('Completo');
                           registrar(_marca, _tipo, _quadro, _aro, _suspensao,
                               _suspensaoT, _freio, _tipofreio);
                           // Enviar dados para o servidor
@@ -396,34 +395,34 @@ class _VenderState extends State<Vender> {
     String tipofreio,
   ) async {
     try {
-      //print(_formKey.currentState);
-      // if (_formKey.currentState!.validate()) {
-        var vender = Ads(
-          marca: marca,
-          tipo: tipo,
-          tamanho: tamanho,
-          aro: int.parse(aro),
-          suspensaoDianteira: suspensao,
-          suspensaoTraseira: suspensaoT,
-          freio: freio,
-          tipofreio: tipofreio,
-        );
+      var vender = Ads(
+        marca: marca,
+        tipo: tipo,
+        tamanho: tamanho,
+        aro: int.parse(aro),
+        suspensaoDianteira: suspensao,
+        suspensaoTraseira: suspensaoT,
+        freio: freio,
+        tipofreio: tipofreio,
+      );
 
-        Ads? ads = await _adsService.registrar(vender);
+      Ads? ads = await _adsService.registrar(vender);
 
-        if (ads != null) {
-          _showToastInfo(context, 'Anúnco realizado com Sucesso!');
-          Navigator.pushNamed(context, "/home");
-        } else {
-          _showToastErro(context, 'Ops, algo deu errado!');
-        }
-      // } 
-      
+      if (ads != null) {
+        _showToastInfo(context, 'Anúnco realizado com Sucesso!');
+        Messages.of(context).fecharMessagem(2).then((value) {
+          Navigator.pushNamedAndRemoveUntil(
+              context, "/home", ModalRoute.withName('/home'));
+        });
+      } else {
+        _showToastErro(context, 'Ops, algo deu errado!');
+      }
+      // }
+
       // else {
       //   _showToastErro(context, 'Favor preencher todos os campos!');
       // }
     } catch (e) {
-      print(e);
       _showToastErro(context, 'Ops, algo deu errado! ${e}');
     }
   }
