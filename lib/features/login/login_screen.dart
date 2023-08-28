@@ -283,7 +283,7 @@ class _LoginPageState extends State<LoginPage> {
         } else {
           _showToastInfo(context, 'Login realizado com Sucesso!');
 
-          Messages.of(context).fecharMessagem(2).then((value) {
+          Messages.of(context).fecharMessagem(1).then((value) {
             Navigator.pushNamedAndRemoveUntil(
               context,
               "/home",
