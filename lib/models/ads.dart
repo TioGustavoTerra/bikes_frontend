@@ -2,14 +2,14 @@ import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
 class Ads {
-  String marca;
-  String tipo;
-  String tamanho;
-  int aro;
-  String suspensaoDianteira;
-  String suspensaoTraseira;
-  String freio;
-  String tipofreio;
+  String? marca;
+  String? tipo;
+  String? tamanho;
+  int? aro;
+  String? suspensaoDianteira;
+  String? suspensaoTraseira;
+  String? freio;
+  String? tipofreio;
 
   Ads({
     required this.marca,

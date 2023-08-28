@@ -1,6 +1,3 @@
-import 'dart:js_interop';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
@@ -22,14 +19,14 @@ class Vender extends StatefulWidget {
 class _VenderState extends State<Vender> {
   final _formKey = GlobalKey<FormState>();
   final marcaController = TextEditingController();
-  late String _marca = 'Caloi';
-  late String _tipo = 'Mountain Bike';
-  late String _quadro = 'S';
-  late String _aro = '16';
-  late String _suspensao = 'RockShox';
-  late String _suspensaoT = 'RockShox';
-  late String _freio = 'Brembo';
-  late String _tipofreio = 'Freio a disco';
+  String? _marca;
+  String? _tipo;
+  String? _quadro;
+  String? _aro;
+  String? _suspensao;
+  String? _suspensaoT;
+  String? _freio;
+  String? _tipofreio;
 
   final tipoController = TextEditingController();
   final tamanhoController = TextEditingController();
@@ -188,11 +185,11 @@ class _VenderState extends State<Vender> {
                 value: _marca,
                 onChanged: (value) {
                   setState(() {
-                    _marca = value!;
+                    _marca = value ?? "";
                   });
                 },
                 isExpanded: true,
-                hint: const Text(""),
+                hint: const Text("Selecione a Marca"),
               ),
               const Text(
                 'Tipo',
@@ -205,7 +202,7 @@ class _VenderState extends State<Vender> {
                     child: Text(item),
                   );
                 }).toList(),
-                value: _tipo,
+                // value: _tipo,
                 onChanged: (value) {
                   setState(() {
                     _tipo = value!;
@@ -386,39 +383,39 @@ class _VenderState extends State<Vender> {
   }
 
   Future<void> registrar(
-    String marca,
-    String tipo,
-    String tamanho,
-    String aro,
-    String suspensao,
-    String suspensaoT,
-    String freio,
-    String tipofreio,
+    String? marca,
+    String? tipo,
+    String? tamanho,
+    String? aro,
+    String? suspensao,
+    String? suspensaoT,
+    String? freio,
+    String? tipofreio,
   ) async {
     try {
       //print(_formKey.currentState);
       // if (_formKey.currentState!.validate()) {
-        var vender = Ads(
-          marca: marca,
-          tipo: tipo,
-          tamanho: tamanho,
-          aro: int.parse(aro),
-          suspensaoDianteira: suspensao,
-          suspensaoTraseira: suspensaoT,
-          freio: freio,
-          tipofreio: tipofreio,
-        );
+      var vender = Ads(
+        marca: marca,
+        tipo: tipo,
+        tamanho: tamanho,
+        aro: int.parse(aro!),
+        suspensaoDianteira: suspensao,
+        suspensaoTraseira: suspensaoT,
+        freio: freio,
+        tipofreio: tipofreio,
+      );
 
-        Ads? ads = await _adsService.registrar(vender);
+      Ads? ads = await _adsService.registrar(vender);
 
-        if (ads != null) {
-          _showToastInfo(context, 'Anúnco realizado com Sucesso!');
-          Navigator.pushNamed(context, "/home");
-        } else {
-          _showToastErro(context, 'Ops, algo deu errado!');
-        }
-      // } 
-      
+      if (ads != null) {
+        _showToastInfo(context, 'Anúnco realizado com Sucesso!');
+        Navigator.pushNamed(context, "/home");
+      } else {
+        _showToastErro(context, 'Ops, algo deu errado!');
+      }
+      // }
+
       // else {
       //   _showToastErro(context, 'Favor preencher todos os campos!');
       // }
