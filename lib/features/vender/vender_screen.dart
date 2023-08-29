@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 import 'dart:io';
 import 'dart:js_interop';
 import 'dart:ui';
 
 import 'package:bikes_frontend/componentes/Dropped_file.dart';
-=======
->>>>>>> 1b6f83aeac1866bbbb60f26ba7ea1953138cb2e8
+
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 

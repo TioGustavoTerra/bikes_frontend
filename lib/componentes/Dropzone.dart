@@ -6,7 +6,6 @@ class DropzoneWidget extends StatefulWidget {
 
   const DropzoneWidget({
     Key? key,
-
     required this.onDroppedFile,
   }) : super(key: Key);
 
@@ -21,48 +20,68 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
   @override
   Widget build(BuildContext context) {
     final colorBackground = isHighlighted ? Colors.blue : Colors.green;
-    final colorButton = isHighlighted ? Colors.blue.shade300 : Colors.green.shade300;
+    final colorButton =
+        isHighlighted ? Colors.blue.shade300 : Colors.green.shade300;
 
-    return Container(
-        color: colorBackground,
+    return buildDecoration(
         child: Stack(
+      children: [
+        DropzoneView(
+          onCreated: (controller) => this.controller = controller,
+          onHover: () => StepState(() => isHighlighted = true),
+          onLeave: () => StepState(() => isHighlighted = false),
+          onDrop: acceptFile,
+        ),
+        Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            DropzoneView(
-                onCreated: (controller) => this.controller = controller,
-                onHover: () => StepState(() => isHighlighted = true),
-                onLeave: () => StepState(() => isHighlighted = false),
-                onDrop: acceptFile,
-                ),
-            Center(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(Icons.cloud_upload, size: 80, color: Colors.white),
-                const Text(
-                  'Drop files',
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(),
-                        primary: colorButton,
-                        shape: RoundedRectangleBorder()),
-                    onPressed: () async {
-                      final events = await controller.pickFiles();
-                      if (events.isEmpty) return;
+            const Icon(Icons.cloud_upload, size: 80, color: Colors.white),
+            const Text(
+              'Drop files',
+              style: TextStyle(color: Colors.white, fontSize: 24),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(),
+                    primary: colorButton,
+                    shape: RoundedRectangleBorder()),
+                onPressed: () async {
+                  final events = await controller.pickFiles();
+                  if (events.isEmpty) return;
 
-                      acceptFile(events.firts);
-                    },
-                    icon: const Icon(Icons.search, size: 32),
-                    label: const Text(
-                      'Choose Files',
-                      style: TextStyle(color: Colors.white, fontSize: 32),
-                    ))
-              ],
-            )),
+                  acceptFile(events.firts);
+                },
+                icon: const Icon(Icons.search, size: 32),
+                label: const Text(
+                  'Choose Files',
+                  style: TextStyle(color: Colors.white, fontSize: 32),
+                ))
           ],
-        ));
+        )),
+      ],
+    ));
+  }
+
+  Widget buildDecoration({required Widget child}) {
+    final colorBackground = isHighlighted ? Colors.blue : Colors.green;
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        color: colorBackground,
+          child: DottedBorder(
+            borderType: BorderType.RRect,
+            color: Colors.white,
+            strokeWidth: 3,
+            padding: EdgeInsets.zero,
+            dashPattern: [8,4],
+            radius: Radius.circular(10),
+            child: child,
+          ),
+      ),
+    );
   }
 
   Future acceptFile(dynamic event) async {
