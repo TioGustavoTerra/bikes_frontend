@@ -110,7 +110,6 @@ class _VenderState extends State<Vender> {
     'Nenhum',
   ];
   var suspensaoTraseira = [
-
     'Fox Suspension',
     'RockShox',
     'Cane Creek',
@@ -124,7 +123,6 @@ class _VenderState extends State<Vender> {
     'Nenhum',
   ];
   var freios = [
-
     'Shimano',
     'SRAM',
     'Magura',
@@ -150,7 +148,7 @@ class _VenderState extends State<Vender> {
     super.initState();
   }
 
-  DroppedFile? file;
+  List<DroppedFile> files = [];
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -397,12 +395,27 @@ class _VenderState extends State<Vender> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  DroppedFileWidget(file: file),
+                  Wrap(
+                    children: [
+                      for (var i = 0; i < files.length; i++)
+                        GestureDetector(
+                          child: DroppedFileWidget(
+                            file: files[i],
+                          ),
+                          onTap: () {
+                            setState(() {
+                              files.removeAt(i);
+                            });
+                          },
+                        ),
+                    ],
+                  ),
                   const SizedBox(height: 16),
                   Container(
                     height: 300,
                     child: DropzoneWidget(
-                      onDroppedFile: (file) => setState(() => this.file = file),
+                      onDroppedFile: (file) =>
+                          setState(() => this.files.add(file)),
                     ),
                   )
                 ],

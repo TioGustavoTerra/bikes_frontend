@@ -10,12 +10,16 @@ class DroppedFileWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Row(
+  //wrap
+  Widget build(BuildContext context) => Container(
+    width: 200,
+    child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+       children: [
           buildImage(),
-          if (file != null) buildFileDetails(file!),
-        ],
+          // if (file != null) buildFileDetails(file!),
+       ],
+      ),
       );
 
   Widget buildImage() {
@@ -42,21 +46,21 @@ class DroppedFileWidget extends StatelessWidget {
         ),
       );
 
-  Widget buildFileDetails(DroppedFile file) {
-    final style = TextStyle(fontSize: 20);
+  // Widget buildFileDetails(DroppedFile file) {
+  //   final style = TextStyle(fontSize: 20);
 
-    return Container(
-      margin: EdgeInsets.only(left: 24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(file.name, style: style.copyWith(fontWeight: FontWeight.bold),),
-          const SizedBox(height: 8,),
-          Text(file.mime, style: style,),
-          const SizedBox(height: 8,),
-          Text(file.size, style: style,)
-        ],
-      ),
-    );
-  }
+  //   return Container(
+  //     margin: EdgeInsets.only(left: 24),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         Text(file.name, style: style.copyWith(fontWeight: FontWeight.bold),),
+  //         const SizedBox(height: 8,),
+  //         Text(file.mime, style: style,),
+  //         const SizedBox(height: 8,),
+  //         Text(file.size, style: style,)
+  //       ],
+  //     ),
+  //   );
+  //}
 }

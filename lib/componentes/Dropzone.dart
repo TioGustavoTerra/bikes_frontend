@@ -33,6 +33,9 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
           onHover: () => setState(() => isHighlighted = true),
           onLeave: () => setState(() => isHighlighted = false),
           onDrop: acceptFile,
+          // onDropMultiple: (value) {
+          //   print(value);
+          // },
         ),
         Center(
             child: Column(
