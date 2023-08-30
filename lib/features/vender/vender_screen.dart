@@ -29,7 +29,7 @@ class _VenderState extends State<Vender> {
   final _formKey = GlobalKey<FormState>();
   final marcaController = TextEditingController();
   String? _marca;
-  String? _tipo;
+  String? _modalidade;
   String? _quadro;
   String? _aro;
   String? _suspensao;
@@ -47,59 +47,101 @@ class _VenderState extends State<Vender> {
 // List of items in our dropdown menu
   var marcas = [
     'Caloi',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
+    'Trek',
+    'Specialized',
+    'Giant',
+    'Cannondale',
+    'Scott',
+    'Bianchi',
+    'Canyon',
+    'Santa Cruz',
+    'Merida',
+    'Orbea',
+    'Raleigh',
+    'Fuji',
+    'Kona',
+    'Cube',
+    'Felt',
+    'Colnago',
+    'Pinarello',
+    'BMC',
+    'Wilier Triestina',
+    'Devinci',
+    'Não definido',
   ];
-  var tipos = [
-    'Mountain Bike',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
+  var modalidade = [
+    'MTB',
+    'Ciclismo de Estrada',
+    'Ciclismo Urbano',
+    'BMX',
+    'Ciclocross',
+    'Triatlo',
+    'Downhill ',
+    'Freeride',
+    'Cicloturismo',
+    'Bicicleta de Gravel',
+    'E-Bike',
+    'Trial',
+    'Não definido',
   ];
   var quadros = [
+    'XS',
     'S',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
+    'M',
+    'L',
+    'XL',
   ];
   var aros = [
+    '12',
     '16',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
+    '20',
+    '24',
+    '26',
+    '27,5',
+    '29',
+    '700c',
   ];
   var suspensaoDianteira = [
     'RockShox',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
+    'Fox Racing Shox',
+    'Manitou',
+    'Suntour',
+    'Marzocchi',
+    'Nenhum',
   ];
   var suspensaoTraseira = [
+
+    'Fox Suspension',
     'RockShox',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
+    'Cane Creek',
+    'X-Fusion',
+    'DVO Suspension',
+    'Ohlins',
+    'Marzocchi',
+    'DT Swiss',
+    'Suntour',
+    'Cane Creek',
+    'Nenhum',
   ];
   var freios = [
-    'Brembo',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
+
+    'Shimano',
+    'SRAM',
+    'Magura',
+    'Hope Technology',
+    'Tektro',
+    'Hayes',
+    'Formula',
+    'TRP',
+    'Nenhum',
   ];
   var tiposFreios = [
-    'Freio a disco',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
+    'Freio de Tambor',
+    'Freio Cantilever',
+    'Freio V-Brake',
+    'Freio a Disco Mecânico',
+    'Freio a Disco Hidráulico',
+    'Nenhum',
   ];
 
   @override
@@ -155,8 +197,8 @@ class _VenderState extends State<Vender> {
                         final isLastStep = currentStep == getSteps().length - 1;
 
                         if (isLastStep) {
-                          registrar(_marca, _tipo, _quadro, _aro, _suspensao,
-                              _suspensaoT, _freio, _tipofreio);
+                          registrar(_marca, _modalidade, _quadro, _aro,
+                              _suspensao, _suspensaoT, _freio, _tipofreio);
                           // Enviar dados para o servidor
                         } else {
                           setState(() => currentStep += 1);
@@ -205,20 +247,20 @@ class _VenderState extends State<Vender> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               DropdownButton(
-                items: tipos.map((String item) {
+                items: modalidade.map((String item) {
                   return DropdownMenuItem(
                     value: item,
                     child: Text(item),
                   );
                 }).toList(),
-                // value: _tipo,
+                value: _modalidade,
                 onChanged: (value) {
                   setState(() {
-                    _tipo = value!;
+                    _modalidade = value!;
                   });
                 },
                 isExpanded: true,
-                hint: const Text(""),
+                hint: const Text("Selecione a Modalidade"),
               ),
               const Text('Tamanho do quadro',
                   style: TextStyle(fontWeight: FontWeight.bold)),
@@ -236,8 +278,7 @@ class _VenderState extends State<Vender> {
                   });
                 },
                 isExpanded: true,
-                hint: const Text("",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                hint: const Text("Selecione o Tamanho do quadro"),
               ),
               const Text('Tamanho do aro',
                   style: TextStyle(fontWeight: FontWeight.bold)),
@@ -255,7 +296,7 @@ class _VenderState extends State<Vender> {
                   });
                 },
                 isExpanded: true,
-                hint: const Text(""),
+                hint: const Text("Selecione o Tamanho do aro"),
               ),
             ],
           ),
@@ -285,7 +326,7 @@ class _VenderState extends State<Vender> {
                   });
                 },
                 isExpanded: true,
-                hint: const Text(""),
+                hint: const Text("Selecione a Suspenção dianteira"),
               ),
               const Text('Suspenção traseira',
                   style: TextStyle(fontWeight: FontWeight.bold)),
@@ -303,7 +344,7 @@ class _VenderState extends State<Vender> {
                   });
                 },
                 isExpanded: true,
-                hint: const Text(""),
+                hint: const Text("Selecione Suspenção traseira"),
               ),
               const Text('Marca dos freios',
                   style: TextStyle(fontWeight: FontWeight.bold)),
@@ -321,7 +362,7 @@ class _VenderState extends State<Vender> {
                   });
                 },
                 isExpanded: true,
-                hint: const Text(""),
+                hint: const Text("Selecione a Marca dos freios"),
               ),
               const Text('Tipo do freio',
                   style: TextStyle(fontWeight: FontWeight.bold)),
@@ -339,7 +380,7 @@ class _VenderState extends State<Vender> {
                   });
                 },
                 isExpanded: true,
-                hint: const Text(""),
+                hint: const Text("Selecione o Tipo do freio"),
               ),
             ],
           ),
@@ -369,23 +410,23 @@ class _VenderState extends State<Vender> {
             ],
           ),
         ),
-        // Step(
-        //   state: currentStep > 0 ? StepState.complete : StepState.indexed,
-        //   isActive: currentStep >= 2,
-        //   title: const Text(
-        //     'últimas informações',
-        //     style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        //   ),
-        //   content: const Column(
-        //     children: <Widget>[
-        //       Text(
-        //         'Adicionar Nota fiscal ou DARF; Adicionar descrição; Adicionar valor; Adicionar desconto',
-        //         style:
-        //             TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        //       ),
-        //     ],
-        //   ),
-        // ),
+        Step(
+          state: currentStep > 0 ? StepState.complete : StepState.indexed,
+          isActive: currentStep >= 4,
+          title: const Text(
+            'últimas informações',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          content: const Column(
+            children: <Widget>[
+              Text(
+                'Adicionar Nota fiscal ou DARF; Adicionar descrição; Adicionar valor; Adicionar desconto',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
       ];
 
   Future<void> _requestUser() async {

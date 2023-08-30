@@ -31,9 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-    flutter_dropzone: ^2.0.1
 
-    dotted_border: ^2.0.0
 
 
 
@@ -49,6 +47,8 @@ dependencies:
   intl: ^0.18.1
   animated_text_kit: ^4.2.2
   google_fonts: ^5.1.0
+  flutter_dropzone: ^3.0.6
+  dotted_border: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:

@@ -68,156 +68,144 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
 
-                          const Padding(
-                        padding: EdgeInsets.all(20),
-                        child: Text(
-                          'Resultado da busca',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                      //     const Padding(
+                      //   padding: EdgeInsets.all(20),
+                      //   child: Text(
+                      //     'Resultado da busca',
+                      //     textAlign: TextAlign.center,
+                      //     style: TextStyle(
+                      //       color: Colors.black,
+                      //       fontWeight: FontWeight.bold,
+                      //       fontSize: 20,
+                      //     ),
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //     height: 2000,
+                      //     width: 1500,
+                      //     child: Scaffold(
+                      //         body: CustomScrollView(
+                      //       slivers: [
+                      //         SliverGrid.count(
+                      //           crossAxisCount: 4,
+                      //           mainAxisSpacing: 10.0,
+                      //           crossAxisSpacing: 10.0,
+                      //           childAspectRatio: 1,
+                      //           children: [
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //             Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //              Card(
+                      //               color: Colors.blue,
+                      //               child: Container(),
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       ],
+                      //     ))),
+                          const SizedBox(
+                            height: 400,
+                            width: 900,
+                            child: GridMarcas(),
                           ),
-                        ),
-                      ),
-                      SizedBox(
-                          height: 2000,
-                          width: 1500,
-                          child: Scaffold(
-                              body: CustomScrollView(
-                            slivers: [
-                              SliverGrid.count(
-                                crossAxisCount: 4,
-                                mainAxisSpacing: 10.0,
-                                crossAxisSpacing: 10.0,
-                                childAspectRatio: 1,
-                                children: [
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                   Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ))),
-
-
-
-
-
-
-
-
-
-
-
-
-                          // const SizedBox(
-                          //   height: 400,
-                          //   width: 900,
-                          //   child: GridMarcas(),
-                          // ),
-                          // const SizedBox(
-                          //   height: 700,
-                          //   width: 800,
-                          //   child: Destaque(),
-                          // ),
-                          // const SizedBox(
-                          //   height: 700,
-                          //   width: 800,
-                          //   child: QualoEstilo(),
-                          // ),
-                          // const SizedBox(
-                          //   height: 1000,
-                          //   width: 800,
-                          //   child: Selecionamos(),
-                          // ),
-                          // const SizedBox(
-                          //   height: 400,
-                          //   width: 800,
-                          //   child: Speed(),
-                          // ),
-                          // const SizedBox(
-                          //   height: 800,
-                          //   width: 800,
-                          //   child: Insta(),
-                          // ),
+                          const SizedBox(
+                            height: 700,
+                            width: 800,
+                            child: Destaque(),
+                          ),
+                          const SizedBox(
+                            height: 700,
+                            width: 800,
+                            child: QualoEstilo(),
+                          ),
+                          const SizedBox(
+                            height: 1000,
+                            width: 800,
+                            child: Selecionamos(),
+                          ),
+                          const SizedBox(
+                            height: 400,
+                            width: 800,
+                            child: Speed(),
+                          ),
+                          const SizedBox(
+                            height: 800,
+                            width: 800,
+                            child: Insta(),
+                          ),
                           if (Responsive.isMobile(context))
                             const PreferredSize(
                               preferredSize: Size(double.infinity, 56),

@@ -27,14 +27,14 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       initialRoute: '/home',
       routes: {
-        '/teste': (context) => Teste(),
+        '/teste': (context) => const Teste(),
         '/perfil': (context) => const PerfilScreen(),
         '/sobre': (context) => QuemSomos(),
-        '/login': (context) => LoginPage(),
+        '/login': (context) => const LoginPage(),
         '/registro': (context) => Signup(),
         '/home': (context) => HomePage(),
         '/vender': (context) => Vender(),
-        '/comprar': (context) => Comprar(),
+        '/comprar': (context) => const Comprar(),
       },
     );
   }

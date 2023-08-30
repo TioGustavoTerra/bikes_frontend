@@ -208,15 +208,18 @@ class rodapeApp extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  MyButtonAgree(
-                    text: "Assinar",
-                    image: "site-sistema/Home/icone-seta.svg",
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Signup()),
-                      );
-                    },
+                  Padding(
+                    padding: const EdgeInsets.only(left: 150, right: 150,),
+                    child: MyButtonAgree(
+                      text: "Assinar",
+                      image: "site-sistema/Home/icone-seta.svg",
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Signup()),
+                        );
+                      },
+                    ),
                   ),
                   const SizedBox(height: 10)
                 ],

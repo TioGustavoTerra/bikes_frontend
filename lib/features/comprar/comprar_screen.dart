@@ -67,7 +67,7 @@ class _ComprarState extends State<Comprar> {
                         ),
                       ),
                       SizedBox(
-                          height: 600,
+                          height: 1500,
                           width: 1500,
                           child: Scaffold(
                               body: CustomScrollView(
@@ -139,22 +139,6 @@ class _ComprarState extends State<Comprar> {
                                     child: Container(),
                                   ),
                                   Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                   Card(
                                     color: Colors.blue,
                                     child: Container(),
                                   ),

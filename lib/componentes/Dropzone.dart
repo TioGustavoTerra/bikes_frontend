@@ -1,5 +1,7 @@
 import 'package:bikes_frontend/componentes/Dropped_file.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dropzone/flutter_dropzone.dart';
 
 class DropzoneWidget extends StatefulWidget {
   final ValueChanged<DroppedFile> onDroppedFile;
@@ -7,7 +9,7 @@ class DropzoneWidget extends StatefulWidget {
   const DropzoneWidget({
     Key? key,
     required this.onDroppedFile,
-  }) : super(key: Key);
+  }) : super(key: key);
 
   @override
   State<DropzoneWidget> createState() => _DropzoneWidgetState();
@@ -28,8 +30,8 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
       children: [
         DropzoneView(
           onCreated: (controller) => this.controller = controller,
-          onHover: () => StepState(() => isHighlighted = true),
-          onLeave: () => StepState(() => isHighlighted = false),
+          onHover: () => setState(() => isHighlighted = true),
+          onLeave: () => setState(() => isHighlighted = false),
           onDrop: acceptFile,
         ),
         Center(
@@ -51,7 +53,7 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
                   final events = await controller.pickFiles();
                   if (events.isEmpty) return;
 
-                  acceptFile(events.firts);
+                  acceptFile(events.first);
                 },
                 icon: const Icon(Icons.search, size: 32),
                 label: const Text(
