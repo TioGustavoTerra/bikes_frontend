@@ -37,7 +37,7 @@ class AdsService {
         // throw "Unable to retrieve posts.";
       }
     } on DioError catch (err) {
-      print(err);
+      print(err.response?.data);
       throw ' ${err.response?.data} Código: ${err.response?.statusCode}';
     }
   }

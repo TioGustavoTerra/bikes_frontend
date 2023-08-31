@@ -472,7 +472,7 @@ class _VenderState extends State<Vender> {
         suspensaoDianteira: suspensao,
         suspensaoTraseira: suspensaoT,
         freio: freio,
-        tipofreio: tipofreio,
+        tipoFreio: tipofreio,
       );
 
       Ads? ads = await _adsService.registrar(vender);
