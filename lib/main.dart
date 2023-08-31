@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         '/registro': (context) => Signup(),
         '/home': (context) => HomePage(),
         '/vender': (context) => Vender(),
-        '/comprar': (context) => const Comprar(),
+        '/comprar': (context) => Comprar(),
       },
     );
   }

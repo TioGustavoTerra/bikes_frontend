@@ -9,7 +9,6 @@ class AdsService {
 
   Future<Ads?> registrar(Ads ads) async {
     try {
-
       var token;
       var refreshToken;
 
@@ -38,13 +37,13 @@ class AdsService {
         // throw "Unable to retrieve posts.";
       }
     } on DioError catch (err) {
-
       print(err);
       throw ' ${err.response?.data} Código: ${err.response?.statusCode}';
     }
   }
 
-  Future<Ads?> getAds() async {
+  Future<List<Ads>> getAds() async {
+    List<Ads> ads = [];
     try {
       var token;
       var refreshToken;
@@ -64,7 +63,11 @@ class AdsService {
       var res = await dio.get(postsURL);
 
       if (res.statusCode == 200) {
-        Ads ads = Ads.fromJson(res.data);
+        // List<Ads?> ads;
+        // ads.ad Ads.fromJson(res.data);
+
+        ads = (res.data as List).map((e) => Ads.fromJson(e)).toList();
+        print(ads.length);
         return ads;
       } else {
         print(res.statusCode);
@@ -72,7 +75,8 @@ class AdsService {
         // throw "Unable to retrieve posts.";
       }
     } on DioError catch (err) {
-      throw 'Erro ao realizar a venda ${err.response?.data} Código: ${err.response?.statusCode}';
+      throw 'Erro ao realizar a busca ${err.response?.data} Código: ${err.response?.statusCode}';
     }
+    return ads;
   }
 }

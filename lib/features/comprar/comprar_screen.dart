@@ -1,3 +1,5 @@
+import 'package:bikes_frontend/models/ads.dart';
+import 'package:bikes_frontend/services/ads_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../componentes/DrawerApp.dart';
@@ -17,6 +19,16 @@ class Comprar extends StatefulWidget {
 }
 
 class _ComprarState extends State<Comprar> {
+  final AdsService _adsService = AdsService();
+  late List<Ads> adsList = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getDados();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -72,82 +84,33 @@ class _ComprarState extends State<Comprar> {
                           child: Scaffold(
                               body: CustomScrollView(
                             slivers: [
-                              SliverGrid.count(
-                                crossAxisCount: 4,
-                                mainAxisSpacing: 10.0,
-                                crossAxisSpacing: 10.0,
-                                childAspectRatio: 1,
-                                children: [
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
+                              SliverGrid.builder(
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 4,
+                                  mainAxisSpacing: 10.0,
+                                  crossAxisSpacing: 10.0,
+                                  childAspectRatio: 1,
+                                ),
+                                itemBuilder: (context, index) => Card(
+                                  color: Colors.blue,
+                                  child: Container(
+                                    child: Column(children: [
+                                              Text(adsList[index].marca!),
+                                              Text(adsList[index].suspensaoDianteira!),
+                                              Text(adsList[index].suspensaoTraseira!),
+                                              Text(adsList[index].tipo!)
+                                    ],)
+                                    
+                                    ,
                                   ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                  Card(
-                                    color: Colors.blue,
-                                    child: Container(),
-                                  ),
-                                ],
+                                ),
+                                itemCount: adsList?.length
                               ),
                             ],
                           ))),
                       if (Responsive.isMobile(context))
-                        const PreferredSize(     
+                        const PreferredSize(
                           preferredSize: Size(double.infinity, 56),
                           child: rodapeApp(),
                         )
@@ -159,5 +122,13 @@ class _ComprarState extends State<Comprar> {
                     ]))
                   ]))));
     });
+  }
+
+  Future<void> getDados() async {
+    await _adsService.getAds().then((value) => adsList.addAll(value));
+    setState(() {
+      
+    });
+
   }
 }
