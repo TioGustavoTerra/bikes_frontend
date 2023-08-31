@@ -43,7 +43,7 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
           children: [
             const Icon(Icons.cloud_upload, size: 80, color: Colors.white),
             const Text(
-              'Drop files',
+              'Solte arquivos aqui',
               style: TextStyle(color: Colors.white, fontSize: 24),
             ),
             const SizedBox(height: 16),
@@ -59,9 +59,12 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
                   acceptFile(events.first);
                 },
                 icon: const Icon(Icons.search, size: 32),
-                label: const Text(
-                  'Choose Files',
-                  style: TextStyle(color: Colors.white, fontSize: 32),
+                label: const Padding(
+                  padding: EdgeInsets.only(right: 15,),
+                  child: Text(
+                    'Procurar',
+                    style: TextStyle(color: Colors.white, fontSize: 32),
+                  ),
                 ))
           ],
         )),
@@ -76,15 +79,15 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
       borderRadius: BorderRadius.circular(12),
       child: Container(
         color: colorBackground,
-          child: DottedBorder(
-            borderType: BorderType.RRect,
-            color: Colors.white,
-            strokeWidth: 3,
-            padding: EdgeInsets.zero,
-            dashPattern: [8,4],
-            radius: Radius.circular(10),
-            child: child,
-          ),
+        child: DottedBorder(
+          borderType: BorderType.RRect,
+          color: Colors.white,
+          strokeWidth: 3,
+          padding: EdgeInsets.zero,
+          dashPattern: [8, 4],
+          radius: Radius.circular(10),
+          child: child,
+        ),
       ),
     );
   }

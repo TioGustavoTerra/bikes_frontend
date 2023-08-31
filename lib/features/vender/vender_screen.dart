@@ -34,7 +34,7 @@ class _VenderState extends State<Vender> {
   String? _aro;
   String? _suspensao;
   String? _suspensaoT;
-  String? _freio;
+  String? _freios;
   String? _tipofreio;
 
   final tipoController = TextEditingController();
@@ -97,7 +97,7 @@ class _VenderState extends State<Vender> {
     '20',
     '24',
     '26',
-    '27,5',
+    '27',
     '29',
     '700c',
   ];
@@ -133,7 +133,7 @@ class _VenderState extends State<Vender> {
     'TRP',
     'Nenhum',
   ];
-  var tiposFreios = [
+  var tipoFreio = [
     'Freio de Tambor',
     'Freio Cantilever',
     'Freio V-Brake',
@@ -196,7 +196,7 @@ class _VenderState extends State<Vender> {
 
                         if (isLastStep) {
                           registrar(_marca, _modalidade, _quadro, _aro,
-                              _suspensao, _suspensaoT, _freio, _tipofreio);
+                              _suspensao, _suspensaoT, _freios, _tipofreio);
                           // Enviar dados para o servidor
                         } else {
                           setState(() => currentStep += 1);
@@ -353,10 +353,10 @@ class _VenderState extends State<Vender> {
                     child: Text(item),
                   );
                 }).toList(),
-                value: _freio,
+                value: _freios,
                 onChanged: (value) {
                   setState(() {
-                    _freio = value!;
+                    _freios = value!;
                   });
                 },
                 isExpanded: true,
@@ -365,7 +365,7 @@ class _VenderState extends State<Vender> {
               const Text('Tipo do freio',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton(
-                items: tiposFreios.map((String item) {
+                items: tipoFreio.map((String item) {
                   return DropdownMenuItem(
                     value: item,
                     child: Text(item),
