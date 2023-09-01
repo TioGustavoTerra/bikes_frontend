@@ -94,7 +94,9 @@ class NavigationDrawer extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.sell, color: Colors.white,),
                       title: const Text('Comprar', style: TextStyle(color: Colors.white),),
-                      onTap: () {},
+                      onTap: () {
+                      Navigator.pushNamedAndRemoveUntil(context, "/comprar", ModalRoute.withName('/comprar'),);
+                      },
                     ),
                     ListTile(
                       leading: const Icon(Icons.sell, color: Colors.white,),

@@ -9,7 +9,7 @@ class Ads {
   String? suspensaoDianteira;
   String? suspensaoTraseira;
   String? freio;
-  String? tipofreio;
+  String? tipoFreio;
 
   Ads({
     required this.marca,
@@ -19,7 +19,7 @@ class Ads {
     required this.suspensaoDianteira,
     required this.suspensaoTraseira,
     required this.freio,
-    required this.tipofreio,
+    required this.tipoFreio,
   });
 
   factory Ads.fromJson(Map<String, dynamic> json) {
@@ -31,7 +31,7 @@ class Ads {
       suspensaoDianteira: json['suspensaoDianteira'] ?? json['suspensaoDianteira'],
       suspensaoTraseira: json['suspensaoTraseira'] ?? json['suspensaoTraseira'],
       freio: json['freio'] ?? json['freio'],
-      tipofreio: json['tipofreio'] ?? json['tipofreio'],
+      tipoFreio: json['tipoFreio'] ?? json['tipoFreio'],
     );
   }
 
@@ -44,7 +44,7 @@ class Ads {
     ads["suspensaoDianteira"] = suspensaoDianteira;
     ads["suspensaoTraseira"] = suspensaoTraseira;
     ads["freio"] = freio;
-    ads["tipofreio"] = tipofreio;
+    ads["tipoFreio"] = tipoFreio;
 
     return ads;
   }

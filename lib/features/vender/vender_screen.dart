@@ -3,6 +3,7 @@ import 'dart:js_interop';
 import 'dart:ui';
 
 import 'package:bikes_frontend/componentes/Dropped_file.dart';
+import 'package:bikes_frontend/componentes/textfield.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
@@ -35,7 +36,7 @@ class _VenderState extends State<Vender> {
   String? _suspensao;
   String? _suspensaoT;
   String? _freios;
-  String? _tipofreio;
+  String? _tipoFreio;
 
   final tipoController = TextEditingController();
   final tamanhoController = TextEditingController();
@@ -99,7 +100,7 @@ class _VenderState extends State<Vender> {
     '26',
     '27',
     '29',
-    '700c',
+    '700',
   ];
   var suspensaoDianteira = [
     'RockShox',
@@ -196,7 +197,7 @@ class _VenderState extends State<Vender> {
 
                         if (isLastStep) {
                           registrar(_marca, _modalidade, _quadro, _aro,
-                              _suspensao, _suspensaoT, _freios, _tipofreio);
+                              _suspensao, _suspensaoT, _freios, _tipoFreio);
                           // Enviar dados para o servidor
                         } else {
                           setState(() => currentStep += 1);
@@ -371,10 +372,10 @@ class _VenderState extends State<Vender> {
                     child: Text(item),
                   );
                 }).toList(),
-                value: _tipofreio,
+                value: _tipoFreio,
                 onChanged: (value) {
                   setState(() {
-                    _tipofreio = value!;
+                    _tipoFreio = value!;
                   });
                 },
                 isExpanded: true,
@@ -430,13 +431,18 @@ class _VenderState extends State<Vender> {
             'últimas informações',
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
-          content: const Column(
+          content: Column(
             children: <Widget>[
-              Text(
-                'Adicionar Nota fiscal ou DARF; Adicionar descrição; Adicionar valor; Adicionar desconto',
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              const Text(
+                'De a descrição do pruduto, não poupe nos detalhes!',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
+              MyTextField(
+                  controller: descricaoController,
+                  hintText: '',
+                  obscureText: false,
+                  inputFormatter: []),
+
             ],
           ),
         ),
@@ -472,13 +478,13 @@ class _VenderState extends State<Vender> {
         suspensaoDianteira: suspensao,
         suspensaoTraseira: suspensaoT,
         freio: freio,
-        tipofreio: tipofreio,
+        tipoFreio: tipofreio,
       );
 
       Ads? ads = await _adsService.registrar(vender);
 
       if (ads != null) {
-        _showToastInfo(context, 'Anúnco realizado com Sucesso!');
+        _showToastInfo(context, 'Anúnco cadastrado com Sucesso!');
         Messages.of(context).fecharMessagem(2).then((value) {
           Navigator.pushNamedAndRemoveUntil(
               context, "/home", ModalRoute.withName('/home'));
