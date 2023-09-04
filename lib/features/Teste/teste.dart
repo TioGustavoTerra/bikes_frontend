@@ -1,3 +1,4 @@
+import 'package:bikes_frontend/componentes/insta.dart';
 import 'package:flutter/material.dart';
 
 class Teste extends StatefulWidget {
@@ -10,6 +11,6 @@ class Teste extends StatefulWidget {
 class _TesteState extends State<Teste> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Insta();
   }
 }

@@ -442,7 +442,6 @@ class _VenderState extends State<Vender> {
                   hintText: '',
                   obscureText: false,
                   inputFormatter: []),
-
             ],
           ),
         ),

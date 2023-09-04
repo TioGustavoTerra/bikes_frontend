@@ -1,3 +1,4 @@
+import 'package:bikes_frontend/componentes/button.dart';
 import 'package:bikes_frontend/models/ads.dart';
 import 'package:bikes_frontend/services/ads_service.dart';
 import 'package:flutter/material.dart';
@@ -85,28 +86,38 @@ class _ComprarState extends State<Comprar> {
                               body: CustomScrollView(
                             slivers: [
                               SliverGrid.builder(
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4,
-                                  mainAxisSpacing: 10.0,
-                                  crossAxisSpacing: 10.0,
-                                  childAspectRatio: 1,
-                                ),
-                                itemBuilder: (context, index) => Card(
-                                  color: Colors.blue,
-                                  child: Container(
-                                    child: Column(children: [
-                                              Text(adsList[index].marca!),
-                                              Text(adsList[index].suspensaoDianteira!),
-                                              Text(adsList[index].suspensaoTraseira!),
-                                              Text(adsList[index].tipo!)
-                                    ],)
-                                    
-                                    ,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 4,
+                                    mainAxisSpacing: 10.0,
+                                    crossAxisSpacing: 10.0,
+                                    childAspectRatio: 1,
                                   ),
-                                ),
-                                itemCount: adsList?.length
-                              ),
+                                  itemBuilder: (context, index) => Card(
+                                        color: Colors.blue,
+                                        child: Container(
+                                          child: Column(
+                                            children: [
+                                              // Text(adsList[index].suspensaoDianteira!),
+                                              // Text(adsList[index].suspensaoTraseira!),
+                                              // Text(adsList[index].tipo!)
+
+                                              Image.asset(
+                                                'site-sistema/Quem-somos/para-esporte.jpg',
+                                                fit: BoxFit.cover,
+                                              ),
+
+                                              Text(
+                                                adsList[index].marca!,
+                                                style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                  itemCount: adsList?.length),
                             ],
                           ))),
                       if (Responsive.isMobile(context))
@@ -126,9 +137,6 @@ class _ComprarState extends State<Comprar> {
 
   Future<void> getDados() async {
     await _adsService.getAds().then((value) => adsList.addAll(value));
-    setState(() {
-      
-    });
-
+    setState(() {});
   }
 }

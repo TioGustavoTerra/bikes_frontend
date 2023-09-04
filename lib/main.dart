@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bikes_frontend/componentes/Dropped_file.dart';
 import 'package:bikes_frontend/componentes/Dropzone.dart';
 import 'package:bikes_frontend/features/Teste/teste.dart';
+import 'package:bikes_frontend/features/contato/contato_screen.dart';
 import 'package:bikes_frontend/features/home/home_screen.dart';
 import 'package:bikes_frontend/features/about/quem_somos.dart';
 import 'package:bikes_frontend/features/register/registration_screen.dart';
@@ -29,12 +30,13 @@ class MyApp extends StatelessWidget {
       routes: {
         '/teste': (context) => const Teste(),
         '/perfil': (context) => const PerfilScreen(),
-        '/sobre': (context) => QuemSomos(),
+        '/sobre': (context) => const QuemSomos(),
         '/login': (context) => const LoginPage(),
         '/registro': (context) => Signup(),
         '/home': (context) => HomePage(),
         '/vender': (context) => Vender(),
-        '/comprar': (context) => Comprar(),
+        '/comprar': (context) => const Comprar(),
+        '/contato': (context) => Contato(),
       },
     );
   }

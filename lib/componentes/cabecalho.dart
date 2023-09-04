@@ -90,7 +90,7 @@ class Cabecalho extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-                         Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
+                         Navigator.pushNamedAndRemoveUntil(context, "/contato", ModalRoute.withName('/contato'),);
           },
           child: const Text(
             'Contato',

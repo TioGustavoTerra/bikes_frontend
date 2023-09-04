@@ -1,4 +1,5 @@
 import 'package:bikes_frontend/componentes/button.dart';
+import 'package:bikes_frontend/features/perfil/perfil_screen.dart';
 import 'package:flutter/material.dart';
 
 class Insta extends StatefulWidget {
@@ -52,18 +53,22 @@ class _InstaState extends State<Insta> {
                 color: Colors.blue[400],
                 child: Container(),
               ),
+              Card(
+                color: Colors.blue[400],
+                child: Container(
+                  child: MyButtonAgree(
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          "/home",
+                          ModalRoute.withName('/'),
+                        );
+                      },
+                      text: 'Acesse nosso instagram!'),
+                ),
+              ),
             ],
           ),
-          // MyButtonAgree(
-          //   onTap: () {
-          //     Navigator.pushNamedAndRemoveUntil(
-          //       context,
-          //       "/home",
-          //       ModalRoute.withName('/home'),
-          //     );
-          //   },
-          //   text: 'Siga-nos agora',
-          // ),
         ],
       ),
     );
