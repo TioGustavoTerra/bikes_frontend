@@ -96,7 +96,7 @@ class QuemSomos extends StatelessWidget {
                                 'site-sistema/Quem-somos/para-esporte.jpg',
                                 fit: BoxFit.cover,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 14,
                               ),
                               Image.asset(
@@ -105,7 +105,7 @@ class QuemSomos extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 14,
                           ),
                           Image.asset(
@@ -134,8 +134,8 @@ class QuemSomos extends StatelessWidget {
                 child: rodapeApp(),
               )
             else
-              (PreferredSize(
-                preferredSize: const Size(double.infinity, 72),
+              (const PreferredSize(
+                preferredSize: Size(double.infinity, 72),
                 child: Rodape(),
               )),
           ],

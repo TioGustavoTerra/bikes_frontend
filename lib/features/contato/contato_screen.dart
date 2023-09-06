@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:bikes_frontend/componentes/button.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -81,7 +80,7 @@ class Contato extends StatelessWidget {
                                 hintText: 'Nome completo',
                                 controller: usernameController,
                                 obscureText: false,
-                                inputFormatter: [],
+                                inputFormatter: const [],
                               ),
                               const SizedBox(height: 10),
                               Row(
@@ -104,7 +103,7 @@ class Contato extends StatelessWidget {
                                       hintText: 'Email',
                                       controller: emailController,
                                       obscureText: false,
-                                      inputFormatter: [],
+                                      inputFormatter: const [],
                                     ),
                                   ),
                                 ],
@@ -114,7 +113,7 @@ class Contato extends StatelessWidget {
                                   controller: areaTexto,
                                   hintText: "Digite aqui!",
                                   obscureText: false,
-                                  inputFormatter: []),
+                                  inputFormatter: const []),
                               const SizedBox(height: 10),
                             ]),
                       ),
@@ -129,8 +128,8 @@ class Contato extends StatelessWidget {
                 child: rodapeApp(),
               )
             else
-              (PreferredSize(
-                preferredSize: const Size(double.infinity, 72),
+              (const PreferredSize(
+                preferredSize: Size(double.infinity, 72),
                 child: Rodape(),
               )),
           ]),

@@ -1,4 +1,3 @@
-import 'package:bikes_frontend/componentes/insta.dart';
 import 'package:bikes_frontend/features/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +20,7 @@ class _TesteState extends State<Teste> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => HomePage()),
+                              MaterialPageRoute(builder: (context) => const HomePage()),
                             );
                           },
                         ),

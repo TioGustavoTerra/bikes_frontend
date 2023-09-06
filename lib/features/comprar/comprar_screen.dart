@@ -1,5 +1,4 @@
 import 'package:bikes_frontend/componentes/button.dart';
-import 'package:bikes_frontend/features/Teste/teste.dart';
 import 'package:bikes_frontend/models/ads.dart';
 import 'package:bikes_frontend/services/ads_service.dart';
 import 'package:flutter/material.dart';

@@ -17,7 +17,7 @@ import '../../componentes/rodapeApp.dart';
 import '../../componentes/speed.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+ const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();

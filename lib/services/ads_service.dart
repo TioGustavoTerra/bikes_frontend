@@ -1,4 +1,3 @@
-import 'package:bikes_frontend/models/failure_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 

@@ -1,8 +1,3 @@
-import 'dart:io';
-import 'dart:js_interop';
-import 'dart:ui';
-
-
 import 'package:bikes_frontend/componentes/Dropped_file.dart';
 import 'package:bikes_frontend/componentes/textfield.dart';
 
@@ -442,7 +437,7 @@ class _VenderState extends State<Vender> {
                   controller: descricaoController,
                   hintText: '',
                   obscureText: false,
-                  inputFormatter: []),
+                  inputFormatter: const []),
             ],
           ),
         ),

@@ -1,7 +1,3 @@
-import 'dart:io';
-
-import 'package:bikes_frontend/componentes/Dropped_file.dart';
-import 'package:bikes_frontend/componentes/Dropzone.dart';
 import 'package:bikes_frontend/features/Teste/teste.dart';
 import 'package:bikes_frontend/features/contato/contato_screen.dart';
 import 'package:bikes_frontend/features/home/home_screen.dart';
@@ -28,12 +24,12 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       initialRoute: '/home',
       routes: {
-        '/teste': (context) => Teste(),
+        '/teste': (context) => const Teste(),
         '/perfil': (context) => const PerfilScreen(),
         '/sobre': (context) => const QuemSomos(),
         '/login': (context) => const LoginPage(),
         '/registro': (context) => Signup(),
-        '/home': (context) => HomePage(),
+        '/home': (context) => const HomePage(),
         '/vender': (context) => Vender(),
         '/comprar': (context) => const Comprar(),
         '/contato': (context) => Contato(),
