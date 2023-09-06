@@ -114,7 +114,7 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
     final List<int> fileBytes = reader.result as List<int>;
     final base64String = base64Encode(fileBytes);
 
-    print('Base64 Image: $base64String');
+    print('data:$mime;base64,$base64String');
 
     final droppedFile = DroppedFile(
       url: url,

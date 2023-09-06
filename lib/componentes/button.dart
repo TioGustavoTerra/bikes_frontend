@@ -39,7 +39,7 @@ class MyButtonAgree extends StatelessWidget {
   final Function()? onTap;
   final String text;
   final String? image;
-  const MyButtonAgree({super.key, required this.onTap, required this.text, this.image});
+  const MyButtonAgree({super.key, required this.onTap, required this.text, required this.image});
 
   @override
   Widget build(BuildContext context) {

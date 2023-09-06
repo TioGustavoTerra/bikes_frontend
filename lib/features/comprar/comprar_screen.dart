@@ -1,4 +1,5 @@
 import 'package:bikes_frontend/componentes/button.dart';
+import 'package:bikes_frontend/features/Teste/teste.dart';
 import 'package:bikes_frontend/models/ads.dart';
 import 'package:bikes_frontend/services/ads_service.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import '../../componentes/pesquisa_bar_bikes.dart';
 import '../../componentes/rodape.dart';
 import '../../componentes/rodapeApp.dart';
 import '../../utils/responsive.dart';
+import '../home/home_screen.dart';
 
 class Comprar extends StatefulWidget {
   const Comprar({super.key});
@@ -113,6 +115,24 @@ class _ComprarState extends State<Comprar> {
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
                                               ),
+                                              SizedBox(
+                                                width: 200,
+                                              child: MyButtonAgree(
+                                                text: "Comprar",
+                                                image:
+                                                    "site-sistema/Home/icone-seta.svg",
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            HomePage()),
+                                                  );
+                                                },
+                                              ),)
+                                              
+
+                                              //Text(dasList[index].preco!)
                                             ],
                                           ),
                                         ),
