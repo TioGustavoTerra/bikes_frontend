@@ -2,7 +2,9 @@ import 'package:bikes_frontend/componentes/Dropped_file.dart';
 import 'package:bikes_frontend/componentes/textfield.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
+import 'package:intl/intl.dart';
 
 import '../../componentes/DrawerApp.dart';
 import '../../componentes/DroppedFileWidget.dart';
@@ -13,6 +15,7 @@ import '../../componentes/messages.dart';
 import '../../models/ads.dart';
 import '../../utils/responsive.dart';
 import '../../services/ads_service.dart';
+import 'dart:html' as html;
 
 class Vender extends StatefulWidget {
   DroppedFile? file;
@@ -23,6 +26,22 @@ class Vender extends StatefulWidget {
 }
 
 class _VenderState extends State<Vender> {
+  final _priceController = TextEditingController();
+  double _price = 0.0;
+
+  @override
+  void dispose() {
+    _priceController.dispose();
+    super.dispose();
+  }
+
+  void _updatePrice() {
+    setState(() {
+      final text = _priceController.text;
+      _price = double.tryParse(text.replaceAll(",", ".")) ?? 0.0;
+    });
+  }
+
   final _formKey = GlobalKey<FormState>();
   final marcaController = TextEditingController();
   String? _marca;
@@ -33,6 +52,7 @@ class _VenderState extends State<Vender> {
   String? _suspensaoT;
   String? _freios;
   String? _tipoFreio;
+  String? _descricaoController;
 
   final tipoController = TextEditingController();
   final tamanhoController = TextEditingController();
@@ -41,7 +61,7 @@ class _VenderState extends State<Vender> {
   final AdsService _adsService = AdsService();
   int currentStep = 0;
 
-// List of items in our dropdown menu
+  // List of items in our dropdown menu
   var marcas = [
     'Caloi',
     'Trek',
@@ -138,7 +158,6 @@ class _VenderState extends State<Vender> {
     'Freio a Disco Hidráulico',
     'Nenhum',
   ];
-
   @override
   void initState() {
     _requestUser();
@@ -146,65 +165,79 @@ class _VenderState extends State<Vender> {
   }
 
   List<DroppedFile> files = [];
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
-            appBar: Responsive.isMobile(context)
-                ? const PreferredSize(
-                    preferredSize: Size(double.infinity, 56),
-                    child: CabecalhoApp(),
-                  )
-                : const PreferredSize(
-                    preferredSize: Size(double.infinity, 72),
-                    child: Cabecalho(),
-                  ),
-            drawer: Responsive.isMobile(context)
-                ? const Drawer(child: DrawerApp())
-                : null,
-            body: Align(
-                alignment: Alignment.topCenter,
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width),
-                  child: Container(
-                    padding: const EdgeInsets.only(
-                      right: 10,
-                      left: 10,
-                      top: 10,
-                      bottom: 10,
-                    ),
-                    decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    width: Responsive.isDesktop(context)
-                        ? MediaQuery.of(context).size.width * 0.45
-                        : null,
-                    height: Responsive.isTablet(context)
-                        ? MediaQuery.of(context).size.height * 0.80
-                        : null,
-                    child: Stepper(
-                      type: StepperType.vertical,
-                      steps: getSteps(),
-                      currentStep: currentStep,
-                      onStepContinue: () {
-                        final isLastStep = currentStep == getSteps().length - 1;
+          appBar: Responsive.isMobile(context)
+              ? const PreferredSize(
+                  preferredSize: Size(double.infinity, 56),
+                  child: CabecalhoApp(),
+                )
+              : const PreferredSize(
+                  preferredSize: Size(double.infinity, 72),
+                  child: Cabecalho(),
+                ),
+          drawer: Responsive.isMobile(context)
+              ? const Drawer(child: DrawerApp())
+              : null,
+          body: Align(
+            alignment: Alignment.topCenter,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: MediaQuery.of(context).size.width,
+              ),
+              child: Container(
+                padding: const EdgeInsets.only(
+                  right: 10,
+                  left: 10,
+                  top: 10,
+                  bottom: 10,
+                ),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                width: Responsive.isDesktop(context)
+                    ? MediaQuery.of(context).size.width * 0.45
+                    : null,
+                height: Responsive.isTablet(context)
+                    ? MediaQuery.of(context).size.height * 0.80
+                    : null,
+                child: Stepper(
+                  type: StepperType.vertical,
+                  steps: getSteps(),
+                  currentStep: currentStep,
+                  onStepContinue: () {
+                    final isLastStep = currentStep == getSteps().length - 1;
 
-                        if (isLastStep) {
-                          registrar(_marca, _modalidade, _quadro, _aro,
-                              _suspensao, _suspensaoT, _freios, _tipoFreio);
-                          // Enviar dados para o servidor
-                        } else {
-                          setState(() => currentStep += 1);
-                        }
-                      },
-                      onStepCancel: currentStep == 0
-                          ? null
-                          : () => setState(() => currentStep -= 1),
-                    ),
-                  ),
-                )));
+                    if (isLastStep) {
+                      registrar(
+                        _marca,
+                        _modalidade,
+                        _quadro,
+                        _aro,
+                        _suspensao,
+                        _suspensaoT,
+                        _freios,
+                        _tipoFreio,
+                        _price,
+                        _descricaoController,
+                      );
+                      // Enviar dados para o servidor
+                    } else {
+                      setState(() => currentStep += 1);
+                    }
+                  },
+                  onStepCancel: currentStep == 0
+                      ? null
+                      : () => setState(() => currentStep -= 1),
+                ),
+              ),
+            ),
+          ),
+        );
       },
     );
   }
@@ -433,11 +466,46 @@ class _VenderState extends State<Vender> {
                 'De a descrição do pruduto, não poupe nos detalhes!',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
-              MyTextField(
-                  controller: descricaoController,
-                  hintText: '',
-                  obscureText: false,
-                  inputFormatter: const []),
+              TextFormField(
+                controller: descricaoController,
+                maxLines: 4,
+                decoration: const InputDecoration(
+                  labelText: '',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    TextField(
+                      controller: _priceController,
+                      keyboardType: const TextInputType.numberWithOptions(
+                        decimal: true,
+                      ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+                      ],
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Digite o preço',
+                      ),
+                      onChanged: (value) {
+                        _updatePrice();
+                      },
+                    ),
+                    const SizedBox(height: 20.0),
+                    Text(
+                      'R\$ ${NumberFormat.currency(locale: 'pt_BR', symbol: '').format(_price)}',
+                      style: const TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -451,7 +519,6 @@ class _VenderState extends State<Vender> {
             context, "/login", ModalRoute.withName('/'));
       });
     }
-    //nomeUsuario = user['nome_usuario'];
   }
 
   Future<void> registrar(
@@ -463,6 +530,8 @@ class _VenderState extends State<Vender> {
     String? suspensaoT,
     String? freio,
     String? tipofreio,
+    double? price,
+    String? descricaoController,
   ) async {
     try {
       var vender = Ads(
@@ -474,12 +543,14 @@ class _VenderState extends State<Vender> {
         suspensaoTraseira: suspensaoT,
         freio: freio,
         tipoFreio: tipofreio,
+        price: price,
+        descricaoController: descricaoController,
       );
 
       Ads? ads = await _adsService.registrar(vender);
 
       if (ads != null) {
-        _showToastInfo(context, 'Anúnco cadastrado com Sucesso!');
+        _showToastInfo(context, 'Anúncio cadastrado com Sucesso!');
         Messages.of(context).fecharMessagem(2).then((value) {
           Navigator.pushNamedAndRemoveUntil(
               context, "/home", ModalRoute.withName('/home'));
@@ -487,11 +558,6 @@ class _VenderState extends State<Vender> {
       } else {
         _showToastErro(context, 'Ops, algo deu errado!');
       }
-      // }
-
-      // else {
-      //   _showToastErro(context, 'Favor preencher todos os campos!');
-      // }
     } catch (e) {
       _showToastErro(context, 'Ops, algo deu errado! ${e}');
     }
