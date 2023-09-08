@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:bikes_frontend/componentes/Dropped_file.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
