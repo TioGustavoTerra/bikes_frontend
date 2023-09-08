@@ -1,6 +1,4 @@
 import 'package:bikes_frontend/componentes/Dropped_file.dart';
-import 'package:bikes_frontend/componentes/textfield.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
@@ -15,7 +13,6 @@ import '../../componentes/messages.dart';
 import '../../models/ads.dart';
 import '../../utils/responsive.dart';
 import '../../services/ads_service.dart';
-import 'dart:html' as html;
 
 class Vender extends StatefulWidget {
   DroppedFile? file;
@@ -52,7 +49,8 @@ class _VenderState extends State<Vender> {
   String? _suspensaoT;
   String? _freios;
   String? _tipoFreio;
-  String? _descricaoController;
+  String? _descricao;
+  
 
   final tipoController = TextEditingController();
   final tamanhoController = TextEditingController();
@@ -223,8 +221,9 @@ class _VenderState extends State<Vender> {
                         _freios,
                         _tipoFreio,
                         _price,
-                        _descricaoController,
-                      );
+                        _descricao,
+                        files
+                                              );
                       // Enviar dados para o servidor
                     } else {
                       setState(() => currentStep += 1);
@@ -531,9 +530,18 @@ class _VenderState extends State<Vender> {
     String? freio,
     String? tipofreio,
     double? price,
-    String? descricaoController,
+    String? descricao,
+    List<DroppedFile> imagens,
+
   ) async {
     try {
+
+      List<dynamic> imagemBase64 = [];
+
+      imagens.forEach((element) {
+        imagemBase64.add(element.base64Image);
+      });
+
       var vender = Ads(
         marca: marca,
         tipo: tipo,
@@ -544,7 +552,8 @@ class _VenderState extends State<Vender> {
         freio: freio,
         tipoFreio: tipofreio,
         price: price,
-        descricaoController: descricaoController,
+        descricao: descricao,
+        imagens: imagemBase64
       );
 
       Ads? ads = await _adsService.registrar(vender);

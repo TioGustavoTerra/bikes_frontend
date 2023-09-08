@@ -10,8 +10,9 @@ class Ads {
   String? suspensaoTraseira;
   String? freio;
   String? tipoFreio;
-  String? descricaoController;
   double? price;
+  String? descricao;
+  List<dynamic>? imagens;
 
   Ads({
     required this.marca,
@@ -23,7 +24,8 @@ class Ads {
     required this.freio,
     required this.tipoFreio,
     required this.price,
-    required this.descricaoController,
+    required this.descricao,
+    required this.imagens,
   });
 
   factory Ads.fromJson(Map<String, dynamic> json) {
@@ -37,7 +39,8 @@ class Ads {
       freio: json['freio'] ?? json['freio'],
       tipoFreio: json['tipoFreio'] ?? json['tipoFreio'],
       price: json['price'] ?? json['price'],
-      descricaoController: json['descricaoController'] ?? json ['descricaoController']
+      descricao: json['descricao'] ?? json ['descricao'],
+      imagens: json['imagens'] ?? json ['imagens'],
     );
   }
 
@@ -52,7 +55,8 @@ class Ads {
     ads["freio"] = freio;
     ads["tipoFreio"] = tipoFreio;
     ads["price"] = price;
-    ads["descricaoController"] = price;
+    ads["descricao"] = descricao;
+    ads["imagens"] = imagens;
 
     return ads;
   }

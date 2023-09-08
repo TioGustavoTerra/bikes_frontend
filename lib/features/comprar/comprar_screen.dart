@@ -103,35 +103,48 @@ class _ComprarState extends State<Comprar> {
                                               // Text(adsList[index].suspensaoTraseira!),
                                               // Text(adsList[index].tipo!)
 
-                                              Image.asset(
-                                                'site-sistema/Quem-somos/para-esporte.jpg',
+                                              Image.network(
+                                                '',
                                                 fit: BoxFit.cover,
                                               ),
-
-                                              Text(
-                                                adsList[index].marca!,
-                                                style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    adsList[index].marca!,
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20),
+                                                  ),
+                                                  const SizedBox(width: 10,),
+                                                  Text(adsList[index]
+                                                          .price
+                                                          ?.toStringAsFixed(
+                                                              2) ??
+                                                      '0.00',
+                                                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                                                ],
                                               ),
-                                              SizedBox(
-                                                width: 200,
-                                              child: MyButtonAgree(
-                                                text: "Comprar",
-                                                image:
-                                                    "site-sistema/Home/icone-seta.svg",
-                                                onTap: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            HomePage()),
-                                                  );
-                                                },
-                                              ),)
+                                            
                                               
 
-                                              //Text(dasList[index].preco!)
+                                              SizedBox(
+                                                width: 200,
+                                                child: MyButtonAgree(
+                                                  text: "Comprar",
+                                                  image:
+                                                      "site-sistema/Home/icone-seta.svg",
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const HomePage()),
+                                                    );
+                                                  },
+                                                ),
+                                              )
                                             ],
                                           ),
                                         ),
@@ -145,8 +158,8 @@ class _ComprarState extends State<Comprar> {
                           child: rodapeApp(),
                         )
                       else
-                        (PreferredSize(
-                          preferredSize: const Size(double.infinity, 72),
+                        (const PreferredSize(
+                          preferredSize: Size(double.infinity, 72),
                           child: Rodape(),
                         )),
                     ]))
