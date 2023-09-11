@@ -4,7 +4,7 @@ import 'package:flutter_session_manager/flutter_session_manager.dart';
 import '../models/ads.dart';
 
 class AdsService {
-  final String postsURL = "http://localhost:1337/api/ads";
+  final String postsURL = "https://app-bikes-ee8f2ccf385d.herokuapp.com/api/ads";
 
   Future<Ads?> registrar(Ads ads) async {
     try {

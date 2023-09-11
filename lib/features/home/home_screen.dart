@@ -103,8 +103,8 @@ class _HomePageState extends State<HomePage> {
                               child: rodapeApp(),
                             )
                           else
-                            (PreferredSize(
-                              preferredSize: const Size(double.infinity, 72),
+                            (const PreferredSize(
+                              preferredSize: Size(double.infinity, 72),
                               child: Rodape(),
                             )),
                         ]))

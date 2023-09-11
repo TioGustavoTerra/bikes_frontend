@@ -16,6 +16,7 @@ import '../../utils/responsive.dart';
 class Contato extends StatelessWidget {
   Contato({super.key});
 
+  final descricaoController = TextEditingController();
   final usernameController = TextEditingController();
   final emailController = TextEditingController();
   final telController = TextEditingController();
@@ -109,11 +110,18 @@ class Contato extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(height: 10),
-                              MyTextField(
-                                  controller: areaTexto,
-                                  hintText: "Digite aqui!",
-                                  obscureText: false,
-                                  inputFormatter: const []),
+
+                              const Text('Manda a duvida',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 20,),),
+                              TextFormField(
+                                controller: descricaoController,
+                                maxLines: 4,
+                                decoration: const InputDecoration(
+                                  labelText: '',
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
                               const SizedBox(height: 10),
                             ]),
                       ),
