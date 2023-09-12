@@ -11,6 +11,9 @@ class LoginUserService {
       dio.options.connectTimeout = const Duration(seconds: 30);
       dio.options.receiveTimeout = const Duration(seconds: 30);
       dio.options.headers["Content-Type"] = 'application/json';
+      dio.options.headers["Access-Control-Allow-Origin"] = '*';
+      dio.options.headers["Access-Control-Allow-Credentials"] = 'true';
+
 
       var formData = FormData.fromMap({
         'email': email,

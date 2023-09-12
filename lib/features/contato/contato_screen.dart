@@ -41,6 +41,7 @@ class Contato extends StatelessWidget {
             : null,
         body: Center(
           child: Column(children: [
+            const SizedBox(height: 100),
             ClipRect(
               child: BackdropFilter(
                 filter: ImageFilter.blur(),
@@ -110,10 +111,13 @@ class Contato extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(height: 10),
-
-                              const Text('Manda a duvida',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 20,),),
+                              const Text(
+                                'Manda a duvida',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
                               TextFormField(
                                 controller: descricaoController,
                                 maxLines: 4,
@@ -130,6 +134,7 @@ class Contato extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 95),
             if (Responsive.isMobile(context))
               const PreferredSize(
                 preferredSize: Size(double.infinity, 56),
