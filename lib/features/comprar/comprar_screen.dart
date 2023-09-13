@@ -1,3 +1,4 @@
+import 'package:bikes_frontend/componentes/button.dart';
 import 'package:bikes_frontend/models/ads.dart';
 import 'package:bikes_frontend/services/ads_service.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import '../../componentes/pesquisa_bar_bikes.dart';
 import '../../componentes/rodape.dart';
 import '../../componentes/rodapeApp.dart';
 import '../../utils/responsive.dart';
+import '../home/home_screen.dart';
 
 class Comprar extends StatefulWidget {
   const Comprar({super.key});
@@ -85,28 +87,69 @@ class _ComprarState extends State<Comprar> {
                               body: CustomScrollView(
                             slivers: [
                               SliverGrid.builder(
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4,
-                                  mainAxisSpacing: 10.0,
-                                  crossAxisSpacing: 10.0,
-                                  childAspectRatio: 1,
-                                ),
-                                itemBuilder: (context, index) => Card(
-                                  color: Colors.blue,
-                                  child: Container(
-                                    child: Column(children: [
-                                              Text(adsList[index].marca!),
-                                              Text(adsList[index].suspensaoDianteira!),
-                                              Text(adsList[index].suspensaoTraseira!),
-                                              Text(adsList[index].tipo!)
-                                    ],)
-                                    
-                                    ,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 4,
+                                    mainAxisSpacing: 10.0,
+                                    crossAxisSpacing: 10.0,
+                                    childAspectRatio: 1,
                                   ),
-                                ),
-                                itemCount: adsList?.length
-                              ),
+                                  itemBuilder: (context, index) => Card(
+                                        color: Colors.blue,
+                                        child: Container(
+                                          child: Column(
+                                            children: [
+                                              // Text(adsList[index].suspensaoDianteira!),
+                                              // Text(adsList[index].suspensaoTraseira!),
+                                              // Text(adsList[index].tipo!)
+
+                                              Image.network(
+                                                '',
+                                                fit: BoxFit.cover,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    adsList[index].marca!,
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20),
+                                                  ),
+                                                  const SizedBox(width: 10,),
+                                                  Text(adsList[index]
+                                                          .price
+                                                          ?.toStringAsFixed(
+                                                              2) ??
+                                                      '0.00',
+                                                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                                                ],
+                                              ),
+                                            
+                                              
+
+                                              SizedBox(
+                                                width: 200,
+                                                child: MyButtonAgree(
+                                                  text: "Comprar",
+                                                  image:
+                                                      "site-sistema/Home/icone-seta.svg",
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const HomePage()),
+                                                    );
+                                                  },
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                  itemCount: adsList?.length),
                             ],
                           ))),
                       if (Responsive.isMobile(context))
@@ -115,8 +158,8 @@ class _ComprarState extends State<Comprar> {
                           child: rodapeApp(),
                         )
                       else
-                        (PreferredSize(
-                          preferredSize: const Size(double.infinity, 72),
+                        (const PreferredSize(
+                          preferredSize: Size(double.infinity, 72),
                           child: Rodape(),
                         )),
                     ]))
@@ -126,9 +169,6 @@ class _ComprarState extends State<Comprar> {
 
   Future<void> getDados() async {
     await _adsService.getAds().then((value) => adsList.addAll(value));
-    setState(() {
-      
-    });
-
+    setState(() {});
   }
 }

@@ -17,7 +17,7 @@ import '../../componentes/rodapeApp.dart';
 import '../../componentes/speed.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+ const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -67,115 +67,6 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
-
-                      //     const Padding(
-                      //   padding: EdgeInsets.all(20),
-                      //   child: Text(
-                      //     'Resultado da busca',
-                      //     textAlign: TextAlign.center,
-                      //     style: TextStyle(
-                      //       color: Colors.black,
-                      //       fontWeight: FontWeight.bold,
-                      //       fontSize: 20,
-                      //     ),
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //     height: 2000,
-                      //     width: 1500,
-                      //     child: Scaffold(
-                      //         body: CustomScrollView(
-                      //       slivers: [
-                      //         SliverGrid.count(
-                      //           crossAxisCount: 4,
-                      //           mainAxisSpacing: 10.0,
-                      //           crossAxisSpacing: 10.0,
-                      //           childAspectRatio: 1,
-                      //           children: [
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //             Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //              Card(
-                      //               color: Colors.blue,
-                      //               child: Container(),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       ],
-                      //     ))),
                           const SizedBox(
                             height: 400,
                             width: 900,
@@ -212,8 +103,8 @@ class _HomePageState extends State<HomePage> {
                               child: rodapeApp(),
                             )
                           else
-                            (PreferredSize(
-                              preferredSize: const Size(double.infinity, 72),
+                            (const PreferredSize(
+                              preferredSize: Size(double.infinity, 72),
                               child: Rodape(),
                             )),
                         ]))

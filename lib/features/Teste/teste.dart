@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
 
-class Teste extends StatefulWidget {
-  const Teste({super.key});
-
-  @override
-  State<Teste> createState() => _TesteState();
+void main() {
+  runApp(Teste());
 }
 
-class _TesteState extends State<Teste> {
+class Teste extends StatelessWidget {
+  // URL da imagem (pode ser vazia ou indefinida)
+  final String imageUrl = '';
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Exemplo de Imagem da URL no Flutter'),
+        ),
+        body: Center(
+          child: imageUrl.isNotEmpty // Verifica se a URL não está vazia
+              ? Image.network(
+                  imageUrl,
+                  width: 200.0,
+                  height: 200.0,
+                  fit: BoxFit.cover,
+                )
+              : Placeholder(), // Se a URL estiver vazia, exibe um placeholder
+        ),
+      ),
+    );
   }
 }

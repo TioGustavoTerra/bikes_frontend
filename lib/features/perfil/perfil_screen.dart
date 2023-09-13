@@ -58,9 +58,9 @@ class PerfilScreen extends StatelessWidget {
                                     child: rodapeApp(),
                                   )
                                 else
-                                  (PreferredSize(
+                                  (const PreferredSize(
                                     preferredSize:
-                                        const Size(double.infinity, 72),
+                                        Size(double.infinity, 72),
                                     child: Rodape(),
                                   )),
                               ],
@@ -149,7 +149,7 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
                 hintText: 'Nome completo',
                 controller: usernameController,
                 obscureText: false,
-                inputFormatter: [],
+                inputFormatter: const [],
               ),
               const SizedBox(height: 10),
               Row(
@@ -204,7 +204,7 @@ class _ProfileFormScreenState extends State<ProfileFormScreen> {
                       hintText: 'Email',
                       controller: emailController,
                       obscureText: false,
-                      inputFormatter: [],
+                      inputFormatter: const [],
                     ),
                   ),
                 ],

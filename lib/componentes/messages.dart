@@ -20,13 +20,13 @@ class Messages {
       content: Center(
           child: Text(
         message,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       )),
       actions: [
         ElevatedButton(
             onPressed: () =>
                 ScaffoldMessenger.of(context).clearMaterialBanners(),
-            child: Text("X"))
+            child: const Text("X"))
       ],
     ));
     await fecharMessagem(5).timeout(const Duration(seconds: 10),

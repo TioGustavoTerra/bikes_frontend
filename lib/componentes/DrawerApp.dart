@@ -8,7 +8,7 @@ class DrawerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  NavigationDrawer();
+    return  const NavigationDrawer();
   }
 }
 
@@ -25,7 +25,7 @@ class NavigationDrawer extends StatelessWidget {
                 color: const Color.fromARGB(255, 9, 188, 138),
                 child: InkWell(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => PerfilScreen()));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const PerfilScreen()));
                   },
                   child: Container(
                     padding: EdgeInsets.only(
@@ -63,7 +63,7 @@ class NavigationDrawer extends StatelessWidget {
                         title: const Text('Home', style: TextStyle(color: Colors.white),),
                         onTap: () => Navigator.of(context)
                                 .pushReplacement(MaterialPageRoute(
-                              builder: (context) => HomePage(),
+                              builder: (context) => const HomePage(),
                             ))),
                     ListTile(
                       leading: const Icon(Icons.face, color: Colors.white,),
@@ -94,7 +94,9 @@ class NavigationDrawer extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.sell, color: Colors.white,),
                       title: const Text('Comprar', style: TextStyle(color: Colors.white),),
-                      onTap: () {},
+                      onTap: () {
+                      Navigator.pushNamedAndRemoveUntil(context, "/comprar", ModalRoute.withName('/comprar'),);
+                      },
                     ),
                     ListTile(
                       leading: const Icon(Icons.sell, color: Colors.white,),

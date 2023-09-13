@@ -106,7 +106,7 @@ class _SignupState extends State<Signup> {
                                   hintText: 'Nome completo',
                                   controller: usernameController,
                                   obscureText: false,
-                                  inputFormatter: [],
+                                  inputFormatter: const [],
                                 ),
                                 const SizedBox(height: 10),
                                 Row(
@@ -164,7 +164,7 @@ class _SignupState extends State<Signup> {
                                         hintText: 'Email',
                                         controller: emailController,
                                         obscureText: false,
-                                        inputFormatter: [],
+                                        inputFormatter: const [],
                                       ),
                                     ),
                                   ],

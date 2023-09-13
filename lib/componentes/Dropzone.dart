@@ -1,7 +1,11 @@
+// ignore: file_names
 import 'package:bikes_frontend/componentes/Dropped_file.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
+import 'dart:convert';
+import 'dart:html';
+
 
 class DropzoneWidget extends StatefulWidget {
   final ValueChanged<DroppedFile> onDroppedFile;
@@ -84,33 +88,45 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
           color: Colors.white,
           strokeWidth: 3,
           padding: EdgeInsets.zero,
-          dashPattern: [8, 4],
-          radius: Radius.circular(10),
+          dashPattern: const [8, 4],
+          radius: const Radius.circular(10),
           child: child,
         ),
       ),
     );
   }
 
-  Future acceptFile(dynamic event) async {
-    final name = event.name;
-    final mime = await controller.getFileMIME(event);
-    final bytes = await controller.getFileSize(event);
-    final url = await controller.createFileUrl(event);
+ Future acceptFile(dynamic event) async {
+  final name = event.name;
+  final mime = await controller.getFileMIME(event);
+  final bytes = await controller.getFileSize(event);
+  final url = await controller.createFileUrl(event);
 
-    print('Name $name');
-    print('Mime: $mime');
-    print('Bytes: $bytes');
-    print('Url: $url');
+  print('Name $name');
+  print('Mime: $mime');
+  print('Bytes: $bytes');
+  print('Url: $url');
+
+  final blob = Blob([event], mime);
+
+  final reader = FileReader();
+  reader.readAsArrayBuffer(blob);
+  reader.onLoad.listen((event) {
+    final List<int> fileBytes = reader.result as List<int>;
+    final base64String = base64Encode(fileBytes);
+
+    // print('data:$mime;base64,$base64String');
 
     final droppedFile = DroppedFile(
       url: url,
       name: name,
       mime: mime,
       bytes: bytes,
+      base64Image: base64String,
     );
 
     widget.onDroppedFile(droppedFile);
     setState(() => isHighlighted = false);
-  }
+  });
+}
 }

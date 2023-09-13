@@ -3,7 +3,7 @@ import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 
 class LoginUserService {
-  final String postsURL = "http://localhost:1337/api/sessions";
+  final String postsURL = "https://app-bikes-ee8f2ccf385d.herokuapp.com/api/sessions";
 
   Future<String?> logar(String email, String password) async {
     try {
@@ -11,6 +11,9 @@ class LoginUserService {
       dio.options.connectTimeout = const Duration(seconds: 30);
       dio.options.receiveTimeout = const Duration(seconds: 30);
       dio.options.headers["Content-Type"] = 'application/json';
+      dio.options.headers["Access-Control-Allow-Origin"] = '*';
+      dio.options.headers["Access-Control-Allow-Credentials"] = 'true';
+
 
       var formData = FormData.fromMap({
         'email': email,

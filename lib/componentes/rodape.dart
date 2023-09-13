@@ -6,7 +6,7 @@ import '../features/register/registration_screen.dart';
 import 'button.dart';
 
 class Rodape extends StatefulWidget {
-  Rodape({Key? key}) : super(key: key);
+  const Rodape({Key? key}) : super(key: key);
 
   @override
   _SignupState createState() => _SignupState();

@@ -19,7 +19,7 @@ class Cabecalho extends StatelessWidget {
             builder: (context, constraints) {
               print(
                   'biggest ${constraints.biggest} smallest${constraints.smallest}');
-              return Container(
+              return const SizedBox(
                 height: 400,
                 width: 100,
               );
@@ -90,7 +90,7 @@ class Cabecalho extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 0)),
           onPressed: () {
-                         Navigator.pushNamedAndRemoveUntil(context, "/home", ModalRoute.withName('/'),);
+                         Navigator.pushNamedAndRemoveUntil(context, "/contato", ModalRoute.withName('/contato'),);
           },
           child: const Text(
             'Contato',
@@ -110,7 +110,7 @@ const SizedBox(width: 50),
               print(
                   'biggest ${constraints.biggest} smallest${constraints.smallest}');
 
-              return Container(
+              return const SizedBox(
                 height: 400,
                 width: 100,
               );
