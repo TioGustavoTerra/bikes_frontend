@@ -34,7 +34,8 @@ class Ads {
       tipo: json['tipo'] ?? json['tipo'],
       tamanho: json['tamanho'] ?? json['tamanho'],
       aro: json['aro'] ?? json['aro'],
-      suspensaoDianteira: json['suspensaoDianteira'] ?? json['suspensaoDianteira'],
+      suspensaoDianteira:
+          json['suspensaoDianteira'] ?? json['suspensaoDianteira'],
       suspensaoTraseira: json['suspensaoTraseira'] ?? json['suspensaoTraseira'],
       freio: json['freio'] ?? json['freio'],
       tipoFreio: json['tipoFreio'] ?? json['tipoFreio'],
