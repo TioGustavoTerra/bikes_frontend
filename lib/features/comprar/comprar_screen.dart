@@ -68,18 +68,6 @@ class _ComprarState extends State<Comprar> {
                           ],
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.all(20),
-                        child: Text(
-                          'Resultado da busca',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
                       SizedBox(
                           height: 1500,
                           width: 1500,
@@ -96,57 +84,55 @@ class _ComprarState extends State<Comprar> {
                                   ),
                                   itemBuilder: (context, index) => Card(
                                         color: Colors.blue,
-                                        child: Container(
-                                          child: Column(
-                                            children: [
-                                              // Text(adsList[index].suspensaoDianteira!),
-                                              // Text(adsList[index].suspensaoTraseira!),
-                                              // Text(adsList[index].tipo!)
+                                        child: Column(
+                                          children: [
+                                            // Text(adsList[index].suspensaoDianteira!),
+                                            // Text(adsList[index].suspensaoTraseira!),
+                                            // Text(adsList[index].tipo!)
 
-                                              Image.network(
-                                                '',
-                                                fit: BoxFit.cover,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    adsList[index].marca!,
-                                                    style: const TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20),
-                                                  ),
-                                                  const SizedBox(width: 10,),
-                                                  Text(adsList[index]
-                                                          .price
-                                                          ?.toStringAsFixed(
-                                                              2) ??
-                                                      '0.00',
-                                                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-                                                ],
-                                              ),
-                                            
-                                              
-
-                                              SizedBox(
-                                                width: 200,
-                                                child: MyButtonAgree(
-                                                  text: "Comprar",
-                                                  image:
-                                                      "site-sistema/Home/icone-seta.svg",
-                                                  onTap: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const HomePage()),
-                                                    );
-                                                  },
+                                            Image.network(
+                                              '',
+                                              fit: BoxFit.cover,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  adsList[index].marca!,
+                                                  style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20),
                                                 ),
-                                              )
-                                            ],
-                                          ),
+                                                const SizedBox(width: 10,),
+                                                Text(adsList[index]
+                                                        .price
+                                                        ?.toStringAsFixed(
+                                                            2) ??
+                                                    '0.00',
+                                                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                                              ],
+                                            ),
+                                          
+                                            
+
+                                            SizedBox(
+                                              width: 200,
+                                              child: MyButtonAgree(
+                                                text: "Comprar",
+                                                image:
+                                                    "site-sistema/Home/icone-seta.svg",
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const HomePage()),
+                                                  );
+                                                },
+                                              ),
+                                            )
+                                          ],
                                         ),
                                       ),
                                   itemCount: adsList?.length),

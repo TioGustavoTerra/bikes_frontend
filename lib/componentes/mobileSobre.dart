@@ -64,6 +64,9 @@ class _MobileSobreState extends State<MobileSobre> {
                 width: 175,
                 height: 175,
               ),
+              const SizedBox(
+                height: 4,
+              ),
               Image.asset(
                 'site-sistema/Quem-somos/para-passeio.jpg',
                 fit: BoxFit.cover,
@@ -71,6 +74,9 @@ class _MobileSobreState extends State<MobileSobre> {
                 height: 175,
               ),
             ],
+          ),
+          const SizedBox(
+            width: 4,
           ),
           Image.asset(
             'site-sistema/Quem-somos/para-aventura.jpg',

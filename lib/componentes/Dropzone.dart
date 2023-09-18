@@ -53,8 +53,9 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
             const SizedBox(height: 16),
             ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(),
+                    padding: const EdgeInsets.symmetric(),
                     primary: colorButton,
+                    // ignore: prefer_const_constructors
                     shape: RoundedRectangleBorder()),
                 onPressed: () async {
                   final events = await controller.pickFiles();

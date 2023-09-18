@@ -40,7 +40,7 @@ class Contato extends StatelessWidget {
             ? const Drawer(child: DrawerApp())
             : null,
         body: Center(
-          child: Column(children: [
+          child: SingleChildScrollView(child: Column(children: [
             const SizedBox(height: 100),
             ClipRect(
               child: BackdropFilter(
@@ -112,7 +112,7 @@ class Contato extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               const Text(
-                                'Manda a duvida',
+                                'Manda a dúvida',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 20,
@@ -145,7 +145,10 @@ class Contato extends StatelessWidget {
                 preferredSize: Size(double.infinity, 72),
                 child: Rodape(),
               )),
-          ]),
+          ]),)
+
+          
+          
         ));
   }
 }

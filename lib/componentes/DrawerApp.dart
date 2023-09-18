@@ -108,7 +108,9 @@ class NavigationDrawer extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.phone, color: Colors.white,),
                       title: const Text('Contato', style: TextStyle(color: Colors.white),),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(context, "/contato", ModalRoute.withName('/contato'),);
+                      },
                     ),
                     ListTile(
                       leading: const Icon(Icons.search, color: Colors.white,),

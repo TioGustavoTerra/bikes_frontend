@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'bikes.com.br',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      // darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       initialRoute: '/home',
       routes: {
         '/teste': (context) => Teste(),
