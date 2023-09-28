@@ -54,19 +54,15 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 color: const Color.fromARGB(100, 9, 188, 138),
               ),
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   const Text("Acesse sua conta",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold)),
-
-
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   ClipRect(
                     child: BackdropFilter(
@@ -88,7 +84,6 @@ class _LoginPageState extends State<LoginPage> {
                         height: Responsive.isTablet(context)
                             ? MediaQuery.of(context).size.height * 0.80
                             : null,
-                            
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Form(
@@ -222,7 +217,6 @@ class _LoginPageState extends State<LoginPage> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
-                                       
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -234,7 +228,6 @@ class _LoginPageState extends State<LoginPage> {
                                                   'site-sistema/cadastro/botao-google.svg',
                                               title: "Login com Google"),
                                         ),
-
                                         const SizedBox(height: 10),
                                         InkWell(
                                           onTap: () {},
@@ -259,7 +252,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              
             ],
           ),
         ),

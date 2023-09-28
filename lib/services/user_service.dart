@@ -5,7 +5,7 @@ import 'package:flutter_session_manager/flutter_session_manager.dart';
 import '../models/user.dart';
 
 class UserService {
-  final String postsURL = "https://app-bikes-ee8f2ccf385d.herokuapp.com/api/users";
+  final String postsURL = "http://localhost:5001/api/users";
 
   Future<User?> registrar(User usuario) async {
     try {

@@ -3,7 +3,7 @@ import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 
 class LoginUserService {
-  final String postsURL = "https://app-bikes-ee8f2ccf385d.herokuapp.com/api/sessions";
+  final String postsURL = "http://localhost:5001/api/sessions";
 
   Future<String?> logar(String email, String password) async {
     try {
