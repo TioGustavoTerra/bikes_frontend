@@ -46,19 +46,19 @@ class User {
     user["phoneNumber"] = phoneNumber;
     user["email"] = email;
     
-    if (password.isDefinedAndNotNull) {
+    if (password != null) {
       user["password"] = password;
     }
 
-    if (password.isDefinedAndNotNull) {
+    if (password  != null) {
       user["passwordConfirmation"] = passwordConfirmation;
     }
 
-    if (passwordConfirmation.isDefinedAndNotNull) {
+    if (passwordConfirmation  != null) {
       user["passwordConfirmation"] = passwordConfirmation;
     }
 
-    if (currentPassword.isDefinedAndNotNull) {
+    if (currentPassword  != null) {
       user["currentPassword"] = currentPassword;
     }
 
