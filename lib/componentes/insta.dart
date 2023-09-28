@@ -64,6 +64,7 @@ class _InstaState extends State<Insta> {
             ],
           ),
         ),
+        
         SizedBox(
           width: 200,
           child: MyButtonAgree(
@@ -79,7 +80,10 @@ class _InstaState extends State<Insta> {
               }
             },
           ),
-        )
+        ),
+
+        const SizedBox( height: 140,)
+
       ]),
     );
   }

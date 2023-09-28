@@ -10,6 +10,8 @@ import '../../componentes/Dropzone.dart';
 import '../../componentes/cabecalho.dart';
 import '../../componentes/cabecalhoapp.dart';
 import '../../componentes/messages.dart';
+import '../../componentes/rodape.dart';
+import '../../componentes/rodapeApp.dart';
 import '../../models/ads.dart';
 import '../../utils/responsive.dart';
 import '../../services/ads_service.dart';
@@ -50,7 +52,6 @@ class _VenderState extends State<Vender> {
   String? _freios;
   String? _tipoFreio;
   String? _descricao;
-  
 
   final tipoController = TextEditingController();
   final tamanhoController = TextEditingController();
@@ -169,74 +170,89 @@ class _VenderState extends State<Vender> {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
-          appBar: Responsive.isMobile(context)
-              ? const PreferredSize(
-                  preferredSize: Size(double.infinity, 56),
-                  child: CabecalhoApp(),
-                )
-              : const PreferredSize(
-                  preferredSize: Size(double.infinity, 72),
-                  child: Cabecalho(),
-                ),
-          drawer: Responsive.isMobile(context)
-              ? const Drawer(child: DrawerApp())
-              : null,
-          body: Align(
-            alignment: Alignment.topCenter,
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width,
-              ),
-              child: Container(
-                padding: const EdgeInsets.only(
-                  right: 10,
-                  left: 10,
-                  top: 10,
-                  bottom: 10,
-                ),
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                width: Responsive.isDesktop(context)
-                    ? MediaQuery.of(context).size.width * 0.45
-                    : null,
-                height: Responsive.isTablet(context)
-                    ? MediaQuery.of(context).size.height * 0.80
-                    : null,
-                child: Stepper(
-                  type: StepperType.vertical,
-                  steps: getSteps(),
-                  currentStep: currentStep,
-                  onStepContinue: () {
-                    final isLastStep = currentStep == getSteps().length - 1;
+            appBar: Responsive.isMobile(context)
+                ? const PreferredSize(
+                    preferredSize: Size(double.infinity, 56),
+                    child: CabecalhoApp(),
+                  )
+                : const PreferredSize(
+                    preferredSize: Size(double.infinity, 72),
+                    child: Cabecalho(),
+                  ),
+            drawer: Responsive.isMobile(context)
+                ? const Drawer(child: DrawerApp())
+                : null,
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width,
+                      ),
+                      child: Container(
+                        padding: const EdgeInsets.only(
+                          right: 10,
+                          left: 10,
+                          top: 10,
+                          bottom: 10,
+                        ),
+                        decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        width: Responsive.isDesktop(context)
+                            ? MediaQuery.of(context).size.width * 0.45
+                            : null,
+                        height: Responsive.isTablet(context)
+                            ? MediaQuery.of(context).size.height * 0.80
+                            : null,
+                        child: Stepper(
+                          type: StepperType.horizontal,
+                          steps: getSteps(),
+                          currentStep: currentStep,
+                          onStepContinue: () {
+                            final isLastStep =
+                                currentStep == getSteps().length - 1;
 
-                    if (isLastStep) {
-                      registrar(
-                        _marca,
-                        _modalidade,
-                        _quadro,
-                        _aro,
-                        _suspensao,
-                        _suspensaoT,
-                        _freios,
-                        _tipoFreio,
-                        _price,
-                        _descricao,
-                        files
-                                              );
-                      // Enviar dados para o servidor
-                    } else {
-                      setState(() => currentStep += 1);
-                    }
-                  },
-                  onStepCancel: currentStep == 0
-                      ? null
-                      : () => setState(() => currentStep -= 1),
-                ),
+                            if (isLastStep) {
+                              registrar(
+                                  _marca,
+                                  _modalidade,
+                                  _quadro,
+                                  _aro,
+                                  _suspensao,
+                                  _suspensaoT,
+                                  _freios,
+                                  _tipoFreio,
+                                  _price,
+                                  _descricao,
+                                  files);
+                            } else {
+                              setState(() => currentStep += 1);
+                            }
+                          },
+                          onStepCancel: currentStep == 0
+                              ? null
+                              : () => setState(() => currentStep -= 1),
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (Responsive.isMobile(context))
+                    const PreferredSize(
+                      preferredSize: Size(double.infinity, 56),
+                      child: rodapeApp(),
+                    )
+                  else
+                    (const PreferredSize(
+                      preferredSize: Size(double.infinity, 72),
+                      child: Rodape(),
+                    )),
+                ],
               ),
-            ),
-          ),
-        );
+            ));
       },
     );
   }
@@ -484,7 +500,8 @@ class _VenderState extends State<Vender> {
                         decimal: true,
                       ),
                       inputFormatters: [
-                        FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+                        FilteringTextInputFormatter.allow(
+                            RegExp(r'^\d+\.?\d{0,2}')),
                       ],
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -532,10 +549,8 @@ class _VenderState extends State<Vender> {
     double? price,
     String? descricao,
     List<DroppedFile> imagens,
-
   ) async {
     try {
-
       List<dynamic> imagemBase64 = [];
 
       imagens.forEach((element) {
@@ -543,18 +558,17 @@ class _VenderState extends State<Vender> {
       });
 
       var vender = Ads(
-        marca: marca,
-        tipo: tipo,
-        tamanho: tamanho,
-        aro: int.parse(aro!),
-        suspensaoDianteira: suspensao,
-        suspensaoTraseira: suspensaoT,
-        freio: freio,
-        tipoFreio: tipofreio,
-        price: price,
-        descricao: descricao,
-        imagens: imagemBase64
-      );
+          marca: marca,
+          tipo: tipo,
+          tamanho: tamanho,
+          aro: int.parse(aro!),
+          suspensaoDianteira: suspensao,
+          suspensaoTraseira: suspensaoT,
+          freio: freio,
+          tipoFreio: tipofreio,
+          price: price,
+          descricao: descricao,
+          imagens: imagemBase64);
 
       Ads? ads = await _adsService.registrar(vender);
 
